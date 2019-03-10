@@ -19,7 +19,10 @@ namespace Local_Jbovlaste
             //}
             System.Console.WriteLine(jbovlaste["cidjrbentou"].Notes);
             jbovlaste["cidjrbentou"] = jbovlaste["cidja"];
-            System.Console.WriteLine(jbovlaste["cidja"].Notes);
+            foreach (var item in jbovlaste["cidro"].Notes)
+            {
+                System.Console.WriteLine(item);
+            }
             System.Console.WriteLine(jbovlaste["cidjrbentou"].Notes);
         }
     }

@@ -70,7 +70,9 @@ namespace Jbovlaste
                 valsi.Definition = node.SelectSingleNode("definition").InnerText;
                 valsi.DefinitionId = int.Parse(node.SelectSingleNode("definitionid").InnerText);
                 if (node.SelectSingleNode("notes") != null)
+                {
                     valsi.Notes = node.SelectSingleNode("notes").InnerText;
+                }
                 valsi.GlossWord = new List<string>();
                 foreach (XmlElement item in node.SelectNodes("glossword"))
                 {
