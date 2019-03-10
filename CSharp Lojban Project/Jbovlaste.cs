@@ -60,7 +60,15 @@ namespace Jbovlaste
                 valsi.UnOfficial = node.GetAttribute("unofficial") == bool.TrueString;
                 valsi.Word = node.GetAttribute("word");
                 valsi.Type = node.GetAttribute("type");
-                valsi.Selmaho = node.GetAttribute("selmaho");
+                if (node.SelectSingleNode("selmaho") != null)
+                {
+                    valsi.Selmaho = node.SelectSingleNode("selmaho").InnerText;
+                }
+                valsi.Rafsi = new List<string>();
+                foreach (XmlElement rafsi in node.SelectNodes("rafsi"))
+                {
+                    valsi.Rafsi.Add(rafsi.InnerText);
+                }
                 var user = (XmlElement)node.SelectSingleNode("user");
                 valsi.User = new User
                 {
@@ -74,9 +82,9 @@ namespace Jbovlaste
                     valsi.Notes = node.SelectSingleNode("notes").InnerText;
                 }
                 valsi.GlossWord = new List<string>();
-                foreach (XmlElement item in node.SelectNodes("glossword"))
+                foreach (XmlElement glossword in node.SelectNodes("glossword"))
                 {
-                    valsi.GlossWord.Add(item.InnerText);
+                    valsi.GlossWord.Add(glossword.InnerText);
                 }
                 Add(valsi);
             }
