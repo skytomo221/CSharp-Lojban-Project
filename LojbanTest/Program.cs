@@ -15,6 +15,18 @@ namespace LojbanTest
 
         //--------------------------------------------------------------------------------
 
+        public static string Glide => @"(" + i + u + ")(?!" + Nucleus + ")(?!" + Glide + ")";
+        public static string Diphtong => @"(" + a + e + "|" + a + u + "|" + e + i + "|" + o + i + ")(?!" + Nucleus + ")(?!" + Glide + ")";
+        public static string Vowel => @"(" + a + "|" + e + "|" + i + "|" + o + "|" + u + ")(?!" + Nucleus + ")";
+        public static string a => Comma + @"*[aA]";
+        public static string e => Comma + @"*[eE]";
+        public static string i => Comma + @"*[iI]";
+        public static string o => Comma + @"*[oO]";
+        public static string u => Comma + @"*[uU]";
+        public static string y => Comma + @"*[yY]";
+
+        //--------------------------------------------------------------------------------
+
         public static string Syllabic => l + "|" + m + "|" + n + "|" + r;
         public static string Voiced => b + "|" + d + "|" + g + "|" + j + "|" + v + "|" + z;
         public static string Unvoiced => c + "|" + f + "|" + k + "|" + p + "|" + s + "|" + t + "|" + x;
