@@ -11,8 +11,6 @@ namespace Lojban_Parser
     {
         static void Main(string[] args)
         {
-            var runner = new NPEG.GrammarInterpreter.PEGrammar();
-            runner.Run();
         }
     }
 }
