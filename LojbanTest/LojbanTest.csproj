@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lojban\Lojban.csproj">
+      <Project>{8bbc5c17-3c7c-4157-bd7c-1cf3106ecea9}</Project>
+      <Name>Lojban</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
