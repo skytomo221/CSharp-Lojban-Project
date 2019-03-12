@@ -22,6 +22,30 @@ namespace LojbanTest
     {
     }
 
+    //;  This is a Parsing Expression Grammar for Lojban.
+    //;  See http://www.pdos.lcs.mit.edu/~baford/packrat/
+    //;  
+    //;  All rules have the form:
+    //;  
+    //;  	name <- peg-expression
+    //;  
+    //;  which means that the grammatical construct "name" is parsed using
+    //;  "peg-expression".  
+    //;  
+    //;  1)  Names in lower case are grammatical constructs.
+    //;  2)  Names in UPPER CASE are selma'o (lexeme) names, and are terminals.
+    //;  3)  Concatenation is expressed by juxtaposition with no operator symbol.
+    //;  4)  / represents *ORDERED* alternation (choice).  If the first
+    //;      option succeeds, the others will never be checked.
+    //;  5)  ? indicates that the element to the left is optional.
+    //;  6)  * represents optional repetition of the construct to the left.
+    //;  7)  + represents one-or-more repetition of the construct to the left.
+    //;  8)  () serves to indicate the grouping of the other operators.
+    //; 
+    //;  Longest match wins.
+
+    //;  --- GRAMMAR ---
+
     // text <- intro-null NAI-clause* text-part-2 (!text-1 joik-jek)? text-1? faho-clause EOF?
     public class Text : MetaNode
     {
@@ -397,13 +421,13 @@ namespace LojbanTest
 
     // #; gihek <- NA-clause? SE-clause? GIhA-clause NAI-clause?
     // gihek <- gihek-sa* gihek-1
-    public class gihek : MetaNode { }
+    public class Gihek : MetaNode { }
 
     // gihek-1 <- NA-clause? SE-clause? GIhA-clause NAI-clause?
-    public class gihek_1 : MetaNode { }
+    public class Gihek_1 : MetaNode { }
 
     // gihek-sa <- gihek-1 (!gihek-1 (sa-word / SA-clause !gihek-1 ) )* SA-clause &gihek
-    public class gihek_sa : MetaNode { }
+    public class Gihek_sa : MetaNode { }
 
     // jek <- NA-clause? SE-clause? JA-clause NAI-clause?
     public class Jek : MetaNode { }
@@ -2605,6 +2629,2575 @@ namespace LojbanTest
 
     public static class Lojban
     {
+        //;  This is a Parsing Expression Grammar for Lojban.
+        //;  See http://www.pdos.lcs.mit.edu/~baford/packrat/
+        //;  
+        //;  All rules have the form:
+        //;  
+        //;  	name <- peg-expression
+        //;  
+        //;  which means that the grammatical construct "name" is parsed using
+        //;  "peg-expression".  
+        //;  
+        //;  1)  Names in lower case are grammatical constructs.
+        //;  2)  Names in UPPER CASE are selma'o (lexeme) names, and are terminals.
+        //;  3)  Concatenation is expressed by juxtaposition with no operator symbol.
+        //;  4)  / represents *ORDERED* alternation (choice).  If the first
+        //;      option succeeds, the others will never be checked.
+        //;  5)  ? indicates that the element to the left is optional.
+        //;  6)  * represents optional repetition of the construct to the left.
+        //;  7)  + represents one-or-more repetition of the construct to the left.
+        //;  8)  () serves to indicate the grouping of the other operators.
+        //; 
+        //;  Longest match wins.
+
+        //;  --- GRAMMAR ---
+
+        // text <- intro-null NAI-clause* text-part-2 (!text-1 joik-jek)? text-1? faho-clause EOF?
+        public static readonly Parser<Text> Text;
+
+        // intro-null <- spaces? su-clause* intro-si-clause
+        public static readonly Parser<Intro_null> Intro_null;
+        // text-part-2 <- (CMENE-clause+ / indicators?) free*
+        public static readonly Parser<Text_part_2> Text_part_2;
+
+        //;  intro-sa-clause <- SA-clause+ / any-word-SA-handling !(ZEI-clause SA-clause) intro-sa-clause
+        // intro-si-clause <- si-clause? SI-clause*
+        public static readonly Parser<Intro_si_clause> Intro_si_clause;
+        // faho-clause <- (FAhO-clause dot-star)?
+        public static readonly Parser<Faho_clause> Faho_clause;
+
+        //;  Please note that the "text-1" item in the text-1 production does
+        //;  *not* match the BNF. This is due to a bug in the BNF.  The change
+        //;  here was made to match grammar.300
+        // text-1 <- I-clause (jek / joik)? (stag? BO-clause)? free* text-1? / NIhO-clause+ free* su-clause* paragraphs? / paragraphs
+        public static readonly Parser<Text_1> Text_1;
+
+        // paragraphs <- paragraph (NIhO-clause+ free* su-clause* paragraphs)?
+        public static readonly Parser<Paragraphs> Paragraphs;
+
+        // paragraph <- (statement / fragment) (I-clause !jek !joik !joik-jek free* (statement / fragment)?)*
+        public static readonly Parser<Paragraph> Paragraph;
+
+        // statement <- statement-1 / prenex statement
+        public static readonly Parser<Statement> Statement;
+
+        // statement-1 <- statement-2 (I-clause joik-jek statement-2?)*
+        public static readonly Parser<Statement_1> Statement_1;
+
+        // statement-2 <- statement-3 (I-clause (jek / joik)? stag? BO-clause free* statement-2)? / statement-3 (I-clause (jek / joik)? stag? BO-clause free*)?
+        public static readonly Parser<Statement_2> Statement_2;
+
+        // statement-3 <- sentence / tag? TUhE-clause free* text-1 TUhU-clause? free*
+        public static readonly Parser<Statement_3> Statement_3;
+
+        // fragment <- prenex / terms VAU-clause? free* / ek free* / gihek free* / quantifier / NA-clause !JA-clause free* / relative-clauses / links / linkargs
+        public static readonly Parser<Fragment> Fragment;
+
+        // prenex <- terms ZOhU-clause free*
+        public static readonly Parser<Prenex> Prenex;
+
+        //; sentence <- (terms CU-clause? free*)? bridi-tail / bridi-tail
+
+        // sentence <- (terms bridi-tail-sa* CU-clause? free*)? bridi-tail-sa* bridi-tail
+        public static readonly Parser<Sentence> Sentence;
+
+        // sentence-sa <- sentence-start (!sentence-start (sa-word / SA-clause !sentence-start ) )* SA-clause &text-1
+        public static readonly Parser<Sentence_sa> Sentence_sa;
+
+        // sentence-start <- I-pre / NIhO-pre
+        public static readonly Parser<Sentence_start> Sentence_start;
+
+        // subsentence <- sentence / prenex subsentence
+        public static readonly Parser<Subsentence> Subsentence;
+
+        // bridi-tail <- bridi-tail-1 (gihek stag? KE-clause free* bridi-tail KEhE-clause? free* tail-terms)?
+        public static readonly Parser<Bridi_tail> Bridi_tail;
+
+        // bridi-tail-sa <- bridi-tail-start (term / !bridi-tail-start (sa-word / SA-clause !bridi-tail-start ) )* SA-clause &bridi-tail
+        public static readonly Parser<Bridi_tail_sa> Bridi_tail_sa;
+
+        // bridi-tail-start <- ME-clause / NUhA-clause / NU-clause / NA-clause !KU-clause / NAhE-clause !BO-clause / selbri / tag bridi-tail-start / KE-clause bridi-tail-start / bridi-tail
+        public static readonly Parser<Bridi_tail_start> Bridi_tail_start;
+
+        // bridi-tail-1 <- bridi-tail-2 (gihek !(stag? BO-clause) !(stag? KE-clause) free* bridi-tail-2 tail-terms)*
+        public static readonly Parser<Bridi_tail_1> Bridi_tail_1;
+
+        // bridi-tail-2 <- bridi-tail-3 (gihek stag? BO-clause free* bridi-tail-2 tail-terms)?
+        public static readonly Parser<Bridi_tail_2> Bridi_tail_2;
+
+        // bridi-tail-3 <- selbri tail-terms / gek-sentence
+        public static readonly Parser<Bridi_tail_3> Bridi_tail_3;
+
+        // gek-sentence <- gek subsentence gik subsentence tail-terms / tag? KE-clause free* gek-sentence KEhE-clause? free* / NA-clause free* gek-sentence
+        public static readonly Parser<Gek_sentence> Gek_sentence;
+
+        // tail-terms <- terms? VAU-clause? free*
+        public static readonly Parser<Tail_terms> Tail_terms;
+
+        // terms <- terms-1+
+        public static readonly Parser<Terms> Terms;
+
+        //; terms-1 <- terms-2 (PEhE-clause free* joik-jek terms-2)*
+
+        //; terms-2 <- term (CEhE-clause free* term)*
+
+        // terms-1 <- terms-2 (pehe-sa* PEhE-clause free* joik-jek terms-2)*
+        public static readonly Parser<Terms_1> Terms_1;
+
+        // terms-2 <- term (cehe-sa* CEhE-clause free* term)*
+        public static readonly Parser<Terms_2> Terms_2;
+
+        // pehe-sa <- PEhE-clause (!PEhE-clause (sa-word / SA-clause !PEhE-clause))* SA-clause
+        public static readonly Parser<Pehe_sa> Pehe_sa;
+
+        // cehe-sa <- CEhE-clause (!CEhE-clause (sa-word / SA-clause !CEhE-clause))* SA-clause
+        public static readonly Parser<Cehe_sa> Cehe_sa;
+
+        //; term <- sumti / ( !gek (tag / FA-clause free*) (sumti / KU-clause? free*) ) / termset / NA-clause KU-clause free*
+
+        // term <- term-sa* term-1
+        public static readonly Parser<Term> Term;
+
+        // term-1 <- sumti / ( !gek (tag / FA-clause free*) (sumti / KU-clause? free*) ) / termset / NA-clause KU-clause free*
+        public static readonly Parser<Term_1> Term;
+
+        // term-sa <- term-start (!term-start (sa-word / SA-clause !term-start ) )* SA-clause &term-1
+        public static readonly Parser<Term_sa> Term;
+
+        // term-start <- term-1 / LA-clause / LE-clause / LI-clause / LU-clause / LAhE-clause / quantifier term-start / gek sumti gik / FA-clause / tag term-start
+        public static readonly Parser<Term_start> Term;
+
+        // termset <- gek-termset / NUhI-clause free* gek terms NUhU-clause? free* gik terms NUhU-clause? free* / NUhI-clause free* terms NUhU-clause? free*
+        public static readonly Parser<Termset> Term;
+
+        // gek-termset <- gek terms-gik-terms
+        public static readonly Parser<Gek_termset> Term;
+
+        // terms-gik-terms <- term (gik / terms-gik-terms) term
+        public static readonly Parser<Terms_gik_terms> Term;
+
+        // sumti <- sumti-1 (VUhO-clause free* relative-clauses)?
+        public static readonly Parser<Sumti> Term;
+
+        // sumti-1 <- sumti-2 (joik-ek stag? KE-clause free* sumti KEhE-clause? free*)?
+        public static readonly Parser<Sumti_1> Term;
+
+        // sumti-2 <- sumti-3 (joik-ek sumti-3)*
+        public static readonly Parser<Sumti_2> Term;
+
+        // sumti-3 <- sumti-4 (joik-ek stag? BO-clause free* sumti-3)?
+        public static readonly Parser<Sumti_3> Term;
+
+        // sumti-4 <- sumti-5 / gek sumti gik sumti-4
+        public static readonly Parser<Sumti_4> Term;
+
+        // sumti-5 <- quantifier? sumti-6 relative-clauses? / quantifier selbri KU-clause? free* relative-clauses?
+        public static readonly Parser<Sumti_5> Term;
+
+        // sumti-6 <- ZO-clause free* / ZOI-clause free* / LOhU-clause free* / lerfu-string !MOI-clause BOI-clause? free* / LU-clause text LIhU-clause? free* / (LAhE-clause free* / NAhE-clause BO-clause free*) relative-clauses? sumti LUhU-clause? free* / KOhA-clause free* / LA-clause free* relative-clauses? CMENE-clause+ free* / (LA-clause / LE-clause) free* sumti-tail KU-clause? free* / li-clause
+        public static readonly Parser<Sumti_6> Term;
+
+        // li-clause <- LI-clause free* mex LOhO-clause? free*
+        public static readonly Parser<Li_clause> Term;
+
+        // sumti-tail <- (sumti-6 relative-clauses?)? sumti-tail-1 / relative-clauses sumti-tail-1
+        public static readonly Parser<Sumti_tail> Term;
+
+        // sumti-tail-1 <- selbri relative-clauses? / quantifier selbri relative-clauses? / quantifier sumti
+        public static readonly Parser<Sumti_tail_1> Term;
+
+        // relative-clauses <- relative-clause (ZIhE-clause free* relative-clause)*
+        public static readonly Parser<Relative_clauses> Term;
+
+        //; relative-clause <- GOI-clause free* term GEhU-clause? free* / NOI-clause free* subsentence KUhO-clause? free*
+
+        // relative-clause <- relative-clause-sa* relative-clause-1
+        public static readonly Parser<Relative_clause> Term;
+
+        // relative-clause-sa <- relative-clause-start (!relative-clause-start (sa-word / SA-clause !relative-clause-start ) )* SA-clause &relative-clause-1
+        public static readonly Parser<Relative_clause_sa> Term;
+
+        // relative-clause-1 <- GOI-clause free* term GEhU-clause? free* / NOI-clause free* subsentence KUhO-clause? free*
+        public static readonly Parser<Relative_clause_1> Term;
+
+        // relative-clause-start <- GOI-clause / NOI-clause
+        public static readonly Parser<Relative_clause_start> Term;
+
+        // selbri <- tag? selbri-1
+        public static readonly Parser<Selbri> Term;
+
+        // selbri-1 <- selbri-2 / NA-clause free* selbri
+        public static readonly Parser<Selbri_1> Term;
+
+        // selbri-2 <- selbri-3 (CO-clause free* selbri-2)?
+        public static readonly Parser<Selbri_2> Term;
+
+        // selbri-3 <- selbri-4+
+        public static readonly Parser<Selbri_3> Term;
+
+        // selbri-4 <- selbri-5 (joik-jek selbri-5 / joik stag? KE-clause free* selbri-3 KEhE-clause? free*)*
+        public static readonly Parser<Selbri_4> Term;
+
+        // selbri-5 <- selbri-6 ((jek / joik) stag? BO-clause free* selbri-5)?
+        public static readonly Parser<Selbri_5> Term;
+
+        // selbri-6 <- tanru-unit (BO-clause free* selbri-6)? / NAhE-clause? free* guhek selbri gik selbri-6
+        public static readonly Parser<Selbri_6> Term;
+
+        // tanru-unit <- tanru-unit-1 (CEI-clause free* tanru-unit-1)*
+        public static readonly Parser<Tanru_unit> Term;
+
+        // tanru-unit-1 <- tanru-unit-2 linkargs?
+        public static readonly Parser<Tanru_unit_1> Term;
+
+        //; ** zei is part of BRIVLA-clause
+        // tanru-unit-2 <- BRIVLA-clause free* / GOhA-clause RAhO-clause? free* / KE-clause free* selbri-3 KEhE-clause? free* / ME-clause free* (sumti / lerfu-string) MEhU-clause? free* MOI-clause? free* / (number / lerfu-string) MOI-clause free* / NUhA-clause free* mex-operator / SE-clause free* tanru-unit-2 / JAI-clause free* tag? tanru-unit-2 / NAhE-clause free* tanru-unit-2 / NU-clause NAI-clause? free* (joik-jek NU-clause NAI-clause? free*)* subsentence KEI-clause? free*
+        public static readonly Parser<Tanru_unit_2> Term;
+
+        //; linkargs <- BE-clause free* term links? BEhO-clause? free*
+
+        // linkargs <- linkargs-sa* linkargs-1
+        public static readonly Parser<Linkargs> Term;
+
+        // linkargs-1 <- BE-clause free* term links? BEhO-clause? free*
+        public static readonly Parser<Linkargs_1> Term;
+
+        // linkargs-sa <- linkargs-start (!linkargs-start (sa-word / SA-clause !linkargs-start ) )* SA-clause &linkargs-1
+        public static readonly Parser<Linkargs_sa> Term;
+
+        // linkargs-start <- BE-clause
+        public static readonly Parser<Linkargs_start> Term;
+
+        //; links <- BEI-clause free* term links?
+
+        // links <- links-sa* links-1
+        public static readonly Parser<Links> Term;
+
+        // links-1 <- BEI-clause free* term links?
+        public static readonly Parser<Links_1> Term;
+
+        // links-sa <- links-start (!links-start (sa-word / SA-clause !links-start ) )* SA-clause &links-1
+        public static readonly Parser<Links_sa> Term;
+
+        // links-start <- BEI-clause
+        public static readonly Parser<Links_start> Term;
+
+        // quantifier <- number !MOI-clause BOI-clause? free* / VEI-clause free* mex VEhO-clause? free*
+        public static readonly Parser<Quantifier> Term;
+
+        //; mex <- mex-1 (operator mex-1)* / rp-clause
+
+        // mex <- mex-sa* mex-0
+        public static readonly Parser<Mex> Term;
+
+        // mex-0 <- mex-1 (operator mex-1)* / rp-clause
+        public static readonly Parser<Mex_0> Term;
+
+        // mex-sa <- mex-start (!mex-start (sa-word / SA-clause !mex-start) )* SA-clause &mex-0
+        public static readonly Parser<Mex_sa> Term;
+
+        // mex-start <- FUhA-clause / PEhO-clause / operand-start
+        public static readonly Parser<Mex_start> Term;
+
+        // rp-clause <- FUhA-clause free* rp-expression
+        public static readonly Parser<Rp_clause> Term;
+
+        // mex-1 <- mex-2 (BIhE-clause free* operator mex-1)?
+        public static readonly Parser<Mex_1> Term;
+
+        // mex-2 <- operand / mex-forethought
+        public static readonly Parser<Mex_2> Term;
+
+        //;  This is just to make for clearer parse trees
+        // mex-forethought <- PEhO-clause? free* operator fore-operands KUhE-clause? free*
+        public static readonly Parser<Mex_forethought> Term;
+        // fore-operands <- mex-2+ 
+        public static readonly Parser<Mex_operator> Term;
+
+        //; li fu'a reboi ci pi'i voboi mu pi'i su'i reboi ci vu'u su'i du li rexa
+        //; rp-expression <- rp-operand rp-operand operator
+        //; rp-operand <- operand / rp-expression
+        //; AKA (almost; this one allows a single operand; above does not.
+        //; rp-expression <- rp-expression rp-expression operator / operand
+
+        //; Right recursive version.
+        // rp-expression <- operand rp-expression-tail
+        // rp-expression-tail <- rp-expression operator rp-expression-tail / ()
+
+        //; operator <- operator-1 (joik-jek operator-1 / joik stag? KE-clause free* operator KEhE-clause? free*)*
+
+        // operator <- operator-sa* operator-0
+        public static readonly Parser<Operator> Term;
+
+        // operator-0 <- operator-1 (joik-jek operator-1 / joik stag? KE-clause free* operator KEhE-clause? free*)*
+        public static readonly Parser<Operator_0> Term;
+
+        // operator-sa <- operator-start (!operator-start (sa-word / SA-clause !operator-start) )* SA-clause &operator-0
+        public static readonly Parser<Operator_sa> Term;
+
+        // operator-start <- guhek / KE-clause / SE-clause? NAhE-clause / SE-clause? MAhO-clause / SE-clause? VUhU-clause
+        public static readonly Parser<Operator_start> Term;
+
+        // operator-1 <- operator-2 / guhek operator-1 gik operator-2 / operator-2 (jek / joik) stag? BO-clause free* operator-1
+        public static readonly Parser<Operator_1> Term;
+
+        // operator-2 <- mex-operator / KE-clause free* operator KEhE-clause? free*
+        public static readonly Parser<Operator_2> Term;
+
+        // mex-operator <- SE-clause free* mex-operator / NAhE-clause free* mex-operator / MAhO-clause free* mex TEhU-clause? free* / NAhU-clause free* selbri TEhU-clause? free* / VUhU-clause free*
+        public static readonly Parser<Mex_operator> Term;
+
+        //; operand <- operand-1 (joik-ek stag? KE-clause free* operand KEhE-clause? free*)?
+
+        // operand <- operand-sa* operand-0
+        public static readonly Parser<Operator> Term;
+
+        // operand-0 <- operand-1 (joik-ek stag? KE-clause free* operand KEhE-clause? free*)?
+        public static readonly Parser<Operator_0> Term;
+
+        // operand-sa <- operand-start (!operand-start (sa-word / SA-clause !operand-start) )* SA-clause &operand-0
+        public static readonly Parser<Operator_sa> Term;
+
+        // operand-start <- quantifier / lerfu-word / NIhE-clause / MOhE-clause / JOhI-clause / gek / LAhE-clause / NAhE-clause
+        public static readonly Parser<Operator_start> Term;
+
+        // operand-1 <- operand-2 (joik-ek operand-2)*
+        public static readonly Parser<Operator_1> Term;
+
+        // operand-2 <- operand-3 (joik-ek stag? BO-clause free* operand-2)?
+        public static readonly Parser<Operator_2> Term;
+
+        // operand-3 <- quantifier / lerfu-string !MOI-clause BOI-clause? free* / NIhE-clause free* selbri TEhU-clause? free* / MOhE-clause free* sumti TEhU-clause? free* / JOhI-clause free* mex-2+ TEhU-clause? free* / gek operand gik operand-3 / (LAhE-clause free* / NAhE-clause BO-clause free*) operand LUhU-clause? free*
+        public static readonly Parser<Operator_3> Term;
+
+        // number <- PA-clause (PA-clause / lerfu-word)*
+        public static readonly Parser<Number> Term;
+
+        // lerfu-string <- lerfu-word (PA-clause / lerfu-word)*
+        public static readonly Parser<Lerfu_string> Term;
+
+        //; ** BU clauses are part of BY-clause
+        // lerfu-word <- BY-clause / LAU-clause lerfu-word / TEI-clause lerfu-string FOI-clause
+        public static readonly Parser<Lerfu_word> Term;
+
+        // ek <- NA-clause? SE-clause? A-clause NAI-clause?
+        public static readonly Parser<Ek> Term;
+
+        //; gihek <- NA-clause? SE-clause? GIhA-clause NAI-clause?
+        // gihek <- gihek-sa* gihek-1
+        public static readonly Parser<Gihek> Term;
+
+        // gihek-1 <- NA-clause? SE-clause? GIhA-clause NAI-clause?
+        public static readonly Parser<Gihek_1> Term;
+
+        // gihek-sa <- gihek-1 (!gihek-1 (sa-word / SA-clause !gihek-1 ) )* SA-clause &gihek
+        public static readonly Parser<Gihek_sa> Term;
+
+        // jek <- NA-clause? SE-clause? JA-clause NAI-clause?
+        public static readonly Parser<Jek> Term;
+
+        // joik <- SE-clause? JOI-clause NAI-clause? / interval / GAhO-clause interval GAhO-clause
+        public static readonly Parser<Joik> Term;
+
+        // interval <- SE-clause? BIhI-clause NAI-clause?
+        public static readonly Parser<Interval> Term;
+
+        //; joik-ek <- joik free* / ek free*
+        // joik-ek <- joik-ek-sa* joik-ek-1
+        public static readonly Parser<Joik_ek> Term;
+
+        // joik-ek-1 <- (joik free* / ek free*)
+        public static readonly Parser<Joik_ek_1> Term;
+
+        // joik-ek-sa <- joik-ek-1 (!joik-ek-1 (sa-word / SA-clause !joik-ek-1 ) )* SA-clause &joik-ek
+        public static readonly Parser<Joik_ek_sa> Term;
+
+        // joik-jek <- joik free* / jek free*
+        public static readonly Parser<Joik_jek> Term;
+
+        // gek <- SE-clause? GA-clause NAI-clause? free* / joik GI-clause free* / stag gik
+        public static readonly Parser<Gek> Term;
+
+        // guhek <- SE-clause? GUhA-clause NAI-clause? free*
+        public static readonly Parser<Guhek> Term;
+
+        // gik <- GI-clause NAI-clause? free*
+        public static readonly Parser<Gik> Term;
+
+        // tag <- tense-modal (joik-jek tense-modal)*
+        public static readonly Parser<Tag> Term;
+
+        //; stag <- simple-tense-modal ((jek / joik) simple-tense-modal)*
+        // stag <- simple-tense-modal ((jek / joik) simple-tense-modal)* / tense-modal (joik-jek tense-modal)*
+        public static readonly Parser<Stag> Term;
+
+        // tense-modal <- simple-tense-modal free* / FIhO-clause free* selbri FEhU-clause? free*
+        public static readonly Parser<Tense_modal> Term;
+
+        // simple-tense-modal <- NAhE-clause? SE-clause? BAI-clause NAI-clause? KI-clause? / NAhE-clause? ( ((time space? / space time?) CAhA-clause) / (time space? / space time?) / CAhA-clause ) KI-clause? / KI-clause / CUhE-clause
+        public static readonly Parser<Simple_tense_modal> Term;
+
+        // time <- ZI-clause time-offset* (ZEhA-clause (PU-clause NAI-clause?)?)? interval-property* / ZI-clause? time-offset+ (ZEhA-clause (PU-clause NAI-clause?)?)? interval-property* / ZI-clause? time-offset* ZEhA-clause (PU-clause NAI-clause?)? interval-property* / ZI-clause? time-offset* (ZEhA-clause (PU-clause NAI-clause?)?)? interval-property+
+        public static readonly Parser<Time> Term;
+
+        // time-offset <- PU-clause NAI-clause? ZI-clause?
+        public static readonly Parser<Time_offset> Term;
+
+        // space <- VA-clause space-offset* space-interval? (MOhI-clause space-offset)? / VA-clause? space-offset+ space-interval? (MOhI-clause space-offset)? / VA-clause? space-offset* space-interval (MOhI-clause space-offset)? / VA-clause? space-offset* space-interval? MOhI-clause space-offset
+        public static readonly Parser<Space> Term;
+
+        // space-offset <- FAhA-clause NAI-clause? VA-clause?
+        public static readonly Parser<Space> Term;
+
+        // space-interval <- (VEhA-clause / VIhA-clause / VEhA-clause VIhA-clause) (FAhA-clause NAI-clause?)? space-int-props / (VEhA-clause / VIhA-clause / VEhA-clause VIhA-clause) (FAhA-clause NAI-clause?)? / space-int-props
+        public static readonly Parser<Space> Term;
+
+        // space-int-props <- (FEhE-clause interval-property)+
+        public static readonly Parser<Space> Term;
+
+        // interval-property <- number ROI-clause NAI-clause? / TAhE-clause NAI-clause? / ZAhO-clause NAI-clause?
+        public static readonly Parser<Space> Term;
+
+        // free <- SEI-clause free* (terms CU-clause? free*)? selbri SEhU-clause? / SOI-clause free* sumti sumti? SEhU-clause? / vocative relative-clauses? selbri relative-clauses? DOhU-clause? / vocative relative-clauses? CMENE-clause+ free* relative-clauses? DOhU-clause? / vocative sumti? DOhU-clause? / (number / lerfu-string) MAI-clause / TO-clause text TOI-clause? / xi-clause
+        public static readonly Parser<Space> Term;
+
+        // xi-clause <- XI-clause free* (number / lerfu-string) BOI-clause? / XI-clause free* VEI-clause free* mex VEhO-clause?
+        public static readonly Parser<Space> Term;
+
+        // vocative <- (COI-clause NAI-clause?)+ DOI-clause / (COI-clause NAI-clause?) (COI-clause NAI-clause?)* / DOI-clause
+        public static readonly Parser<Space> Term;
+
+        // indicators <- FUhE-clause? indicator+
+        public static readonly Parser<Space> Term;
+
+        // indicator <-  ((UI-clause / CAI-clause) NAI-clause? / DAhO-clause / FUhO-clause) !BU-clause
+        public static readonly Parser<Space> Term;
+
+
+        //; ****************
+        //; Magic Words
+        //; ****************
+
+        // zei-clause <- pre-clause zei-clause-no-pre
+        public static readonly Parser<Space> Term;
+        // zei-clause-no-pre <- pre-zei-bu (zei-tail? bu-tail)* zei-tail post-clause
+        public static readonly Parser<Space> Term;
+        // zei-clause-no-SA <- pre-zei-bu-no-SA (zei-tail? bu-tail)* zei-tail
+        public static readonly Parser<Space> Term;
+
+        // bu-clause <- pre-clause bu-clause-no-pre
+        public static readonly Parser<Space> Term;
+        // bu-clause-no-pre <- pre-zei-bu (bu-tail? zei-tail)* bu-tail post-clause
+        public static readonly Parser<Space> Term;
+        // bu-clause-no-SA <- pre-zei-bu-no-SA (bu-tail? zei-tail)* bu-tail
+        public static readonly Parser<Space> Term;
+
+        // zei-tail <- (ZEI-clause any-word)+
+        public static readonly Parser<Space> Term;
+        // bu-tail <- BU-clause+
+        public static readonly Parser<Space> Term;
+
+        // pre-zei-bu <- (!BU-clause !ZEI-clause !SI-clause !SA-clause !SU-clause !FAhO-clause any-word-SA-handling) si-clause?
+        public static readonly Parser<Space> Term;
+        //; LOhU-pre / ZO-pre / ZOI-pre / !ZEI-clause !BU-clause !FAhO-clause !SI-clause !SA-clause !SU-clause any-word-SA-handling si-clause?
+        // pre-zei-bu-no-SA <- LOhU-pre / ZO-pre / ZOI-pre / !ZEI-clause !BU-clause !FAhO-clause !SI-clause !SA-clause !SU-clause any-word si-clause?
+        public static readonly Parser<Space> Term;
+
+        // dot-star <- .*
+        public static readonly Parser<Space> Term;
+
+        //; -- General Morphology Issues
+        //; 
+        //; 1.  Spaces (including '.y') and UI are eaten *after* a word.
+        //; 
+        //; 3.  BAhE is eaten *before* a word.
+
+        //; Handling of what can go after a cmavo
+        // post-clause <- spaces? si-clause? !ZEI-clause !BU-clause indicators*
+        public static readonly Parser<Space> Term;
+
+        // pre-clause <- BAhE-clause?
+        public static readonly Parser<Space> Term;
+
+        //; any-word-SA-handling <- BRIVLA-pre / known-cmavo-SA / !known-cmavo-pre CMAVO-pre / CMENE-pre
+        // any-word-SA-handling <- BRIVLA-pre / known-cmavo-SA / CMAVO-pre / CMENE-pre
+        public static readonly Parser<Space> Term;
+
+        // known-cmavo-SA <- A-pre / BAI-pre / BAhE-pre / BE-pre / BEI-pre / BEhO-pre / BIhE-pre / BIhI-pre / BO-pre / BOI-pre / BU-pre / BY-pre / CAI-pre / CAhA-pre / CEI-pre / CEhE-pre / CO-pre / COI-pre / CU-pre / CUhE-pre / DAhO-pre / DOI-pre / DOhU-pre / FA-pre / FAhA-pre / FEhE-pre / FEhU-pre / FIhO-pre / FOI-pre / FUhA-pre / FUhE-pre / FUhO-pre / GA-pre / GAhO-pre / GEhU-pre / GI-pre / GIhA-pre / GOI-pre / GOhA-pre / GUhA-pre / I-pre / JA-pre / JAI-pre / JOI-pre / JOhI-pre / KE-pre / KEI-pre / KEhE-pre / KI-pre / KOhA-pre / KU-pre / KUhE-pre / KUhO-pre / LA-pre / LAU-pre / LAhE-pre / LE-pre / LEhU-pre / LI-pre / LIhU-pre / LOhO-pre / LOhU-pre / LU-pre / LUhU-pre / MAI-pre / MAhO-pre / ME-pre / MEhU-pre / MOI-pre / MOhE-pre / MOhI-pre / NA-pre / NAI-pre / NAhE-pre / NAhU-pre / NIhE-pre / NIhO-pre / NOI-pre / NU-pre / NUhA-pre / NUhI-pre / NUhU-pre / PA-pre / PEhE-pre / PEhO-pre / PU-pre / RAhO-pre / ROI-pre / SA-pre / SE-pre / SEI-pre / SEhU-pre / SI-clause / SOI-pre / SU-pre / TAhE-pre / TEI-pre / TEhU-pre / TO-pre / TOI-pre / TUhE-pre / TUhU-pre / UI-pre / VA-pre / VAU-pre / VEI-pre / VEhA-pre / VEhO-pre / VIhA-pre / VUhO-pre / VUhU-pre / XI-pre / ZAhO-pre / ZEI-pre / ZEhA-pre / ZI-pre / ZIhE-pre / ZO-pre / ZOI-pre / ZOhU-pre
+        public static readonly Parser<Space> Term;
+
+        //; Handling of spaces and things like spaces.
+        //; --- SPACE ---
+        //; Do *NOT* delete the line above!
+
+        //; SU clauses
+        // su-clause <- (erasable-clause / su-word)* SU-clause
+        public static readonly Parser<Space> Term;
+
+        //;  Handling of SI and interactions with zo and lo'u...le'u
+
+        // si-clause <- ((erasable-clause / si-word / SA-clause) si-clause? SI-clause)+
+        public static readonly Parser<Space> Term;
+
+        // erasable-clause <- bu-clause-no-pre !ZEI-clause !BU-clause / zei-clause-no-pre !ZEI-clause !BU-clause
+        public static readonly Parser<Space> Term;
+
+        // sa-word <- pre-zei-bu
+        public static readonly Parser<Space> Term;
+
+        // si-word <- pre-zei-bu
+        public static readonly Parser<Space> Term;
+
+        // su-word <- !NIhO-clause !LU-clause !TUhE-clause !TO-clause !SU-clause !FAhO-clause any-word-SA-handling
+        public static readonly Parser<Space> Term;
+
+        //;  --- SELMAHO ---
+        //;  Do *NOT* delete the line above!
+
+        // BRIVLA-clause <- BRIVLA-pre BRIVLA-post / zei-clause
+        public static readonly Parser<Space> Term;
+        // BRIVLA-pre <- pre-clause BRIVLA spaces?
+        public static readonly Parser<Space> Term;
+        // BRIVLA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BRIVLA-no-SA-handling <- pre-clause BRIVLA post-clause / zei-clause-no-SA
+        public static readonly Parser<Space> Term;
+
+        // CMENE-clause <- CMENE-pre CMENE-post
+        public static readonly Parser<Space> Term;
+        // CMENE-pre <- pre-clause CMENE spaces?
+        public static readonly Parser<Space> Term;
+        // CMENE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CMENE-no-SA-handling <- pre-clause CMENE post-clause
+        public static readonly Parser<Space> Term;
+
+        // CMAVO-clause <- CMAVO-pre CMAVO-post
+        public static readonly Parser<Space> Term;
+        // CMAVO-pre <- pre-clause CMAVO spaces?
+        public static readonly Parser<Space> Term;
+        // CMAVO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CMAVO-no-SA-handling <- pre-clause CMAVO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          eks; basic afterthought logical connectives 
+        // A-clause <- A-pre A-post
+        public static readonly Parser<Space> Term;
+        // A-pre <- pre-clause A spaces?
+        public static readonly Parser<Space> Term;
+        // A-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // A-no-SA-handling <- pre-clause A post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          modal operators 
+        // BAI-clause <- BAI-pre BAI-post
+        public static readonly Parser<Space> Term;
+        // BAI-pre <- pre-clause BAI spaces?
+        public static readonly Parser<Space> Term;
+        // BAI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BAI-no-SA-handling <- pre-clause BAI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          next word intensifier 
+        // BAhE-clause <- (BAhE-pre BAhE-post)+
+        public static readonly Parser<Space> Term;
+        // BAhE-pre <- BAhE spaces?
+        public static readonly Parser<Space> Term;
+        // BAhE-post <- si-clause? !ZEI-clause !BU-clause
+        public static readonly Parser<Space> Term;
+        // BAhE-no-SA-handling <- BAhE spaces? BAhE-post
+        public static readonly Parser<Space> Term;
+
+        //;          sumti link to attach sumti to a selbri 
+        // BE-clause <- BE-pre BE-post
+        public static readonly Parser<Space> Term;
+        // BE-pre <- pre-clause BE spaces?
+        public static readonly Parser<Space> Term;
+        // BE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BE-no-SA-handling <- pre-clause BE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          multiple sumti separator between BE, BEI 
+        // BEI-clause <- BEI-pre BEI-post
+        public static readonly Parser<Space> Term;
+        // BEI-pre <- pre-clause BEI spaces?
+        public static readonly Parser<Space> Term;
+        // BEI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BEI-no-SA-handling <- pre-clause BEI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          terminates BEBEI specified descriptors 
+        // BEhO-clause <- BEhO-pre BEhO-post
+        public static readonly Parser<Space> Term;
+        // BEhO-pre <- pre-clause BEhO spaces?
+        public static readonly Parser<Space> Term;
+        // BEhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BEhO-no-SA-handling <- pre-clause BEhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          prefix for high-priority MEX operator 
+        // BIhE-clause <- BIhE-pre BIhE-post
+        public static readonly Parser<Space> Term;
+        // BIhE-pre <- pre-clause BIhE spaces?
+        public static readonly Parser<Space> Term;
+        // BIhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BIhE-no-SA-handling <- pre-clause BIhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          interval component of JOI 
+        // BIhI-clause <- BIhI-pre BIhI-post
+        public static readonly Parser<Space> Term;
+        // BIhI-pre <- pre-clause BIhI spaces?
+        public static readonly Parser<Space> Term;
+        // BIhI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BIhI-no-SA-handling <- pre-clause BIhI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          joins two units with shortest scope 
+        // BO-clause <- BO-pre BO-post
+        public static readonly Parser<Space> Term;
+        // BO-pre <- pre-clause BO spaces?
+        public static readonly Parser<Space> Term;
+        // BO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BO-no-SA-handling <- pre-clause BO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          number or lerfu-string terminator 
+        // BOI-clause <- BOI-pre BOI-post
+        public static readonly Parser<Space> Term;
+        // BOI-pre <- pre-clause BOI spaces?
+        public static readonly Parser<Space> Term;
+        // BOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BOI-no-SA-handling <- pre-clause BOI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          turns any word into a BY lerfu word 
+        // BU-clause <- BU-pre BU-post
+        public static readonly Parser<Space> Term;
+        // BU-clause-no-SA <- BU-pre-no-SA BU BU-post
+        public static readonly Parser<Space> Term;
+        // BU-pre <- pre-clause BU spaces?
+        public static readonly Parser<Space> Term;
+        // BU-pre-no-SA <- pre-clause
+        public static readonly Parser<Space> Term;
+        // BU-post <- spaces?
+        public static readonly Parser<Space> Term;
+        // BU-no-SA-handling <- pre-clause BU spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          individual lerfu words 
+        // BY-clause <- BY-pre BY-post / bu-clause
+        public static readonly Parser<Space> Term;
+        // BY-pre <- pre-clause BY spaces?
+        public static readonly Parser<Space> Term;
+        // BY-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // BY-no-SA-handling <- pre-clause BY post-clause / bu-clause-no-SA
+        public static readonly Parser<Space> Term;
+
+
+        //;          specifies actualitypotentiality of tense 
+        // CAhA-clause <- CAhA-pre CAhA-post
+        public static readonly Parser<Space> Term;
+        // CAhA-pre <- pre-clause CAhA spaces?
+        public static readonly Parser<Space> Term;
+        // CAhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CAhA-no-SA-handling <- pre-clause CAhA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          afterthought intensity marker 
+        // CAI-clause <- CAI-pre CAI-post
+        public static readonly Parser<Space> Term;
+        // CAI-pre <- pre-clause CAI spaces?
+        public static readonly Parser<Space> Term;
+        // CAI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CAI-no-SA-handling <- pre-clause CAI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          pro-bridi assignment operator 
+        // CEI-clause <- CEI-pre CEI-post
+        public static readonly Parser<Space> Term;
+        // CEI-pre <- pre-clause CEI spaces?
+        public static readonly Parser<Space> Term;
+        // CEI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CEI-no-SA-handling <- pre-clause CEI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          afterthought term list connective 
+        // CEhE-clause <- CEhE-pre CEhE-post
+        public static readonly Parser<Space> Term;
+        // CEhE-pre <- pre-clause CEhE spaces?
+        public static readonly Parser<Space> Term;
+        // CEhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CEhE-no-SA-handling <- pre-clause CEhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          names; require consonant end, then pause no
+
+        //;                                     LA or DOI selma'o embedded, pause before if
+
+        //;                                     vowel initial and preceded by a vowel 
+
+        //;          tanru inversion  
+        // CO-clause <- CO-pre CO-post
+        public static readonly Parser<Space> Term;
+        // CO-pre <- pre-clause CO spaces?
+        public static readonly Parser<Space> Term;
+        // CO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CO-no-SA-handling <- pre-clause CO post-clause
+        public static readonly Parser<Space> Term;
+        // COI-clause <- COI-pre COI-post
+        public static readonly Parser<Space> Term;
+        // COI-pre <- pre-clause COI spaces?
+        public static readonly Parser<Space> Term;
+        // COI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // COI-no-SA-handling <- pre-clause COI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          vocative marker permitted inside names; must
+
+        //;                                     always be followed by pause or DOI 
+
+        //;          separator between head sumti and selbri 
+        // CU-clause <- CU-pre CU-post
+        public static readonly Parser<Space> Term;
+        // CU-pre <- pre-clause CU spaces?
+        public static readonly Parser<Space> Term;
+        // CU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CU-no-SA-handling <- pre-clause CU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          tensemodal question 
+        // CUhE-clause <- CUhE-pre CUhE-post
+        public static readonly Parser<Space> Term;
+        // CUhE-pre <- pre-clause CUhE spaces?
+        public static readonly Parser<Space> Term;
+        // CUhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // CUhE-no-SA-handling <- pre-clause CUhE post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          cancel anaphoracataphora assignments 
+        // DAhO-clause <- DAhO-pre DAhO-post
+        public static readonly Parser<Space> Term;
+        // DAhO-pre <- pre-clause DAhO spaces?
+        public static readonly Parser<Space> Term;
+        // DAhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // DAhO-no-SA-handling <- pre-clause DAhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          vocative marker 
+        // DOI-clause <- DOI-pre DOI-post
+        public static readonly Parser<Space> Term;
+        // DOI-pre <- pre-clause DOI spaces?
+        public static readonly Parser<Space> Term;
+        // DOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // DOI-no-SA-handling <- pre-clause DOI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          terminator for DOI-marked vocatives 
+        // DOhU-clause <- DOhU-pre DOhU-post
+        public static readonly Parser<Space> Term;
+        // DOhU-pre <- pre-clause DOhU spaces?
+        public static readonly Parser<Space> Term;
+        // DOhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // DOhU-no-SA-handling <- pre-clause DOhU post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          modifier head generic case tag 
+        // FA-clause <- FA-pre FA-post
+        public static readonly Parser<Space> Term;
+        // FA-pre <- pre-clause FA spaces?
+        public static readonly Parser<Space> Term;
+        // FA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FA-no-SA-handling <- pre-clause FA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          superdirections in space 
+        // FAhA-clause <- FAhA-pre FAhA-post
+        public static readonly Parser<Space> Term;
+        // FAhA-pre <- pre-clause FAhA spaces?
+        public static readonly Parser<Space> Term;
+        // FAhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FAhA-no-SA-handling <- pre-clause FAhA post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          normally elided 'done pause' to indicate end
+        //;                                     of utterance string 
+
+        // FAhO-clause <- pre-clause FAhO spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          space interval mod flag 
+        // FEhE-clause <- FEhE-pre FEhE-post
+        public static readonly Parser<Space> Term;
+        // FEhE-pre <- pre-clause FEhE spaces?
+        public static readonly Parser<Space> Term;
+        // FEhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FEhE-no-SA-handling <- pre-clause FEhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          ends bridi to modal conversion 
+        // FEhU-clause <- FEhU-pre FEhU-post
+        public static readonly Parser<Space> Term;
+        // FEhU-pre <- pre-clause FEhU spaces?
+        public static readonly Parser<Space> Term;
+        // FEhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FEhU-no-SA-handling <- pre-clause FEhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          marks bridi to modal conversion 
+        // FIhO-clause <- FIhO-pre FIhO-post
+        public static readonly Parser<Space> Term;
+        // FIhO-pre <- pre-clause FIhO spaces?
+        public static readonly Parser<Space> Term;
+        // FIhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FIhO-no-SA-handling <- pre-clause FIhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          end compound lerfu 
+        // FOI-clause <- FOI-pre FOI-post
+        public static readonly Parser<Space> Term;
+        // FOI-pre <- pre-clause FOI spaces?
+        public static readonly Parser<Space> Term;
+        // FOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FOI-no-SA-handling <- pre-clause FOI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          reverse Polish flag 
+        // FUhA-clause <- FUhA-pre FUhA-post
+        public static readonly Parser<Space> Term;
+        // FUhA-pre <- pre-clause FUhA spaces?
+        public static readonly Parser<Space> Term;
+        // FUhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FUhA-no-SA-handling <- pre-clause FUhA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          open long scope for indicator 
+        // FUhE-clause <- FUhE-pre FUhE-post
+        public static readonly Parser<Space> Term;
+        // FUhE-pre <- pre-clause FUhE spaces?
+        public static readonly Parser<Space> Term;
+        // FUhE-post <- !BU-clause spaces? !ZEI-clause !BU-clause
+        public static readonly Parser<Space> Term;
+        // FUhE-no-SA-handling <- pre-clause FUhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          close long scope for indicator 
+        // FUhO-clause <- FUhO-pre FUhO-post
+        public static readonly Parser<Space> Term;
+        // FUhO-pre <- pre-clause FUhO spaces?
+        public static readonly Parser<Space> Term;
+        // FUhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // FUhO-no-SA-handling <- pre-clause FUhO post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          geks; forethought logical connectives 
+        // GA-clause <- GA-pre GA-post
+        public static readonly Parser<Space> Term;
+        // GA-pre <- pre-clause GA spaces?
+        public static readonly Parser<Space> Term;
+        // GA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GA-no-SA-handling <- pre-clause GA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          openclosed interval markers for BIhI 
+        // GAhO-clause <- GAhO-pre GAhO-post
+        public static readonly Parser<Space> Term;
+        // GAhO-pre <- pre-clause GAhO spaces?
+        public static readonly Parser<Space> Term;
+        // GAhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GAhO-no-SA-handling <- pre-clause GAhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          marker ending GOI relative clauses 
+        // GEhU-clause <- GEhU-pre GEhU-post
+        public static readonly Parser<Space> Term;
+        // GEhU-pre <- pre-clause GEhU spaces?
+        public static readonly Parser<Space> Term;
+        // GEhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GEhU-no-SA-handling <- pre-clause GEhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          forethought medial marker 
+        // GI-clause <- GI-pre GI-post
+        public static readonly Parser<Space> Term;
+        // GI-pre <- pre-clause GI spaces?
+        public static readonly Parser<Space> Term;
+        // GI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GI-no-SA-handling <- pre-clause GI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          logical connectives for bridi-tails 
+        // GIhA-clause <- GIhA-pre GIhA-post
+        public static readonly Parser<Space> Term;
+        // GIhA-pre <- pre-clause GIhA spaces?
+        public static readonly Parser<Space> Term;
+        // GIhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GIhA-no-SA-handling <- pre-clause GIhA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          attaches a sumti modifier to a sumti 
+        // GOI-clause <- GOI-pre GOI-post
+        public static readonly Parser<Space> Term;
+        // GOI-pre <- pre-clause GOI spaces?
+        public static readonly Parser<Space> Term;
+        // GOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GOI-no-SA-handling <- pre-clause GOI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          pro-bridi 
+        // GOhA-clause <- GOhA-pre GOhA-post
+        public static readonly Parser<Space> Term;
+        // GOhA-pre <- pre-clause GOhA spaces?
+        public static readonly Parser<Space> Term;
+        // GOhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GOhA-no-SA-handling <- pre-clause GOhA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          GEK for tanru units, corresponds to JEKs 
+        // GUhA-clause <- GUhA-pre GUhA-post
+        public static readonly Parser<Space> Term;
+        // GUhA-pre <- pre-clause GUhA spaces?
+        public static readonly Parser<Space> Term;
+        // GUhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // GUhA-no-SA-handling <- pre-clause GUhA post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          sentence link 
+        // I-clause <- sentence-sa* I-pre I-post
+        public static readonly Parser<Space> Term;
+        // I-pre <- pre-clause I spaces?
+        public static readonly Parser<Space> Term;
+        // I-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // I-no-SA-handling <- pre-clause I post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          jeks; logical connectives within tanru 
+        // JA-clause <- JA-pre JA-post
+        public static readonly Parser<Space> Term;
+        // JA-pre <- pre-clause JA spaces?
+        public static readonly Parser<Space> Term;
+        // JA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // JA-no-SA-handling <- pre-clause JA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          modal conversion flag 
+        // JAI-clause <- JAI-pre JAI-post
+        public static readonly Parser<Space> Term;
+        // JAI-pre <- pre-clause JAI spaces?
+        public static readonly Parser<Space> Term;
+        // JAI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // JAI-no-SA-handling <- pre-clause JAI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          flags an array operand 
+        // JOhI-clause <- JOhI-pre JOhI-post
+        public static readonly Parser<Space> Term;
+        // JOhI-pre <- pre-clause JOhI spaces?
+        public static readonly Parser<Space> Term;
+        // JOhI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // JOhI-no-SA-handling <- pre-clause JOhI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          non-logical connectives 
+        // JOI-clause <- JOI-pre JOI-post
+        public static readonly Parser<Space> Term;
+        // JOI-pre <- pre-clause JOI spaces?
+        public static readonly Parser<Space> Term;
+        // JOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // JOI-no-SA-handling <- pre-clause JOI post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          left long scope marker 
+        // KE-clause <- KE-pre KE-post
+        public static readonly Parser<Space> Term;
+        // KE-pre <- pre-clause KE spaces?
+        public static readonly Parser<Space> Term;
+        // KE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KE-no-SA-handling <- pre-clause KE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          right terminator for KE groups 
+        // KEhE-clause <- KEhE-pre KEhE-post
+        public static readonly Parser<Space> Term;
+        // KEhE-pre <- pre-clause KEhE spaces?
+        public static readonly Parser<Space> Term;
+        // KEhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KEhE-no-SA-handling <- pre-clause KEhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          right terminator, NU abstractions 
+        // KEI-clause <- KEI-pre KEI-post
+        public static readonly Parser<Space> Term;
+        // KEI-pre <- pre-clause KEI spaces?
+        public static readonly Parser<Space> Term;
+        // KEI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KEI-no-SA-handling <- pre-clause KEI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          multiple utterance scope for tenses 
+        // KI-clause <- KI-pre KI-post
+        public static readonly Parser<Space> Term;
+        // KI-pre <- pre-clause KI spaces?
+        public static readonly Parser<Space> Term;
+        // KI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KI-no-SA-handling <- pre-clause KI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          sumti anaphora 
+        // KOhA-clause <- KOhA-pre KOhA-post
+        public static readonly Parser<Space> Term;
+        // KOhA-pre <- pre-clause KOhA spaces?
+        public static readonly Parser<Space> Term;
+        // KOhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KOhA-no-SA-handling <- pre-clause KOhA spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          right terminator for descriptions, etc. 
+        // KU-clause <- KU-pre KU-post
+        public static readonly Parser<Space> Term;
+        // KU-pre <- pre-clause KU spaces?
+        public static readonly Parser<Space> Term;
+        // KU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KU-no-SA-handling <- pre-clause KU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          MEX forethought delimiter 
+        // KUhE-clause <- KUhE-pre KUhE-post
+        public static readonly Parser<Space> Term;
+        // KUhE-pre <- pre-clause KUhE spaces?
+        public static readonly Parser<Space> Term;
+        // KUhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KUhE-no-SA-handling <- pre-clause KUhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          right terminator, NOI relative clauses 
+        // KUhO-clause <- KUhO-pre KUhO-post
+        public static readonly Parser<Space> Term;
+        // KUhO-pre <- pre-clause KUhO spaces?
+        public static readonly Parser<Space> Term;
+        // KUhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // KUhO-no-SA-handling <- pre-clause KUhO post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          name descriptors 
+        // LA-clause <- LA-pre LA-post
+        public static readonly Parser<Space> Term;
+        // LA-pre <- pre-clause LA spaces?
+        public static readonly Parser<Space> Term;
+        // LA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LA-no-SA-handling <- pre-clause LA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          lerfu prefixes 
+        // LAU-clause <- LAU-pre LAU-post
+        public static readonly Parser<Space> Term;
+        // LAU-pre <- pre-clause LAU spaces?
+        public static readonly Parser<Space> Term;
+        // LAU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LAU-no-SA-handling <- pre-clause LAU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          sumti qualifiers 
+        // LAhE-clause <- LAhE-pre LAhE-post
+        public static readonly Parser<Space> Term;
+        // LAhE-pre <- pre-clause LAhE spaces?
+        public static readonly Parser<Space> Term;
+        // LAhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LAhE-no-SA-handling <- pre-clause LAhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          sumti descriptors 
+        // LE-clause <- LE-pre LE-post
+        public static readonly Parser<Space> Term;
+        // LE-pre <- pre-clause LE spaces?
+        public static readonly Parser<Space> Term;
+        // LE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LE-no-SA-handling <- pre-clause LE post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          possibly ungrammatical text right quote 
+        // LEhU-clause <- LEhU-pre LEhU-post
+        public static readonly Parser<Space> Term;
+        // LEhU-pre <- pre-clause LEhU spaces?
+        public static readonly Parser<Space> Term;
+        // LEhU-post <- spaces?
+        public static readonly Parser<Space> Term;
+        // LEhU-clause-no-SA <- LEhU-pre-no-SA LEhU-post
+        public static readonly Parser<Space> Term;
+        // LEhU-pre-no-SA <- pre-clause LEhU spaces?
+        public static readonly Parser<Space> Term;
+        // LEhU-no-SA-handling <- pre-clause LEhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          convert number to sumti 
+        // LI-clause <- LI-pre LI-post
+        public static readonly Parser<Space> Term;
+        // LI-pre <- pre-clause LI spaces?
+        public static readonly Parser<Space> Term;
+        // LI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LI-no-SA-handling <- pre-clause LI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          grammatical text right quote 
+        // LIhU-clause <- LIhU-pre LIhU-post
+        public static readonly Parser<Space> Term;
+        // LIhU-pre <- pre-clause LIhU spaces?
+        public static readonly Parser<Space> Term;
+        // LIhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LIhU-no-SA-handling <- pre-clause LIhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          elidable terminator for LI 
+        // LOhO-clause <- LOhO-pre LOhO-post
+        public static readonly Parser<Space> Term;
+        // LOhO-pre <- pre-clause LOhO spaces?
+        public static readonly Parser<Space> Term;
+        // LOhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LOhO-no-SA-handling <- pre-clause LOhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          possibly ungrammatical text left quote 
+        // LOhU-clause <- LOhU-pre LOhU-post
+        public static readonly Parser<Space> Term;
+        // LOhU-pre <- pre-clause LOhU spaces? (!LEhU any-word)* LEhU-clause spaces?
+        public static readonly Parser<Space> Term;
+        // LOhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LOhU-no-SA-handling <- pre-clause LOhU spaces? (!LEhU any-word)* LEhU-clause spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          grammatical text left quote 
+        // LU-clause <- LU-pre LU-post
+        public static readonly Parser<Space> Term;
+        // LU-pre <- pre-clause LU spaces?
+        public static readonly Parser<Space> Term;
+        // LU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LU-no-SA-handling <- pre-clause LU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          LAhE close delimiter 
+        // LUhU-clause <- LUhU-pre LUhU-post
+        public static readonly Parser<Space> Term;
+        // LUhU-pre <- pre-clause LUhU spaces?
+        public static readonly Parser<Space> Term;
+        // LUhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // LUhU-no-SA-handling <- pre-clause LUhU post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          change MEX expressions to MEX operators 
+        // MAhO-clause <- MAhO-pre MAhO-post
+        public static readonly Parser<Space> Term;
+        // MAhO-pre <- pre-clause MAhO spaces?
+        public static readonly Parser<Space> Term;
+        // MAhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // MAhO-no-SA-handling <- pre-clause MAhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          change numbers to utterance ordinals 
+        // MAI-clause <- MAI-pre MAI-post
+        public static readonly Parser<Space> Term;
+        // MAI-pre <- pre-clause MAI spaces?
+        public static readonly Parser<Space> Term;
+        // MAI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // MAI-no-SA-handling <- pre-clause MAI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          converts a sumti into a tanru_unit 
+        // ME-clause <- ME-pre ME-post
+        public static readonly Parser<Space> Term;
+        // ME-pre <- pre-clause ME spaces?
+        public static readonly Parser<Space> Term;
+        // ME-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ME-no-SA-handling <- pre-clause ME post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          terminator for ME 
+        // MEhU-clause <- MEhU-pre MEhU-post
+        public static readonly Parser<Space> Term;
+        // MEhU-pre <- pre-clause MEhU spaces?
+        public static readonly Parser<Space> Term;
+        // MEhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // MEhU-no-SA-handling <- pre-clause MEhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          change sumti to operand, inverse of LI 
+        // MOhE-clause <- MOhE-pre MOhE-post
+        public static readonly Parser<Space> Term;
+        // MOhE-pre <- pre-clause MOhE spaces?
+        public static readonly Parser<Space> Term;
+        // MOhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // MOhE-no-SA-handling <- pre-clause MOhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          motion tense marker 
+        // MOhI-clause <- MOhI-pre MOhI-post
+        public static readonly Parser<Space> Term;
+        // MOhI-pre <- pre-clause MOhI spaces?
+        public static readonly Parser<Space> Term;
+        // MOhI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // MOhI-no-SA-handling <- pre-clause MOhI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          change number to selbri 
+        // MOI-clause <- MOI-pre MOI-post
+        public static readonly Parser<Space> Term;
+        // MOI-pre <- pre-clause MOI spaces?
+        public static readonly Parser<Space> Term;
+        // MOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // MOI-no-SA-handling <- pre-clause MOI post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          bridi negation  
+        // NA-clause <- NA-pre NA-post
+        public static readonly Parser<Space> Term;
+        // NA-pre <- pre-clause NA spaces?
+        public static readonly Parser<Space> Term;
+        // NA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NA-no-SA-handling <- pre-clause NA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          attached to words to negate them 
+        // NAI-clause <- NAI-pre NAI-post
+        public static readonly Parser<NAI_clause> NAI_clause;
+        // NAI-pre <- pre-clause NAI spaces?
+        public static readonly Parser<Space> Term;
+        // NAI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NAI-no-SA-handling <- pre-clause NAI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          scalar negation  
+        // NAhE-clause <- NAhE-pre NAhE-post
+        public static readonly Parser<Space> Term;
+        // NAhE-pre <- pre-clause NAhE spaces?
+        public static readonly Parser<Space> Term;
+        // NAhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NAhE-no-SA-handling <- pre-clause NAhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          change a selbri into an operator 
+        // NAhU-clause <- NAhU-pre NAhU-post
+        public static readonly Parser<Space> Term;
+        // NAhU-pre <- pre-clause NAhU spaces?
+        public static readonly Parser<Space> Term;
+        // NAhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NAhU-no-SA-handling <- pre-clause NAhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          change selbri to operand; inverse of MOI 
+        // NIhE-clause <- NIhE-pre NIhE-post
+        public static readonly Parser<Space> Term;
+        // NIhE-pre <- pre-clause NIhE spaces?
+        public static readonly Parser<Space> Term;
+        // NIhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NIhE-no-SA-handling <- pre-clause NIhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          new paragraph; change of subject 
+        // NIhO-clause <- sentence-sa* NIhO-pre NIhO-post
+        public static readonly Parser<Space> Term;
+        // NIhO-pre <- pre-clause NIhO spaces?
+        public static readonly Parser<Space> Term;
+        // NIhO-post <- su-clause* post-clause
+        public static readonly Parser<Space> Term;
+        // NIhO-no-SA-handling <- pre-clause NIhO su-clause* post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          attaches a subordinate clause to a sumti 
+        // NOI-clause <- NOI-pre NOI-post
+        public static readonly Parser<Space> Term;
+        // NOI-pre <- pre-clause NOI spaces?
+        public static readonly Parser<Space> Term;
+        // NOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NOI-no-SA-handling <- pre-clause NOI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          abstraction  
+        // NU-clause <- NU-pre NU-post
+        public static readonly Parser<Space> Term;
+        // NU-pre <- pre-clause NU spaces?
+        public static readonly Parser<Space> Term;
+        // NU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NU-no-SA-handling <- pre-clause NU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          change operator to selbri; inverse of MOhE 
+        // NUhA-clause <- NUhA-pre NUhA-post
+        public static readonly Parser<Space> Term;
+        // NUhA-pre <- pre-clause NUhA spaces?
+        public static readonly Parser<Space> Term;
+        // NUhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NUhA-no-SA-handling <- pre-clause NUhA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          marks the start of a termset 
+        // NUhI-clause <- NUhI-pre NUhI-post
+        public static readonly Parser<Space> Term;
+        // NUhI-pre <- pre-clause NUhI spaces?
+        public static readonly Parser<Space> Term;
+        // NUhI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NUhI-no-SA-handling <- pre-clause NUhI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          marks the middle and end of a termset 
+        // NUhU-clause <- NUhU-pre NUhU-post
+        public static readonly Parser<Space> Term;
+        // NUhU-pre <- pre-clause NUhU spaces?
+        public static readonly Parser<Space> Term;
+        // NUhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // NUhU-no-SA-handling <- pre-clause NUhU post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          numbers and numeric punctuation 
+        // PA-clause <- PA-pre PA-post
+        public static readonly Parser<Space> Term;
+        // PA-pre <- pre-clause PA spaces?
+        public static readonly Parser<Space> Term;
+        // PA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // PA-no-SA-handling <- pre-clause PA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          afterthought termset connective prefix 
+        // PEhE-clause <- PEhE-pre PEhE-post
+        public static readonly Parser<Space> Term;
+        // PEhE-pre <- pre-clause PEhE spaces?
+        public static readonly Parser<Space> Term;
+        // PEhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // PEhE-no-SA-handling <- pre-clause PEhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          forethought (Polish) flag 
+        // PEhO-clause <- PEhO-pre PEhO-post
+        public static readonly Parser<Space> Term;
+        // PEhO-pre <- pre-clause PEhO spaces?
+        public static readonly Parser<Space> Term;
+        // PEhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // PEhO-no-SA-handling <- pre-clause PEhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          directions in time 
+        // PU-clause <- PU-pre PU-post
+        public static readonly Parser<Space> Term;
+        // PU-pre <- pre-clause PU spaces?
+        public static readonly Parser<Space> Term;
+        // PU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // PU-no-SA-handling <- pre-clause PU post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          flag for modified interpretation of GOhI 
+        // RAhO-clause <- RAhO-pre RAhO-post
+        public static readonly Parser<Space> Term;
+        // RAhO-pre <- pre-clause RAhO spaces?
+        public static readonly Parser<Space> Term;
+        // RAhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // RAhO-no-SA-handling <- pre-clause RAhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          converts number to extensional tense 
+        // ROI-clause <- ROI-pre ROI-post
+        public static readonly Parser<Space> Term;
+        // ROI-pre <- pre-clause ROI spaces?
+        public static readonly Parser<Space> Term;
+        // ROI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ROI-no-SA-handling <- pre-clause ROI post-clause
+        public static readonly Parser<Space> Term;
+
+        // SA-clause <- SA-pre SA-post
+        public static readonly Parser<Space> Term;
+        // SA-pre <- pre-clause SA spaces?
+        public static readonly Parser<Space> Term;
+        // SA-post <- spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          metalinguistic eraser to the beginning of
+
+        //;                                     the current utterance 
+
+        //;          conversions 
+        // SE-clause <- SE-pre SE-post
+        public static readonly Parser<Space> Term;
+        // SE-pre <- pre-clause SE spaces?
+        public static readonly Parser<Space> Term;
+        // SE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // SE-no-SA-handling <- pre-clause SE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          metalinguistic bridi insert marker 
+        // SEI-clause <- SEI-pre SEI-post
+        public static readonly Parser<Space> Term;
+        // SEI-pre <- pre-clause SEI spaces?
+        public static readonly Parser<Space> Term;
+        // SEI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // SEI-no-SA-handling <- pre-clause SEI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          metalinguistic bridi end marker 
+        // SEhU-clause <- SEhU-pre SEhU-post
+        public static readonly Parser<Space> Term;
+        // SEhU-pre <- pre-clause SEhU spaces?
+        public static readonly Parser<Space> Term;
+        // SEhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // SEhU-no-SA-handling <- pre-clause SEhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          metalinguistic single word eraser 
+        // SI-clause <- spaces? SI spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          reciprocal sumti marker 
+        // SOI-clause <- SOI-pre SOI-post
+        public static readonly Parser<Space> Term;
+        // SOI-pre <- pre-clause SOI spaces?
+        public static readonly Parser<Space> Term;
+        // SOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // SOI-no-SA-handling <- pre-clause SOI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          metalinguistic eraser of the entire text 
+        // SU-clause <- SU-pre SU-post
+        public static readonly Parser<Space> Term;
+        // SU-pre <- pre-clause SU spaces?
+        public static readonly Parser<Space> Term;
+        // SU-post <- post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          tense interval properties 
+        // TAhE-clause <- TAhE-pre TAhE-post
+        public static readonly Parser<Space> Term;
+        // TAhE-pre <- pre-clause TAhE spaces?
+        public static readonly Parser<Space> Term;
+        // TAhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // TAhE-no-SA-handling <- pre-clause TAhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          closing gap for MEX constructs 
+        // TEhU-clause <- TEhU-pre TEhU-post
+        public static readonly Parser<Space> Term;
+        // TEhU-pre <- pre-clause TEhU spaces?
+        public static readonly Parser<Space> Term;
+        // TEhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // TEhU-no-SA-handling <- pre-clause TEhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          start compound lerfu 
+        // TEI-clause <- TEI-pre TEI-post
+        public static readonly Parser<Space> Term;
+        // TEI-pre <- pre-clause TEI spaces?
+        public static readonly Parser<Space> Term;
+        // TEI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // TEI-no-SA-handling <- pre-clause TEI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          left discursive parenthesis 
+        // TO-clause <- TO-pre TO-post
+        public static readonly Parser<Space> Term;
+        // TO-pre <- pre-clause TO spaces?
+        public static readonly Parser<Space> Term;
+        // TO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // TO-no-SA-handling <- pre-clause TO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          right discursive parenthesis 
+        // TOI-clause <- TOI-pre TOI-post
+        public static readonly Parser<Space> Term;
+        // TOI-pre <- pre-clause TOI spaces?
+        public static readonly Parser<Space> Term;
+        // TOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // TOI-no-SA-handling <- pre-clause TOI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          multiple utterance scope mark 
+        // TUhE-clause <- TUhE-pre TUhE-post
+        public static readonly Parser<Space> Term;
+        // TUhE-pre <- pre-clause TUhE spaces?
+        public static readonly Parser<Space> Term;
+        // TUhE-post <- su-clause* post-clause
+        public static readonly Parser<Space> Term;
+        // TUhE-no-SA-handling <- pre-clause TUhE su-clause* post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          multiple utterance end scope mark 
+        // TUhU-clause <- TUhU-pre TUhU-post
+        public static readonly Parser<Space> Term;
+        // TUhU-pre <- pre-clause TUhU spaces?
+        public static readonly Parser<Space> Term;
+        // TUhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // TUhU-no-SA-handling <- pre-clause TUhU post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          attitudinals, observationals, discursives 
+        // UI-clause <- UI-pre UI-post
+        public static readonly Parser<Space> Term;
+        // UI-pre <- pre-clause UI spaces?
+        public static readonly Parser<Space> Term;
+        // UI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // UI-no-SA-handling <- pre-clause UI post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          distance in space-time 
+        // VA-clause <- VA-pre VA-post
+        public static readonly Parser<Space> Term;
+        // VA-pre <- pre-clause VA spaces?
+        public static readonly Parser<Space> Term;
+        // VA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VA-no-SA-handling <- pre-clause VA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          end simple bridi or bridi-tail 
+        // VAU-clause <- VAU-pre VAU-post
+        public static readonly Parser<Space> Term;
+        // VAU-pre <- pre-clause VAU spaces?
+        public static readonly Parser<Space> Term;
+        // VAU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VAU-no-SA-handling <- pre-clause VAU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          left MEX bracket 
+        // VEI-clause <- VEI-pre VEI-post
+        public static readonly Parser<Space> Term;
+        // VEI-pre <- pre-clause VEI spaces?
+        public static readonly Parser<Space> Term;
+        // VEI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VEI-no-SA-handling <- pre-clause VEI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          right MEX bracket 
+        // VEhO-clause <- VEhO-pre VEhO-post
+        public static readonly Parser<Space> Term;
+        // VEhO-pre <- pre-clause VEhO spaces?
+        public static readonly Parser<Space> Term;
+        // VEhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VEhO-no-SA-handling <- pre-clause VEhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          MEX operator 
+        // VUhU-clause <- VUhU-pre VUhU-post
+        public static readonly Parser<Space> Term;
+        // VUhU-pre <- pre-clause VUhU spaces?
+        public static readonly Parser<Space> Term;
+        // VUhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VUhU-no-SA-handling <- pre-clause VUhU post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          space-time interval size 
+        // VEhA-clause <- VEhA-pre VEhA-post
+        public static readonly Parser<Space> Term;
+        // VEhA-pre <- pre-clause VEhA spaces?
+        public static readonly Parser<Space> Term;
+        // VEhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VEhA-no-SA-handling <- pre-clause VEhA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          space-time dimensionality marker 
+        // VIhA-clause <- VIhA-pre VIhA-post
+        public static readonly Parser<Space> Term;
+        // VIhA-pre <- pre-clause VIhA spaces?
+        public static readonly Parser<Space> Term;
+        // VIhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VIhA-no-SA-handling <- pre-clause VIhA post-clause
+        public static readonly Parser<Space> Term;
+        // VUhO-clause <- VUhO-pre VUhO-post
+        public static readonly Parser<Space> Term;
+        // VUhO-pre <- pre-clause VUhO spaces?
+        public static readonly Parser<Space> Term;
+        // VUhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // VUhO-no-SA-handling <- pre-clause VUhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;  glue between logically connected sumti and relative clauses 
+
+
+        //;          subscripting operator 
+        // XI-clause <- XI-pre XI-post
+        public static readonly Parser<Space> Term;
+        // XI-pre <- pre-clause XI spaces?
+        public static readonly Parser<Space> Term;
+        // XI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // XI-no-SA-handling <- pre-clause XI post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;          hesitation 
+        //;  Very very special case.  Handled in the morphology section.
+        //;  Y-clause <- spaces? Y spaces?
+
+
+        //;          event properties - inchoative, etc. 
+        // ZAhO-clause <- ZAhO-pre ZAhO-post
+        public static readonly Parser<Space> Term;
+        // ZAhO-pre <- pre-clause ZAhO spaces?
+        public static readonly Parser<Space> Term;
+        // ZAhO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ZAhO-no-SA-handling <- pre-clause ZAhO post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          time interval size tense 
+        // ZEhA-clause <- ZEhA-pre ZEhA-post
+        public static readonly Parser<Space> Term;
+        // ZEhA-pre <- pre-clause ZEhA spaces?
+        public static readonly Parser<Space> Term;
+        // ZEhA-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ZEhA-no-SA-handling <- pre-clause ZEhA post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          lujvo glue 
+        // ZEI-clause <- ZEI-pre ZEI-post
+        public static readonly Parser<Space> Term;
+        // ZEI-clause-no-SA <- ZEI-pre-no-SA ZEI ZEI-post
+        public static readonly Parser<Space> Term;
+        // ZEI-pre <- pre-clause ZEI spaces?
+        public static readonly Parser<Space> Term;
+        // ZEI-pre-no-SA <- pre-clause
+        public static readonly Parser<Space> Term;
+        // ZEI-post <- spaces?
+        public static readonly Parser<Space> Term;
+        // ZEI-no-SA-handling <- pre-clause ZEI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          time distance tense 
+        // ZI-clause <- ZI-pre ZI-post
+        public static readonly Parser<Space> Term;
+        // ZI-pre <- pre-clause ZI spaces?
+        public static readonly Parser<Space> Term;
+        // ZI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ZI-no-SA-handling <- pre-clause ZI post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          conjoins relative clauses 
+        // ZIhE-clause <- ZIhE-pre ZIhE-post
+        public static readonly Parser<Space> Term;
+        // ZIhE-pre <- pre-clause ZIhE spaces?
+        public static readonly Parser<Space> Term;
+        // ZIhE-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ZIhE-no-SA-handling <- pre-clause ZIhE post-clause
+        public static readonly Parser<Space> Term;
+
+        //;          single word metalinguistic quote marker 
+        // ZO-clause <- ZO-pre ZO-post
+        public static readonly Parser<Space> Term;
+        // ZO-pre <- pre-clause ZO spaces? any-word spaces?
+        public static readonly Parser<Space> Term;
+        // ZO-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ZO-no-SA-handling <- pre-clause ZO spaces? any-word spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          delimited quote marker 
+        // ZOI-clause <- ZOI-pre ZOI-post
+        public static readonly Parser<Space> Term;
+        // ZOI-pre <- pre-clause ZOI spaces? zoi-open zoi-word* zoi-close spaces?
+        public static readonly Parser<Space> Term;
+        // ZOI-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ZOI-no-SA-handling <- pre-clause ZOI spaces? zoi-open zoi-word* zoi-close spaces?
+        public static readonly Parser<Space> Term;
+
+        //;          prenex terminator (not elidable) 
+        // ZOhU-clause <- ZOhU-pre ZOhU-post
+        public static readonly Parser<Space> Term;
+        // ZOhU-pre <- pre-clause ZOhU spaces?
+        public static readonly Parser<Space> Term;
+        // ZOhU-post <- post-clause
+        public static readonly Parser<Space> Term;
+        // ZOhU-no-SA-handling <- pre-clause ZOhU post-clause
+        public static readonly Parser<Space> Term;
+
+
+        //;  --- MORPHOLOGY ---
+
+        // CMENE <- cmene
+        public static readonly Parser<Space> Term;
+        // BRIVLA <- gismu / lujvo / fuhivla
+        public static readonly Parser<Space> Term;
+        // CMAVO <- A / BAI / BAhE / BE / BEI / BEhO / BIhE / BIhI / BO / BOI / BU / BY / CAhA / CAI / CEI / CEhE / CO / COI / CU / CUhE / DAhO / DOI / DOhU / FA / FAhA / FAhO / FEhE / FEhU / FIhO / FOI / FUhA / FUhE / FUhO / GA / GAhO / GEhU / GI / GIhA / GOI / GOhA / GUhA / I / JA / JAI / JOhI / JOI / KE / KEhE / KEI / KI / KOhA / KU / KUhE / KUhO / LA / LAU / LAhE / LE / LEhU / LI / LIhU / LOhO / LOhU / LU / LUhU / MAhO / MAI / ME / MEhU / MOhE / MOhI / MOI / NA / NAI / NAhE / NAhU / NIhE / NIhO / NOI / NU / NUhA / NUhI / NUhU / PA / PEhE / PEhO / PU / RAhO / ROI / SA / SE / SEI / SEhU / SI / SOI / SU / TAhE / TEhU / TEI / TO / TOI / TUhE / TUhU / UI / VA / VAU / VEI / VEhO / VUhU / VEhA / VIhA / VUhO / XI / ZAhO / ZEhA / ZEI / ZI / ZIhE / ZO / ZOI / ZOhU / cmavo
+        public static readonly Parser<Space> Term;
+
+
+        //;  This is a Parsing Expression Grammar for the morphology of Lojban.
+        //;  See http://www.pdos.lcs.mit.edu/~baford/packrat/
+        //; 
+        //;  All rules have the form
+        //; 
+        //;  name <- peg-expression
+        //; 
+        //;  which means that the grammatical construct "name" is parsed using
+        //;  "peg-expression".
+        //; 
+        //;  1) Concatenation is expressed by juxtaposition with no operator symbol.
+        //;  2) / represents *ORDERED* alternation (choice). If the first
+        //;  option succeeds, the others will never be checked.
+        //;  3) ? indicates that the element to the left is optional.
+        //;  4) * represents optional repetition of the construct to the left.
+        //;  5) + represents one-or-more repetition of the construct to the left.
+        //;  6) () serves to indicate the grouping of the other operators.
+        //;  7) & indicates that the element to the right must follow (but the
+        //;  marked element itself does not absorb anything).
+        //;  8) ! indicates that the element to the right must not follow (the
+        //;  marked element itself does not absorb anything).
+        //;  9) . represents any character.
+        //;  10) ' ' or " " represents a literal string.
+        //;  11) [] represents a character class.
+        //; 
+        //;  Repetitions grab as much as they can.
+        //; 
+        //; 
+        //;  --- GRAMMAR ---
+        //;  This grammar classifies words by their morphological class (cmene,
+        //;  gismu, lujvo, fuhivla, cmavo, and non-lojban-word).
+        //; 
+        //; The final section sorts cmavo into grammatical classes (A, BAI, BAhE, ..., ZOhU).
+        //; 
+        //;  mi'e ((xorxes))
+
+        //; -------------------------------------------------------------------
+
+        // words <- pause? (word pause?)*
+        public static readonly Parser<Space> Term;
+
+        // word <- lojban-word / non-lojban-word
+        public static readonly Parser<Space> Term;
+
+        // lojban-word <- cmene / cmavo / brivla
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // cmene <- !h &consonant-final coda? (any-syllable / digit)* &pause
+        public static readonly Parser<Space> Term;
+
+        // consonant-final <- (non-space &non-space)* consonant &pause
+        public static readonly Parser<Space> Term;
+
+        //; cmene <- !h cmene-syllable* &consonant coda? consonantal-syllable* onset &pause
+        public static readonly Parser<Space> Term;
+
+        //; cmene-syllable <- !doi-la-lai-lahi coda? consonantal-syllable* onset nucleus / digit
+        public static readonly Parser<Space> Term;
+
+        //; doi-la-lai-lahi <- (d o i / l a (h? i)?) !h !nucleus
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // cmavo <- !cmene !CVCy-lujvo cmavo-form &post-word
+        public static readonly Parser<Space> Term;
+
+        // CVCy-lujvo <- CVC-rafsi y h? initial-rafsi* brivla-core / stressed-CVC-rafsi y short-final-rafsi
+        public static readonly Parser<Space> Term;
+
+        // cmavo-form <- !h !cluster onset (nucleus h)* (!stressed nucleus / nucleus !cluster) / y+ / digit
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // brivla <- !cmavo initial-rafsi* brivla-core
+        public static readonly Parser<Space> Term;
+
+        // brivla-core <- fuhivla / gismu / CVV-final-rafsi / stressed-initial-rafsi short-final-rafsi
+        public static readonly Parser<Space> Term;
+
+        // stressed-initial-rafsi <- stressed-extended-rafsi / stressed-y-rafsi / stressed-y-less-rafsi
+        public static readonly Parser<Space> Term;
+
+        // initial-rafsi <- extended-rafsi / y-rafsi / !any-extended-rafsi y-less-rafsi
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // any-extended-rafsi <- fuhivla / extended-rafsi / stressed-extended-rafsi
+        public static readonly Parser<Space> Term;
+
+        // fuhivla <- fuhivla-head stressed-syllable consonantal-syllable* final-syllable
+        public static readonly Parser<Space> Term;
+
+        // stressed-extended-rafsi <- stressed-brivla-rafsi / stressed-fuhivla-rafsi
+        public static readonly Parser<Space> Term;
+
+        // extended-rafsi <- brivla-rafsi / fuhivla-rafsi
+        public static readonly Parser<Space> Term;
+
+        // stressed-brivla-rafsi <- &unstressed-syllable brivla-head stressed-syllable h y
+        public static readonly Parser<Space> Term;
+
+        // brivla-rafsi <- &(syllable consonantal-syllable* syllable) brivla-head h y h?
+        public static readonly Parser<Space> Term;
+
+        // stressed-fuhivla-rafsi <- fuhivla-head stressed-syllable &consonant onset y
+        public static readonly Parser<Space> Term;
+
+        // fuhivla-rafsi <- &unstressed-syllable fuhivla-head &consonant onset y h?
+        public static readonly Parser<Space> Term;
+
+        // fuhivla-head <- !rafsi-string brivla-head
+        public static readonly Parser<Space> Term;
+
+        // brivla-head <- !cmavo !slinkuhi !h &onset unstressed-syllable*
+        public static readonly Parser<Space> Term;
+
+        // slinkuhi <- consonant rafsi-string
+        public static readonly Parser<Space> Term;
+
+        // rafsi-string <- y-less-rafsi* (gismu / CVV-final-rafsi / stressed-y-less-rafsi short-final-rafsi / y-rafsi / stressed-y-rafsi / stressed-y-less-rafsi? initial-pair y)
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // gismu <- stressed-long-rafsi &final-syllable vowel &post-word
+        public static readonly Parser<Space> Term;
+
+        // CVV-final-rafsi <- consonant stressed-vowel h &final-syllable vowel &post-word
+        public static readonly Parser<Space> Term;
+
+        // short-final-rafsi <- &final-syllable (consonant diphthong / initial-pair vowel) &post-word
+        public static readonly Parser<Space> Term;
+
+        // stressed-y-rafsi <- (stressed-long-rafsi / stressed-CVC-rafsi) y
+        public static readonly Parser<Space> Term;
+
+        // stressed-y-less-rafsi <- stressed-CVC-rafsi !y / stressed-CCV-rafsi / stressed-CVV-rafsi
+        public static readonly Parser<Space> Term;
+
+        // stressed-long-rafsi <- (stressed-CCV-rafsi / stressed-CVC-rafsi) consonant
+        public static readonly Parser<Space> Term;
+
+        // stressed-CVC-rafsi <- consonant stressed-vowel consonant
+        public static readonly Parser<Space> Term;
+
+        // stressed-CCV-rafsi <- initial-pair stressed-vowel
+        public static readonly Parser<Space> Term;
+
+        // stressed-CVV-rafsi <- consonant (unstressed-vowel h stressed-vowel / stressed-diphthong) r-hyphen?
+        public static readonly Parser<Space> Term;
+
+        // y-rafsi <- (long-rafsi / CVC-rafsi) y h?
+        public static readonly Parser<Space> Term;
+
+        // y-less-rafsi <- !y-rafsi (CVC-rafsi !y / CCV-rafsi / CVV-rafsi) !any-extended-rafsi
+        public static readonly Parser<Space> Term;
+
+        // long-rafsi <- (CCV-rafsi / CVC-rafsi) consonant
+        public static readonly Parser<Space> Term;
+
+        // CVC-rafsi <- consonant unstressed-vowel consonant
+        public static readonly Parser<Space> Term;
+
+        // CCV-rafsi <- initial-pair unstressed-vowel
+        public static readonly Parser<Space> Term;
+
+        // CVV-rafsi <- consonant (unstressed-vowel h unstressed-vowel / unstressed-diphthong) r-hyphen?
+        public static readonly Parser<Space> Term;
+
+        // r-hyphen <- r &consonant / n &r
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // final-syllable <- onset !y !stressed nucleus !cmene &post-word
+        public static readonly Parser<Space> Term;
+
+        // stressed-syllable <- &stressed syllable / syllable &stress
+        public static readonly Parser<Space> Term;
+
+        // stressed-diphthong <- &stressed diphthong / diphthong &stress
+        public static readonly Parser<Space> Term;
+
+        // stressed-vowel <- &stressed vowel / vowel &stress
+        public static readonly Parser<Space> Term;
+
+        // unstressed-syllable <- !stressed syllable !stress / consonantal-syllable
+        public static readonly Parser<Space> Term;
+
+        // unstressed-diphthong <- !stressed diphthong !stress
+        public static readonly Parser<Space> Term;
+
+        // unstressed-vowel <- !stressed vowel !stress
+        public static readonly Parser<Space> Term;
+
+        // stress <- consonant* y? syllable pause
+        public static readonly Parser<Space> Term;
+
+        // stressed <- onset comma* [AEIOU]
+        public static readonly Parser<Space> Term;
+
+        // any-syllable <- onset nucleus coda? / consonantal-syllable
+        public static readonly Parser<Space> Term;
+
+        // syllable <- onset !y nucleus coda?
+        public static readonly Parser<Space> Term;
+
+        // consonantal-syllable <- consonant syllabic &(consonantal-syllable / onset) (consonant &spaces)?
+        public static readonly Parser<Space> Term;
+
+        // coda <- !any-syllable consonant &any-syllable / syllabic? consonant? &pause
+        public static readonly Parser<Space> Term;
+
+        // onset <- h / consonant? glide / initial
+        public static readonly Parser<Space> Term;
+
+        // nucleus <- vowel / diphthong / y !nucleus
+        public static readonly Parser<Space> Term;
+
+        //; -----------------------------------------------------------------
+
+        // glide <- (i / u) &nucleus !glide
+        public static readonly Parser<Space> Term;
+
+        // diphthong <- (a i / a u / e i / o i) !nucleus !glide
+        public static readonly Parser<Space> Term;
+
+        // vowel <- (a / e / i / o / u) !nucleus
+        public static readonly Parser<Space> Term;
+
+        // a <- comma* [aA]
+        public static readonly Parser<Space> Term;
+
+        // e <- comma* [eE]
+        public static readonly Parser<Space> Term;
+
+        // i <- comma* [iI]
+        public static readonly Parser<Space> Term;
+
+        // o <- comma* [oO]
+        public static readonly Parser<Space> Term;
+
+        // u <- comma* [uU]
+        public static readonly Parser<Space> Term;
+
+        // y <- comma* [yY]
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // cluster <- consonant consonant+
+        public static readonly Parser<Space> Term;
+
+        // initial-pair <- &initial consonant consonant !consonant
+        public static readonly Parser<Space> Term;
+
+        // initial <- (affricate / sibilant? other? liquid?) !consonant !glide
+        public static readonly Parser<Space> Term;
+
+        // affricate <- t c / t s / d j / d z
+        public static readonly Parser<Space> Term;
+
+        // liquid <- l / r
+        public static readonly Parser<Space> Term;
+
+        // other <- p / t !l / k / f / x / b / d !l / g / v / m / n !liquid
+        public static readonly Parser<Space> Term;
+
+        // sibilant <- c / s !x / (j / z) !n !liquid
+        public static readonly Parser<Space> Term;
+
+        // consonant <- voiced / unvoiced / syllabic
+        public static readonly Parser<Space> Term;
+
+        // syllabic <- l / m / n / r
+        public static readonly Parser<Space> Term;
+
+        // voiced <- b / d / g / j / v / z
+        public static readonly Parser<Space> Term;
+
+        // unvoiced <- c / f / k / p / s / t / x
+        public static readonly Parser<Space> Term;
+
+        // l <- comma* [lL] !h !l
+        public static readonly Parser<Space> Term;
+
+        // m <- comma* [mM] !h !m !z
+        public static readonly Parser<Space> Term;
+
+        // n <- comma* [nN] !h !n !affricate
+        public static readonly Parser<Space> Term;
+
+        // r <- comma* [rR] !h !r
+        public static readonly Parser<Space> Term;
+
+        // b <- comma* [bB] !h !b !unvoiced
+        public static readonly Parser<Space> Term;
+
+        // d <- comma* [dD] !h !d !unvoiced
+        public static readonly Parser<Space> Term;
+
+        // g <- comma* [gG] !h !g !unvoiced
+        public static readonly Parser<Space> Term;
+
+        // v <- comma* [vV] !h !v !unvoiced
+        public static readonly Parser<Space> Term;
+
+        // j <- comma* [jJ] !h !j !z !unvoiced
+        public static readonly Parser<Space> Term;
+
+        // z <- comma* [zZ] !h !z !j !unvoiced
+        public static readonly Parser<Space> Term;
+
+        // s <- comma* [sS] !h !s !c !voiced
+        public static readonly Parser<Space> Term;
+
+        // c <- comma* [cC] !h !c !s !x !voiced
+        public static readonly Parser<Space> Term;
+
+        // x <- comma* [xX] !h !x !c !k !voiced
+        public static readonly Parser<Space> Term;
+
+        // k <- comma* [kK] !h !k !x !voiced
+        public static readonly Parser<Space> Term;
+
+        // f <- comma* [fF] !h !f !voiced
+        public static readonly Parser<Space> Term;
+
+        // p <- comma* [pP] !h !p !voiced
+        public static readonly Parser<Space> Term;
+
+        // t <- comma* [tT] !h !t !voiced
+        public static readonly Parser<Space> Term;
+
+        // h <- comma* ['h] &nucleus
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // digit <- comma* [0123456789] !h !nucleus
+        public static readonly Parser<Space> Term;
+
+        // post-word <- pause / !nucleus lojban-word
+        public static readonly Parser<Space> Term;
+
+        // pause <- comma* space-char / EOF
+        public static readonly Parser<Space> Term;
+
+        // EOF <- comma* !.
+        public static readonly Parser<Space> Term;
+
+        // comma <- [,]
+        public static readonly Parser<Space> Term;
+
+        // non-lojban-word <- !lojban-word non-space+
+        public static readonly Parser<Space> Term;
+
+        // non-space <- !space-char .
+        public static readonly Parser<Space> Term;
+
+        //; Unicode-style and escaped chars not compatible with cl-peg
+        //;  space-char <- [.\t\n\r?!\u0020]
+
+        // space-char <- [.?! ] / space-char1 / space-char2 
+        public static readonly Parser<Space> Term;
+        // space-char1 <- '	'
+        public static readonly Parser<Space> Term;
+        // space-char2 <- '
+        // '
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // spaces <- !Y initial-spaces
+        public static readonly Parser<Space> Term;
+
+        // initial-spaces <- (comma* space-char / !ybu Y)+ EOF? / EOF
+        public static readonly Parser<Space> Term;
+
+        // ybu <- Y space-char* BU
+        public static readonly Parser<Space> Term;
+
+        // lujvo <- !gismu !fuhivla brivla
+        public static readonly Parser<Space> Term;
+
+        //; -------------------------------------------------------------------
+
+        // A <- &cmavo ( a / e / j i / o / u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BAI <- &cmavo ( d u h o / s i h u / z a u / k i h i / d u h i / c u h u / t u h i / t i h u / d i h o / j i h u / r i h a / n i h i / m u h i / k i h u / v a h u / k o i / c a h i / t a h i / p u h e / j a h i / k a i / b a i / f i h e / d e h i / c i h o / m a u / m u h u / r i h i / r a h i / k a h a / p a h u / p a h a / l e h a / k u h u / t a i / b a u / m a h i / c i h e / f a u / p o h i / c a u / m a h e / c i h u / r a h a / p u h a / l i h e / l a h u / b a h i / k a h i / s a u / f a h e / b e h i / t i h i / j a h e / g a h a / v a h o / j i h o / m e h a / d o h e / j i h e / p i h o / g a u / z u h e / m e h e / r a i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BAhE <- &cmavo ( b a h e / z a h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BE <- &cmavo ( b e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BEI <- &cmavo ( b e i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BEhO <- &cmavo ( b e h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BIhE <- &cmavo ( b i h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BIhI <- &cmavo ( m i h i / b i h o / b i h i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BO <- &cmavo ( b o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BOI <- &cmavo ( b o i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BU <- &cmavo ( b u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // BY <- ybu / &cmavo ( j o h o / r u h o / g e h o / j e h o / l o h a / n a h a / s e h e / t o h a / g a h e / y h y / b y / c y / d y / f y / g y / j y / k y / l y / m y / n y / p y / r y / s y / t y / v y / x y / z y ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // CAhA <- &cmavo ( c a h a / p u h i / n u h o / k a h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // CAI <- &cmavo ( p e i / c a i / c u h i / s a i / r u h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // CEI <- &cmavo ( c e i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // CEhE <- &cmavo ( c e h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // CO <- &cmavo ( c o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // COI <- &cmavo ( j u h i / c o i / f i h i / t a h a / m u h o / f e h o / c o h o / p e h u / k e h o / n u h e / r e h i / b e h e / j e h e / m i h e / k i h e / v i h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // CU <- &cmavo ( c u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // CUhE <- &cmavo ( c u h e / n a u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // DAhO <- &cmavo ( d a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // DOI <- &cmavo ( d o i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // DOhU <- &cmavo ( d o h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FA <- &cmavo ( f a i / f a / f e / f o / f u / f i h a / f i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FAhA <- &cmavo ( d u h a / b e h a / n e h u / v u h a / g a h u / t i h a / n i h a / c a h u / z u h a / r i h u / r u h u / r e h o / t e h e / b u h u / n e h a / p a h o / n e h i / t o h o / z o h i / z e h o / z o h a / f a h a ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FAhO <- &cmavo ( f a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FEhE <- &cmavo ( f e h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FEhU <- &cmavo ( f e h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FIhO <- &cmavo ( f i h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FOI <- &cmavo ( f o i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FUhA <- &cmavo ( f u h a ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FUhE <- &cmavo ( f u h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // FUhO <- &cmavo ( f u h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GA <- &cmavo ( g e h i / g e / g o / g a / g u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GAhO <- &cmavo ( k e h i / g a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GEhU <- &cmavo ( g e h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GI <- &cmavo ( g i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GIhA <- &cmavo ( g i h e / g i h i / g i h o / g i h a / g i h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GOI <- &cmavo ( n o h u / n e / g o i / p o h u / p e / p o h e / p o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GOhA <- &cmavo ( m o / n e i / g o h u / g o h o / g o h i / n o h a / g o h e / g o h a / d u / b u h a / b u h e / b u h i / c o h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // GUhA <- &cmavo ( g u h e / g u h i / g u h o / g u h a / g u h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // I <- &cmavo ( i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // JA <- &cmavo ( j e h i / j e / j o / j a / j u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // JAI <- &cmavo ( j a i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // JOhI <- &cmavo ( j o h i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // JOI <- &cmavo ( f a h u / p i h u / j o i / c e h o / c e / j o h u / k u h a / j o h e / j u h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KE <- &cmavo ( k e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KEhE <- &cmavo ( k e h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KEI <- &cmavo ( k e i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KI <- &cmavo ( k i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KOhA <- &cmavo ( d a h u / d a h e / d i h u / d i h e / d e h u / d e h e / d e i / d o h i / m i h o / m a h a / m i h a / d o h o / k o h a / f o h u / k o h e / k o h i / k o h o / k o h u / f o h a / f o h e / f o h i / f o h o / v o h a / v o h e / v o h i / v o h o / v o h u / r u / r i / r a / t a / t u / t i / z i h o / k e h a / m a / z u h i / z o h e / c e h u / d a / d e / d i / k o / m i / d o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KU <- &cmavo ( k u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KUhE <- &cmavo ( k u h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // KUhO <- &cmavo ( k u h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LA <- &cmavo ( l a i / l a h i / l a ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LAU <- &cmavo ( c e h a / l a u / z a i / t a u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LAhE <- &cmavo ( t u h a / l u h a / l u h o / l a h e / v u h i / l u h i / l u h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LE <- &cmavo ( l e i / l o i / l e h i / l o h i / l e h e / l o h e / l o / l e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LEhU <- &cmavo ( l e h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LI <- &cmavo ( m e h o / l i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LIhU <- &cmavo ( l i h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LOhO <- &cmavo ( l o h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LOhU <- &cmavo ( l o h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LU <- &cmavo ( l u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // LUhU <- &cmavo ( l u h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // MAhO <- &cmavo ( m a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // MAI <- &cmavo ( m o h o / m a i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ME <- &cmavo ( m e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // MEhU <- &cmavo ( m e h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // MOhE <- &cmavo ( m o h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // MOhI <- &cmavo ( m o h i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // MOI <- &cmavo ( m e i / m o i / s i h e / c u h o / v a h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NA <- &cmavo ( j a h a / n a ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NAI <- &cmavo ( n a i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NAhE <- &cmavo ( t o h e / j e h a / n a h e / n o h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NAhU <- &cmavo ( n a h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NIhE <- &cmavo ( n i h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NIhO <- &cmavo ( n i h o / n o h i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NOI <- &cmavo ( v o i / n o i / p o i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NU <- &cmavo ( n i / d u h u / s i h o / n u / l i h i / k a / j e i / s u h u / z u h o / m u h e / p u h u / z a h i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NUhA <- &cmavo ( n u h a ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NUhI <- &cmavo ( n u h i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // NUhU <- &cmavo ( n u h u ) &post-word 
+        public static readonly Parser<Space> Term;
+
+        // PA <- &cmavo ( d a u / f e i / g a i / j a u / r e i / v a i / p i h e / p i / f i h u / z a h u / m e h i / n i h u / k i h o / c e h i / m a h u / r a h e / d a h a / s o h a / j i h i / s u h o / s u h e / r o / r a u / s o h u / s o h i / s o h e / s o h o / m o h a / d u h e / t e h o / k a h o / c i h i / t u h o / x o / p a i / n o h o / n o / p a / r e / c i / v o / m u / x a / z e / b i / s o / digit ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // PEhE <- &cmavo ( p e h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // PEhO <- &cmavo ( p e h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // PU <- &cmavo ( b a / p u / c a ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // RAhO <- &cmavo ( r a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ROI <- &cmavo ( r e h u / r o i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // SA <- &cmavo ( s a ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // SE <- &cmavo ( s e / t e / v e / x e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // SEI <- &cmavo ( s e i / t i h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // SEhU <- &cmavo ( s e h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // SI <- &cmavo ( s i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // SOI <- &cmavo ( s o i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // SU <- &cmavo ( s u ) &post-word
+        public static readonly Parser<Space> Term;
+
+
+        // TAhE <- &cmavo ( r u h i / t a h e / d i h i / n a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // TEhU <- &cmavo ( t e h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // TEI <- &cmavo ( t e i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // TO <- &cmavo ( t o h i / t o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // TOI <- &cmavo ( t o i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // TUhE <- &cmavo ( t u h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // TUhU <- &cmavo ( t u h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // UI <- &cmavo ( i h a / i e / a h e / u h i / i h o / i h e / a h a / i a / o h i / o h e / e h e / o i / u o / e h i / u h o / a u / u a / a h i / i h u / i i / u h a / u i / a h o / a i / a h u / i u / e i / o h o / e h a / u u / o h a / o h u / u h u / e h o / i o / e h u / u e / i h i / u h e / b a h a / j a h o / c a h e / s u h a / t i h e / k a h u / s e h o / z a h a / p e h i / r u h a / j u h a / t a h o / r a h u / l i h a / b a h u / m u h a / d o h a / t o h u / v a h i / p a h e / z u h u / s a h e / l a h a / k e h u / s a h u / d a h i / j e h u / s a h a / k a u / t a h u / n a h i / j o h a / b i h u / l i h o / p a u / m i h u / k u h i / j i h a / s i h a / p o h o / p e h a / r o h i / r o h e / r o h o / r o h u / r o h a / r e h e / l e h o / j u h o / f u h i / d a i / g a h i / z o h o / b e h u / r i h e / s e h i / s e h a / v u h e / k i h a / x u / g e h e / b u h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VA <- &cmavo ( v i / v a / v u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VAU <- &cmavo ( v a u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VEI <- &cmavo ( v e i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VEhO <- &cmavo ( v e h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VUhU <- &cmavo ( g e h a / f u h u / p i h i / f e h i / v u h u / s u h i / j u h u / g e i / p a h i / f a h i / t e h a / c u h a / v a h a / n e h o / d e h o / f e h a / s a h o / r e h a / r i h o / s a h i / p i h a / s i h i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VEhA <- &cmavo ( v e h u / v e h a / v e h i / v e h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VIhA <- &cmavo ( v i h i / v i h a / v i h u / v i h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // VUhO <- &cmavo ( v u h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // XI <- &cmavo ( x i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // Y <- &cmavo ( y+ ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZAhO <- &cmavo ( c o h i / p u h o / c o h u / m o h u / c a h o / c o h a / d e h a / b a h o / d i h a / z a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZEhA <- &cmavo ( z e h u / z e h a / z e h i / z e h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZEI <- &cmavo ( z e i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZI <- &cmavo ( z u / z a / z i ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZIhE <- &cmavo ( z i h e ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZO <- &cmavo ( z o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZOI <- &cmavo ( z o i / l a h o ) &post-word
+        public static readonly Parser<Space> Term;
+
+        // ZOhU <- &cmavo ( z o h u ) &post-word
+        public static readonly Parser<Space> Term;
+
+        public static readonly Parser<NAI_clause> ; 
+
         public static readonly Parser<char> Comma = Parse.Char(',');
         public static readonly Parser<char> EOF = from main in Parse.Char(',')
                                                   from negative_look_behind in Parse.Not(Parse.AnyChar)
