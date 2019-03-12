@@ -2603,10 +2603,6 @@ namespace LojbanTest
     // ZOhU <- &cmavo ( z o h u ) &post-word
     public class ZOhU : MetaNode { }
 
-    public class SpaceChar1 : MetaNode
-    {
-    }
-
     public static class Lojban
     {
         public static readonly Parser<char> Comma = Parse.Char(',');
