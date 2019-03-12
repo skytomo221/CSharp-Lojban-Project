@@ -1314,13 +1314,13 @@ namespace LojbanTest
 
     // #         converts a sumti into a tanru_unit 
     // ME-clause <- ME-pre ME-post
-    public class MA_clause : MetaNode { }
+    public class ME_clause : MetaNode { }
     // ME-pre <- pre-clause ME spaces?
-    public class MA_pre : MetaNode { }
+    public class ME_pre : MetaNode { }
     // ME-post <- post-clause
-    public class MA_post : MetaNode { }
+    public class ME_post : MetaNode { }
     // ME-no-SA-handling <- pre-clause ME post-clause
-    public class MA_no_SA_handling : MetaNode { }
+    public class ME_no_SA_handling : MetaNode { }
 
     // #         terminator for ME 
     // MEhU-clause <- MEhU-pre MEhU-post
@@ -3047,7 +3047,7 @@ namespace LojbanTest
         // time-offset <- PU-clause NAI-clause? ZI-clause?
         public static readonly Parser<Time_offset> Time_offset;
 
-        // space <- VA-clause space-offset* space-interval? (MOhI-clause space-offset)? / VA-clause? space-offset+ space-interval? (MOhI-clause space-offset)? / VA-clause? space-offset* space-interval (MOhI-clause space-offset)? / VA-clause? space-offset* space-interval? MOhI-clause space-offset
+        // space <- VA-clause space-offset* space-interval? (MOhI-clause space-offset)? / VA-clause? space-offset+ space-interval? (MOhI-clause space-osiffset)? / VA-clause? space-offset* space-interval (MOhI-clause space-offset)? / VA-clause? space-offset* space-interval? MOhI-clause space-offset
         public static readonly Parser<Space> Space;
 
         // space-offset <- FAhA-clause NAI-clause? VA-clause?
@@ -3066,7 +3066,7 @@ namespace LojbanTest
         public static readonly Parser<Free> Free;
 
         // xi-clause <- XI-clause free* (number / lerfu-string) BOI-clause? / XI-clause free* VEI-clause free* mex VEhO-clause?
-        public static readonly Parser<XI_clause> XI_clause;
+        public static readonly Parser<Xi_clause> Xi_clause;
 
         // vocative <- (COI-clause NAI-clause?)+ DOI-clause / (COI-clause NAI-clause?) (COI-clause NAI-clause?)* / DOI-clause
         public static readonly Parser<Vocative> Vocative;
@@ -3083,7 +3083,7 @@ namespace LojbanTest
         //; ****************
 
         // zei-clause <- pre-clause zei-clause-no-pre
-        public static readonly Parser<ZEI_clause> ZEI_clause;
+        public static readonly Parser<ZEI_clause> Zei_clause;
         // zei-clause-no-pre <- pre-zei-bu (zei-tail? bu-tail)* zei-tail post-clause
         public static readonly Parser<Zei_clause_no_pre> Zei_clause_no_pre;
         // zei-clause-no-SA <- pre-zei-bu-no-SA (zei-tail? bu-tail)* zei-tail
@@ -3290,7 +3290,7 @@ namespace LojbanTest
         // BU-clause <- BU-pre BU-post
         public static readonly Parser<BU_clause> BU_clause;
         // BU-clause-no-SA <- BU-pre-no-SA BU BU-post
-        public static readonly Parser<Bu_clause_no_SA> Bu_clause_no_SA;
+        public static readonly Parser<BU_clause_no_SA> BU_clause_no_SA;
         // BU-pre <- pre-clause BU spaces?
         public static readonly Parser<BU_pre> BU_pre;
         // BU-pre-no-SA <- pre-clause
@@ -4553,7 +4553,7 @@ namespace LojbanTest
         public static readonly Parser<Fuhivla_rafsi> Fuhivla_rafsi;
 
         // fuhivla-head <- !rafsi-string brivla-head
-        public static readonly Parser<Fuhivla_rafsi> Fuhivla_rafsi;
+        public static readonly Parser<Fuhivla_head> Fuhivla_head;
 
         // brivla-head <- !cmavo !slinkuhi !h &onset unstressed-syllable*
         public static readonly Parser<Brivla_head> Brivla_head;
