@@ -517,6 +517,7 @@ namespace LojbanTest
     public class Pre_zei_bu_no_SA : MetaNode { }
 
     // dot-star <- .*
+    public class Dot_star : MetaNode { }
 
     // # -- General Morphology Issues
     // #
@@ -606,156 +607,156 @@ namespace LojbanTest
 
     // #         modal operators 
     // BAI-clause <- BAI-pre BAI-post
-    public class A_clause : MetaNode { }
+    public class BAI_clause : MetaNode { }
     // BAI-pre <- pre-clause BAI spaces?
-    public class A_pre : MetaNode { }
+    public class BAI_pre : MetaNode { }
     // BAI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BAI_post : MetaNode { }
     // BAI-no-SA-handling <- pre-clause BAI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BAI_no_SA_handing : MetaNode { }
 
     // #         next word intensifier 
     // BAhE-clause <- (BAhE-pre BAhE-post)+
-    public class A_clause : MetaNode { }
+    public class BAhE_clause : MetaNode { }
     // BAhE-pre <- BAhE spaces?
-    public class A_pre : MetaNode { }
+    public class BAhE_pre : MetaNode { }
     // BAhE-post <- si-clause? !ZEI-clause !BU-clause
-    public class A_post : MetaNode { }
+    public class BAhE_post : MetaNode { }
     // BAhE-no-SA-handling <- BAhE spaces? BAhE-post
-    public class A_no_SA_handing : MetaNode { }
+    public class BAhE_no_SA_handing : MetaNode { }
 
     // #         sumti link to attach sumti to a selbri 
     // BE-clause <- BE-pre BE-post
-    public class A_clause : MetaNode { }
+    public class BE_clause : MetaNode { }
     // BE-pre <- pre-clause BE spaces?
-    public class A_pre : MetaNode { }
+    public class BE_pre : MetaNode { }
     // BE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BE_post : MetaNode { }
     // BE-no-SA-handling <- pre-clause BE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BE_no_SA_handing : MetaNode { }
 
     // #         multiple sumti separator between BE, BEI 
     // BEI-clause <- BEI-pre BEI-post
-    public class A_clause : MetaNode { }
+    public class BEI_clause : MetaNode { }
     // BEI-pre <- pre-clause BEI spaces?
-    public class A_pre : MetaNode { }
+    public class BEI_pre : MetaNode { }
     // BEI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BEI_post : MetaNode { }
     // BEI-no-SA-handling <- pre-clause BEI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BEI_no_SA_handing : MetaNode { }
 
     // #         terminates BEBEI specified descriptors 
     // BEhO-clause <- BEhO-pre BEhO-post
-    public class A_clause : MetaNode { }
+    public class BEhO_clause : MetaNode { }
     // BEhO-pre <- pre-clause BEhO spaces?
-    public class A_pre : MetaNode { }
+    public class BEhO_pre : MetaNode { }
     // BEhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BEhO_post : MetaNode { }
     // BEhO-no-SA-handling <- pre-clause BEhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BEhO_no_SA_handing : MetaNode { }
 
     // #         prefix for high-priority MEX operator 
     // BIhE-clause <- BIhE-pre BIhE-post
-    public class A_clause : MetaNode { }
+    public class BIhE_clause : MetaNode { }
     // BIhE-pre <- pre-clause BIhE spaces?
-    public class A_pre : MetaNode { }
+    public class BIhE_pre : MetaNode { }
     // BIhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BIhE_post : MetaNode { }
     // BIhE-no-SA-handling <- pre-clause BIhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BIhE_no_SA_handing : MetaNode { }
 
     // #         interval component of JOI 
     // BIhI-clause <- BIhI-pre BIhI-post
-    public class A_clause : MetaNode { }
+    public class BIhI_clause : MetaNode { }
     // BIhI-pre <- pre-clause BIhI spaces?
-    public class A_pre : MetaNode { }
+    public class BIhI_pre : MetaNode { }
     // BIhI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BIhI_post : MetaNode { }
     // BIhI-no-SA-handling <- pre-clause BIhI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BIhI_no_SA_handing : MetaNode { }
 
     // #         joins two units with shortest scope 
     // BO-clause <- BO-pre BO-post
-    public class A_clause : MetaNode { }
+    public class BO_clause : MetaNode { }
     // BO-pre <- pre-clause BO spaces?
-    public class A_pre : MetaNode { }
+    public class BO_pre : MetaNode { }
     // BO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BO_post : MetaNode { }
     // BO-no-SA-handling <- pre-clause BO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BO_no_SA_handing : MetaNode { }
 
     // #         number or lerfu-string terminator 
     // BOI-clause <- BOI-pre BOI-post
-    public class A_clause : MetaNode { }
+    public class BOI_clause : MetaNode { }
     // BOI-pre <- pre-clause BOI spaces?
-    public class A_pre : MetaNode { }
+    public class BOI_pre : MetaNode { }
     // BOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BOI_post : MetaNode { }
     // BOI-no-SA-handling <- pre-clause BOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class BOI_no_SA_handing : MetaNode { }
 
     // #         turns any word into a BY lerfu word 
     // BU-clause <- BU-pre BU-post
-    public class A_clause : MetaNode { }
+    public class BU_clause : MetaNode { }
     // BU-clause-no-SA <- BU-pre-no-SA BU BU-post
     // BU-pre <- pre-clause BU spaces?
-    public class A_pre : MetaNode { }
+    public class BU_pre : MetaNode { }
     // BU-pre-no-SA <- pre-clause
     // BU-post <- spaces?
-    public class A_post : MetaNode { }
+    public class BU_post : MetaNode { }
     // BU-no-SA-handling <- pre-clause BU spaces?
-    public class A_no_SA_handing : MetaNode { }
+    public class BU_no_SA_handing : MetaNode { }
 
     // #         individual lerfu words 
     // BY-clause <- BY-pre BY-post / bu-clause
-    public class A_clause : MetaNode { }
+    public class BY_clause : MetaNode { }
     // BY-pre <- pre-clause BY spaces?
-    public class A_pre : MetaNode { }
+    public class BY_pre : MetaNode { }
     // BY-post <- post-clause
-    public class A_post : MetaNode { }
+    public class BY_post : MetaNode { }
     // BY-no-SA-handling <- pre-clause BY post-clause / bu-clause-no-SA
-    public class A_no_SA_handing : MetaNode { }
+    public class BY_no_SA_handing : MetaNode { }
 
 
     // #         specifies actualitypotentiality of tense 
     // CAhA-clause <- CAhA-pre CAhA-post
-    public class A_clause : MetaNode { }
+    public class CAhA_clause : MetaNode { }
     // CAhA-pre <- pre-clause CAhA spaces?
-    public class A_pre : MetaNode { }
+    public class CAhA_pre : MetaNode { }
     // CAhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class CAhA_post : MetaNode { }
     // CAhA-no-SA-handling <- pre-clause CAhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class CAhA_no_SA_handing : MetaNode { }
 
     // #         afterthought intensity marker 
     // CAI-clause <- CAI-pre CAI-post
-    public class A_clause : MetaNode { }
+    public class CAI_clause : MetaNode { }
     // CAI-pre <- pre-clause CAI spaces?
-    public class A_pre : MetaNode { }
+    public class CAI_pre : MetaNode { }
     // CAI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class CAI_post : MetaNode { }
     // CAI-no-SA-handling <- pre-clause CAI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class CAI_no_SA_handing : MetaNode { }
 
     // #         pro-bridi assignment operator 
     // CEI-clause <- CEI-pre CEI-post
-    public class A_clause : MetaNode { }
+    public class CEI_clause : MetaNode { }
     // CEI-pre <- pre-clause CEI spaces?
-    public class A_pre : MetaNode { }
+    public class CEI_pre : MetaNode { }
     // CEI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class CEI_post : MetaNode { }
     // CEI-no-SA-handling <- pre-clause CEI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class CEI_no_SA_handing : MetaNode { }
 
     // #         afterthought term list connective 
     // CEhE-clause <- CEhE-pre CEhE-post
-    public class A_clause : MetaNode { }
+    public class CEhE_clause : MetaNode { }
     // CEhE-pre <- pre-clause CEhE spaces?
-    public class A_pre : MetaNode { }
+    public class CEhE_pre : MetaNode { }
     // CEhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class CEhE_post : MetaNode { }
     // CEhE-no-SA-handling <- pre-clause CEhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class CEhE_no_SA_handing : MetaNode { }
 
     // #         names; require consonant end, then pause no
 
@@ -765,21 +766,21 @@ namespace LojbanTest
 
     // #         tanru inversion  
     // CO-clause <- CO-pre CO-post
-    public class A_clause : MetaNode { }
+    public class CO_clause : MetaNode { }
     // CO-pre <- pre-clause CO spaces?
-    public class A_pre : MetaNode { }
+    public class CO_pre : MetaNode { }
     // CO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class CO_post : MetaNode { }
     // CO-no-SA-handling <- pre-clause CO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class CO_no_SA_handing : MetaNode { }
     // COI-clause <- COI-pre COI-post
-    public class A_clause : MetaNode { }
+    public class COI_clause : MetaNode { }
     // COI-pre <- pre-clause COI spaces?
-    public class A_pre : MetaNode { }
+    public class COI_pre : MetaNode { }
     // COI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class COI_post : MetaNode { }
     // COI-no-SA-handling <- pre-clause COI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class COI_no_SA_handing : MetaNode { }
 
     // #         vocative marker permitted inside names; must
 
@@ -787,730 +788,733 @@ namespace LojbanTest
 
     // #         separator between head sumti and selbri 
     // CU-clause <- CU-pre CU-post
-    public class A_clause : MetaNode { }
+    public class CU_clause : MetaNode { }
     // CU-pre <- pre-clause CU spaces?
-    public class A_pre : MetaNode { }
+    public class CU_pre : MetaNode { }
     // CU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class CU_post : MetaNode { }
     // CU-no-SA-handling <- pre-clause CU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class CU_no_SA_handing : MetaNode { }
 
     // #         tensemodal question 
     // CUhE-clause <- CUhE-pre CUhE-post
-    public class A_clause : MetaNode { }
+    public class CUhE_clause : MetaNode { }
     // CUhE-pre <- pre-clause CUhE spaces?
-    public class A_pre : MetaNode { }
+    public class CUhE_pre : MetaNode { }
     // CUhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class CUhE_post : MetaNode { }
     // CUhE-no-SA-handling <- pre-clause CUhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class CUhE_no_SA_handing : MetaNode { }
 
 
     // #         cancel anaphoracataphora assignments 
     // DAhO-clause <- DAhO-pre DAhO-post
-    public class A_clause : MetaNode { }
+    public class DAhO_clause : MetaNode { }
     // DAhO-pre <- pre-clause DAhO spaces?
-    public class A_pre : MetaNode { }
+    public class DAhO_pre : MetaNode { }
     // DAhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class DAhO_post : MetaNode { }
     // DAhO-no-SA-handling <- pre-clause DAhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class DAhO_no_SA_handing : MetaNode { }
 
     // #         vocative marker 
     // DOI-clause <- DOI-pre DOI-post
-    public class A_clause : MetaNode { }
+    public class DOI_clause : MetaNode { }
     // DOI-pre <- pre-clause DOI spaces?
-    public class A_pre : MetaNode { }
+    public class DOI_pre : MetaNode { }
     // DOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class DOI_post : MetaNode { }
     // DOI-no-SA-handling <- pre-clause DOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class DOI_no_SA_handing : MetaNode { }
 
     // #         terminator for DOI-marked vocatives 
     // DOhU-clause <- DOhU-pre DOhU-post
-    public class A_clause : MetaNode { }
+    public class DOhU_clause : MetaNode { }
     // DOhU-pre <- pre-clause DOhU spaces?
-    public class A_pre : MetaNode { }
+    public class DOhU_pre : MetaNode { }
     // DOhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class DOhU_post : MetaNode { }
     // DOhU-no-SA-handling <- pre-clause DOhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class DOhU_no_SA_handing : MetaNode { }
 
 
     // #         modifier head generic case tag 
     // FA-clause <- FA-pre FA-post
-    public class A_clause : MetaNode { }
+    public class FA_clause : MetaNode { }
     // FA-pre <- pre-clause FA spaces?
-    public class A_pre : MetaNode { }
+    public class FA_pre : MetaNode { }
     // FA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FA_post : MetaNode { }
     // FA-no-SA-handling <- pre-clause FA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FA_no_SA_handing : MetaNode { }
 
     // #         superdirections in space 
     // FAhA-clause <- FAhA-pre FAhA-post
-    public class A_clause : MetaNode { }
+    public class FAhA_clause : MetaNode { }
     // FAhA-pre <- pre-clause FAhA spaces?
-    public class A_pre : MetaNode { }
+    public class FAhA_pre : MetaNode { }
     // FAhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FAhA_post : MetaNode { }
     // FAhA-no-SA-handling <- pre-clause FAhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FAhA_no_SA_handing : MetaNode { }
 
 
     // #         normally elided 'done pause' to indicate end
     // #                                    of utterance string 
 
     // FAhO-clause <- pre-clause FAhO spaces?
-    public class A_clause : MetaNode { }
+    public class FAhO_clause : MetaNode { }
 
     // #         space interval mod flag 
     // FEhE-clause <- FEhE-pre FEhE-post
-    public class A_clause : MetaNode { }
+    public class FEhE_clause : MetaNode { }
     // FEhE-pre <- pre-clause FEhE spaces?
-    public class A_pre : MetaNode { }
+    public class FEhE_pre : MetaNode { }
     // FEhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FEhE_post : MetaNode { }
     // FEhE-no-SA-handling <- pre-clause FEhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FEhE_no_SA_handing : MetaNode { }
 
     // #         ends bridi to modal conversion 
     // FEhU-clause <- FEhU-pre FEhU-post
-    public class A_clause : MetaNode { }
+    public class FEhU_clause : MetaNode { }
     // FEhU-pre <- pre-clause FEhU spaces?
-    public class A_pre : MetaNode { }
+    public class FEhU_pre : MetaNode { }
     // FEhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FEhU_post : MetaNode { }
     // FEhU-no-SA-handling <- pre-clause FEhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FEhU_no_SA_handing : MetaNode { }
 
     // #         marks bridi to modal conversion 
     // FIhO-clause <- FIhO-pre FIhO-post
-    public class A_clause : MetaNode { }
+    public class FIhO_clause : MetaNode { }
     // FIhO-pre <- pre-clause FIhO spaces?
-    public class A_pre : MetaNode { }
+    public class FIhO_pre : MetaNode { }
     // FIhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FIhO_post : MetaNode { }
     // FIhO-no-SA-handling <- pre-clause FIhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FIhO_no_SA_handing : MetaNode { }
 
     // #         end compound lerfu 
     // FOI-clause <- FOI-pre FOI-post
-    public class A_clause : MetaNode { }
+    public class FOI_clause : MetaNode { }
     // FOI-pre <- pre-clause FOI spaces?
-    public class A_pre : MetaNode { }
+    public class FOI_pre : MetaNode { }
     // FOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FOI_post : MetaNode { }
     // FOI-no-SA-handling <- pre-clause FOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FOI_no_SA_handing : MetaNode { }
 
     // #         reverse Polish flag 
     // FUhA-clause <- FUhA-pre FUhA-post
-    public class A_clause : MetaNode { }
+    public class FuhA_clause : MetaNode { }
     // FUhA-pre <- pre-clause FUhA spaces?
-    public class A_pre : MetaNode { }
+    public class FuhA_pre : MetaNode { }
     // FUhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FuhA_post : MetaNode { }
     // FUhA-no-SA-handling <- pre-clause FUhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FuhA_no_SA_handing : MetaNode { }
 
     // #         open long scope for indicator 
     // FUhE-clause <- FUhE-pre FUhE-post
-    public class A_clause : MetaNode { }
+    public class FUhE_clause : MetaNode { }
     // FUhE-pre <- pre-clause FUhE spaces?
-    public class A_pre : MetaNode { }
+    public class FUhE_pre : MetaNode { }
     // FUhE-post <- !BU-clause spaces? !ZEI-clause !BU-clause
-    public class A_post : MetaNode { }
+    public class FUhE_post : MetaNode { }
     // FUhE-no-SA-handling <- pre-clause FUhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FUhE_no_SA_handing : MetaNode { }
 
     // #         close long scope for indicator 
     // FUhO-clause <- FUhO-pre FUhO-post
-    public class A_clause : MetaNode { }
+    public class FUhO_clause : MetaNode { }
     // FUhO-pre <- pre-clause FUhO spaces?
-    public class A_pre : MetaNode { }
+    public class FUhO_pre : MetaNode { }
     // FUhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class FUhO_post : MetaNode { }
     // FUhO-no-SA-handling <- pre-clause FUhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class FUhO_no_SA_handing : MetaNode { }
 
 
     // #         geks; forethought logical connectives 
     // GA-clause <- GA-pre GA-post
-    public class A_clause : MetaNode { }
+    public class GA_clause : MetaNode { }
     // GA-pre <- pre-clause GA spaces?
-    public class A_pre : MetaNode { }
+    public class GA_pre : MetaNode { }
     // GA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GA_post : MetaNode { }
     // GA-no-SA-handling <- pre-clause GA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GA_no_SA_handing : MetaNode { }
 
     // #         openclosed interval markers for BIhI 
     // GAhO-clause <- GAhO-pre GAhO-post
-    public class A_clause : MetaNode { }
+    public class GAhO_clause : MetaNode { }
     // GAhO-pre <- pre-clause GAhO spaces?
-    public class A_pre : MetaNode { }
+    public class GAhO_pre : MetaNode { }
     // GAhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GAhO_post : MetaNode { }
     // GAhO-no-SA-handling <- pre-clause GAhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GAhO_no_SA_handing : MetaNode { }
 
     // #         marker ending GOI relative clauses 
     // GEhU-clause <- GEhU-pre GEhU-post
-    public class A_clause : MetaNode { }
+    public class GEhU_clause : MetaNode { }
     // GEhU-pre <- pre-clause GEhU spaces?
-    public class A_pre : MetaNode { }
+    public class GEhU_pre : MetaNode { }
     // GEhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GEhU_post : MetaNode { }
     // GEhU-no-SA-handling <- pre-clause GEhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GEhU_no_SA_handing : MetaNode { }
 
     // #         forethought medial marker 
     // GI-clause <- GI-pre GI-post
-    public class A_clause : MetaNode { }
+    public class GI_clause : MetaNode { }
     // GI-pre <- pre-clause GI spaces?
-    public class A_pre : MetaNode { }
+    public class GI_pre : MetaNode { }
     // GI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GI_post : MetaNode { }
     // GI-no-SA-handling <- pre-clause GI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GI_no_SA_handing : MetaNode { }
 
     // #         logical connectives for bridi-tails 
     // GIhA-clause <- GIhA-pre GIhA-post
-    public class A_clause : MetaNode { }
+    public class GIhA_clause : MetaNode { }
     // GIhA-pre <- pre-clause GIhA spaces?
-    public class A_pre : MetaNode { }
+    public class GIhA_pre : MetaNode { }
     // GIhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GIhA_post : MetaNode { }
     // GIhA-no-SA-handling <- pre-clause GIhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GIhA_no_SA_handing : MetaNode { }
 
     // #         attaches a sumti modifier to a sumti 
     // GOI-clause <- GOI-pre GOI-post
-    public class A_clause : MetaNode { }
+    public class GOI_clause : MetaNode { }
     // GOI-pre <- pre-clause GOI spaces?
-    public class A_pre : MetaNode { }
+    public class GOI_pre : MetaNode { }
     // GOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GOI_post : MetaNode { }
     // GOI-no-SA-handling <- pre-clause GOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GOI_no_SA_handing : MetaNode { }
 
     // #         pro-bridi 
     // GOhA-clause <- GOhA-pre GOhA-post
-    public class A_clause : MetaNode { }
+    public class GOhA_clause : MetaNode { }
     // GOhA-pre <- pre-clause GOhA spaces?
-    public class A_pre : MetaNode { }
+    public class GOhA_pre : MetaNode { }
     // GOhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GOhA_post : MetaNode { }
     // GOhA-no-SA-handling <- pre-clause GOhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GOhA_no_SA_handing : MetaNode { }
 
     // #         GEK for tanru units, corresponds to JEKs 
     // GUhA-clause <- GUhA-pre GUhA-post
-    public class A_clause : MetaNode { }
+    public class GUhA_clause : MetaNode { }
     // GUhA-pre <- pre-clause GUhA spaces?
-    public class A_pre : MetaNode { }
+    public class GUhA_pre : MetaNode { }
     // GUhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class GUhA_post : MetaNode { }
     // GUhA-no-SA-handling <- pre-clause GUhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class GUhA_no_SA_handing : MetaNode { }
 
 
     // #         sentence link 
     // I-clause <- sentence-sa* I-pre I-post
-    public class A_clause : MetaNode { }
+    public class I_clause : MetaNode { }
     // I-pre <- pre-clause I spaces?
-    public class A_pre : MetaNode { }
+    public class I_pre : MetaNode { }
     // I-post <- post-clause
-    public class A_post : MetaNode { }
+    public class I_post : MetaNode { }
     // I-no-SA-handling <- pre-clause I post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class I_no_SA_handing : MetaNode { }
 
 
     // #         jeks; logical connectives within tanru 
     // JA-clause <- JA-pre JA-post
-    public class A_clause : MetaNode { }
+    public class JA_clause : MetaNode { }
     // JA-pre <- pre-clause JA spaces?
-    public class A_pre : MetaNode { }
+    public class JA_pre : MetaNode { }
     // JA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class JA_post : MetaNode { }
     // JA-no-SA-handling <- pre-clause JA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class JA_no_SA_handing : MetaNode { }
 
     // #         modal conversion flag 
     // JAI-clause <- JAI-pre JAI-post
-    public class A_clause : MetaNode { }
+    public class JAI_clause : MetaNode { }
     // JAI-pre <- pre-clause JAI spaces?
-    public class A_pre : MetaNode { }
+    public class JAI_pre : MetaNode { }
     // JAI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class JAI_post : MetaNode { }
     // JAI-no-SA-handling <- pre-clause JAI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class JAI_no_SA_handing : MetaNode { }
 
     // #         flags an array operand 
     // JOhI-clause <- JOhI-pre JOhI-post
-    public class A_clause : MetaNode { }
+    public class JOhI_clause : MetaNode { }
     // JOhI-pre <- pre-clause JOhI spaces?
-    public class A_pre : MetaNode { }
+    public class JOhI_pre : MetaNode { }
     // JOhI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class JOhI_post : MetaNode { }
     // JOhI-no-SA-handling <- pre-clause JOhI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class JOhI_no_SA_handing : MetaNode { }
 
     // #         non-logical connectives 
     // JOI-clause <- JOI-pre JOI-post
-    public class A_clause : MetaNode { }
+    public class JOI_clause : MetaNode { }
     // JOI-pre <- pre-clause JOI spaces?
-    public class A_pre : MetaNode { }
+    public class JOI_pre : MetaNode { }
     // JOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class JOI_post : MetaNode { }
     // JOI-no-SA-handling <- pre-clause JOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class JOI_no_SA_handing : MetaNode { }
 
 
     // #         left long scope marker 
     // KE-clause <- KE-pre KE-post
-    public class A_clause : MetaNode { }
+    public class KE_clause : MetaNode { }
     // KE-pre <- pre-clause KE spaces?
-    public class A_pre : MetaNode { }
+    public class KE_pre : MetaNode { }
     // KE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KE_post : MetaNode { }
     // KE-no-SA-handling <- pre-clause KE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class KE_no_SA_handing : MetaNode { }
 
     // #         right terminator for KE groups 
     // KEhE-clause <- KEhE-pre KEhE-post
-    public class A_clause : MetaNode { }
+    public class KEhE_clause : MetaNode { }
     // KEhE-pre <- pre-clause KEhE spaces?
-    public class A_pre : MetaNode { }
+    public class KEhE_pre : MetaNode { }
     // KEhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KEhE_post : MetaNode { }
     // KEhE-no-SA-handling <- pre-clause KEhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class KEhE_no_SA_handing : MetaNode { }
 
     // #         right terminator, NU abstractions 
     // KEI-clause <- KEI-pre KEI-post
-    public class A_clause : MetaNode { }
+    public class KEI_clause : MetaNode { }
     // KEI-pre <- pre-clause KEI spaces?
-    public class A_pre : MetaNode { }
+    public class KEI_pre : MetaNode { }
     // KEI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KEI_post : MetaNode { }
     // KEI-no-SA-handling <- pre-clause KEI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class KEI_no_SA_handing : MetaNode { }
 
     // #         multiple utterance scope for tenses 
     // KI-clause <- KI-pre KI-post
-    public class A_clause : MetaNode { }
+    public class KI_clause : MetaNode { }
     // KI-pre <- pre-clause KI spaces?
-    public class A_pre : MetaNode { }
+    public class KI_pre : MetaNode { }
     // KI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KI_post : MetaNode { }
     // KI-no-SA-handling <- pre-clause KI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class KI_no_SA_handing : MetaNode { }
 
     // #         sumti anaphora 
     // KOhA-clause <- KOhA-pre KOhA-post
-    public class A_clause : MetaNode { }
+    public class KOhA_clause : MetaNode { }
     // KOhA-pre <- pre-clause KOhA spaces?
-    public class A_pre : MetaNode { }
+    public class KOhA_pre : MetaNode { }
     // KOhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KOhA_post : MetaNode { }
     // KOhA-no-SA-handling <- pre-clause KOhA spaces?
-    public class A_no_SA_handing : MetaNode { }
+    public class KOhA_no_SA_handing : MetaNode { }
 
     // #         right terminator for descriptions, etc. 
     // KU-clause <- KU-pre KU-post
-    public class A_clause : MetaNode { }
+    public class KU_clause : MetaNode { }
     // KU-pre <- pre-clause KU spaces?
-    public class A_pre : MetaNode { }
+    public class KU_pre : MetaNode { }
     // KU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KU_post : MetaNode { }
     // KU-no-SA-handling <- pre-clause KU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class KU_no_SA_handing : MetaNode { }
 
     // #         MEX forethought delimiter 
     // KUhE-clause <- KUhE-pre KUhE-post
-    public class A_clause : MetaNode { }
+    public class KUhE_clause : MetaNode { }
     // KUhE-pre <- pre-clause KUhE spaces?
-    public class A_pre : MetaNode { }
+    public class KUhE_pre : MetaNode { }
     // KUhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KUhE_post : MetaNode { }
     // KUhE-no-SA-handling <- pre-clause KUhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class KUhE_no_SA_handing : MetaNode { }
 
     // #         right terminator, NOI relative clauses 
     // KUhO-clause <- KUhO-pre KUhO-post
-    public class A_clause : MetaNode { }
+    public class KUhO_clause : MetaNode { }
     // KUhO-pre <- pre-clause KUhO spaces?
-    public class A_pre : MetaNode { }
+    public class KUhO_pre : MetaNode { }
     // KUhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class KUhO_post : MetaNode { }
     // KUhO-no-SA-handling <- pre-clause KUhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class KUhO_no_SA_handing : MetaNode { }
 
 
     // #         name descriptors 
     // LA-clause <- LA-pre LA-post
-    public class A_clause : MetaNode { }
+    public class LA_clause : MetaNode { }
     // LA-pre <- pre-clause LA spaces?
-    public class A_pre : MetaNode { }
+    public class LA_pre : MetaNode { }
     // LA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LA_post : MetaNode { }
     // LA-no-SA-handling <- pre-clause LA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LA_no_SA_handing : MetaNode { }
 
     // #         lerfu prefixes 
     // LAU-clause <- LAU-pre LAU-post
-    public class A_clause : MetaNode { }
+    public class LAU_clause : MetaNode { }
     // LAU-pre <- pre-clause LAU spaces?
-    public class A_pre : MetaNode { }
+    public class LAU_pre : MetaNode { }
     // LAU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LAU_post : MetaNode { }
     // LAU-no-SA-handling <- pre-clause LAU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LAU_no_SA_handing : MetaNode { }
 
     // #         sumti qualifiers 
     // LAhE-clause <- LAhE-pre LAhE-post
-    public class A_clause : MetaNode { }
+    public class LAhE_clause : MetaNode { }
     // LAhE-pre <- pre-clause LAhE spaces?
-    public class A_pre : MetaNode { }
+    public class LAhE_pre : MetaNode { }
     // LAhE-post <- post-clause
+    public class LAhE_post : MetaNode { }
     // LAhE-no-SA-handling <- pre-clause LAhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LAhE_no_SA_handing : MetaNode { }
 
     // #         sumti descriptors 
     // LE-clause <- LE-pre LE-post
-    public class A_clause : MetaNode { }
+    public class LE_clause : MetaNode { }
     // LE-pre <- pre-clause LE spaces?
-    public class A_pre : MetaNode { }
+    public class LE_pre : MetaNode { }
     // LE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LE_post : MetaNode { }
     // LE-no-SA-handling <- pre-clause LE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LE_no_SA_handing : MetaNode { }
 
 
     // #         possibly ungrammatical text right quote 
     // LEhU-clause <- LEhU-pre LEhU-post
-    public class A_clause : MetaNode { }
+    public class LEhU_clause : MetaNode { }
     // LEhU-pre <- pre-clause LEhU spaces?
-    public class A_pre : MetaNode { }
+    public class LEhU_pre : MetaNode { }
     // LEhU-post <- spaces?
-    public class A_post : MetaNode { }
+    public class LEhU_post : MetaNode { }
     // LEhU-clause-no-SA <- LEhU-pre-no-SA LEhU-post
+    public class LEhU_clause_no_SA : MetaNode { }
     // LEhU-pre-no-SA <- pre-clause LEhU spaces?
+    public class LEhU_pre_no_SA : MetaNode { }
     // LEhU-no-SA-handling <- pre-clause LEhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LEhU_no_SA_handling : MetaNode { }
 
     // #         convert number to sumti 
     // LI-clause <- LI-pre LI-post
-    public class A_clause : MetaNode { }
+    public class LI_clause : MetaNode { }
     // LI-pre <- pre-clause LI spaces?
-    public class A_pre : MetaNode { }
+    public class LI_pre : MetaNode { }
     // LI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LI_post : MetaNode { }
     // LI-no-SA-handling <- pre-clause LI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LI_no_SA_handing : MetaNode { }
 
     // #         grammatical text right quote 
     // LIhU-clause <- LIhU-pre LIhU-post
-    public class A_clause : MetaNode { }
+    public class LIhU_clause : MetaNode { }
     // LIhU-pre <- pre-clause LIhU spaces?
-    public class A_pre : MetaNode { }
+    public class LIhU_pre : MetaNode { }
     // LIhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LIhU_post : MetaNode { }
     // LIhU-no-SA-handling <- pre-clause LIhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LIhU_no_SA_handing : MetaNode { }
 
     // #         elidable terminator for LI 
     // LOhO-clause <- LOhO-pre LOhO-post
-    public class A_clause : MetaNode { }
+    public class LOhO_clause : MetaNode { }
     // LOhO-pre <- pre-clause LOhO spaces?
-    public class A_pre : MetaNode { }
+    public class LOhO_pre : MetaNode { }
     // LOhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LOhO_post : MetaNode { }
     // LOhO-no-SA-handling <- pre-clause LOhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LOhO_no_SA_handing : MetaNode { }
 
     // #         possibly ungrammatical text left quote 
     // LOhU-clause <- LOhU-pre LOhU-post
-    public class A_clause : MetaNode { }
+    public class LOhU_clause : MetaNode { }
     // LOhU-pre <- pre-clause LOhU spaces? (!LEhU any-word)* LEhU-clause spaces?
-    public class A_pre : MetaNode { }
+    public class LOhU_pre : MetaNode { }
     // LOhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LOhU_post : MetaNode { }
     // LOhU-no-SA-handling <- pre-clause LOhU spaces? (!LEhU any-word)* LEhU-clause spaces?
-    public class A_no_SA_handing : MetaNode { }
+    public class LOhU_no_SA_handing : MetaNode { }
 
     // #         grammatical text left quote 
     // LU-clause <- LU-pre LU-post
-    public class A_clause : MetaNode { }
+    public class LU_clause : MetaNode { }
     // LU-pre <- pre-clause LU spaces?
-    public class A_pre : MetaNode { }
+    public class LU_pre : MetaNode { }
     // LU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LU_post : MetaNode { }
     // LU-no-SA-handling <- pre-clause LU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LU_no_SA_handing : MetaNode { }
 
     // #         LAhE close delimiter 
     // LUhU-clause <- LUhU-pre LUhU-post
-    public class A_clause : MetaNode { }
+    public class LUhU_clause : MetaNode { }
     // LUhU-pre <- pre-clause LUhU spaces?
-    public class A_pre : MetaNode { }
+    public class LUhU_pre : MetaNode { }
     // LUhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class LUhU_post : MetaNode { }
     // LUhU-no-SA-handling <- pre-clause LUhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class LUhU_no_SA_handing : MetaNode { }
 
 
     // #         change MEX expressions to MEX operators 
     // MAhO-clause <- MAhO-pre MAhO-post
-    public class A_clause : MetaNode { }
+    public class MAhO_clause : MetaNode { }
     // MAhO-pre <- pre-clause MAhO spaces?
-    public class A_pre : MetaNode { }
+    public class MAhO_pre : MetaNode { }
     // MAhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class MAhO_post : MetaNode { }
     // MAhO-no-SA-handling <- pre-clause MAhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class MAhO_no_SA_handing : MetaNode { }
 
     // #         change numbers to utterance ordinals 
     // MAI-clause <- MAI-pre MAI-post
-    public class A_clause : MetaNode { }
+    public class MAI_clause : MetaNode { }
     // MAI-pre <- pre-clause MAI spaces?
-    public class A_pre : MetaNode { }
+    public class MAI_pre : MetaNode { }
     // MAI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class MAI_post : MetaNode { }
     // MAI-no-SA-handling <- pre-clause MAI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class MAI_no_SA_handing : MetaNode { }
 
     // #         converts a sumti into a tanru_unit 
     // ME-clause <- ME-pre ME-post
-    public class A_clause : MetaNode { }
+    public class MA_clause : MetaNode { }
     // ME-pre <- pre-clause ME spaces?
-    public class A_pre : MetaNode { }
+    public class MA_pre : MetaNode { }
     // ME-post <- post-clause
-    public class A_post : MetaNode { }
+    public class MA_post : MetaNode { }
     // ME-no-SA-handling <- pre-clause ME post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class MA_no_SA_handing : MetaNode { }
 
     // #         terminator for ME 
     // MEhU-clause <- MEhU-pre MEhU-post
-    public class A_clause : MetaNode { }
+    public class MEhU_clause : MetaNode { }
     // MEhU-pre <- pre-clause MEhU spaces?
-    public class A_pre : MetaNode { }
+    public class MEhU_pre : MetaNode { }
     // MEhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class MEhU_post : MetaNode { }
     // MEhU-no-SA-handling <- pre-clause MEhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class MEhU_no_SA_handing : MetaNode { }
 
     // #         change sumti to operand, inverse of LI 
     // MOhE-clause <- MOhE-pre MOhE-post
-    public class A_clause : MetaNode { }
+    public class MOhE_clause : MetaNode { }
     // MOhE-pre <- pre-clause MOhE spaces?
-    public class A_pre : MetaNode { }
+    public class MOhE_pre : MetaNode { }
     // MOhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class MOhE_post : MetaNode { }
     // MOhE-no-SA-handling <- pre-clause MOhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class MOhE_no_SA_handing : MetaNode { }
 
     // #         motion tense marker 
     // MOhI-clause <- MOhI-pre MOhI-post
-    public class A_clause : MetaNode { }
+    public class MOhI_clause : MetaNode { }
     // MOhI-pre <- pre-clause MOhI spaces?
-    public class A_pre : MetaNode { }
+    public class MOhI_pre : MetaNode { }
     // MOhI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class MOhI_post : MetaNode { }
     // MOhI-no-SA-handling <- pre-clause MOhI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class MOhI_no_SA_handing : MetaNode { }
 
     // #         change number to selbri 
     // MOI-clause <- MOI-pre MOI-post
-    public class A_clause : MetaNode { }
+    public class MOI_clause : MetaNode { }
     // MOI-pre <- pre-clause MOI spaces?
-    public class A_pre : MetaNode { }
+    public class MOI_pre : MetaNode { }
     // MOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class MOI_post : MetaNode { }
     // MOI-no-SA-handling <- pre-clause MOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class MOI_no_SA_handing : MetaNode { }
 
 
     // #         bridi negation  
     // NA-clause <- NA-pre NA-post
-    public class A_clause : MetaNode { }
+    public class NA_clause : MetaNode { }
     // NA-pre <- pre-clause NA spaces?
-    public class A_pre : MetaNode { }
+    public class NA_pre : MetaNode { }
     // NA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NA_post : MetaNode { }
     // NA-no-SA-handling <- pre-clause NA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NA_no_SA_handing : MetaNode { }
 
     // #         attached to words to negate them 
     // NAI-clause <- NAI-pre NAI-post
-    public class A_clause : MetaNode { }
+    public class NAI_clause : MetaNode { }
     // NAI-pre <- pre-clause NAI spaces?
-    public class A_pre : MetaNode { }
+    public class NAI_pre : MetaNode { }
     // NAI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NAI_post : MetaNode { }
     // NAI-no-SA-handling <- pre-clause NAI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NAI_no_SA_handing : MetaNode { }
 
     // #         scalar negation  
     // NAhE-clause <- NAhE-pre NAhE-post
-    public class A_clause : MetaNode { }
+    public class NAhE_clause : MetaNode { }
     // NAhE-pre <- pre-clause NAhE spaces?
-    public class A_pre : MetaNode { }
+    public class NAhE_pre : MetaNode { }
     // NAhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NAhE_post : MetaNode { }
     // NAhE-no-SA-handling <- pre-clause NAhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NAhE_no_SA_handing : MetaNode { }
 
     // #         change a selbri into an operator 
     // NAhU-clause <- NAhU-pre NAhU-post
-    public class A_clause : MetaNode { }
+    public class NAhU_clause : MetaNode { }
     // NAhU-pre <- pre-clause NAhU spaces?
-    public class A_pre : MetaNode { }
+    public class NAhU_pre : MetaNode { }
     // NAhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NAhU_post : MetaNode { }
     // NAhU-no-SA-handling <- pre-clause NAhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NAhU_no_SA_handing : MetaNode { }
 
     // #         change selbri to operand; inverse of MOI 
     // NIhE-clause <- NIhE-pre NIhE-post
-    public class A_clause : MetaNode { }
+    public class NIhE_clause : MetaNode { }
     // NIhE-pre <- pre-clause NIhE spaces?
-    public class A_pre : MetaNode { }
+    public class NIhE_pre : MetaNode { }
     // NIhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NIhE_post : MetaNode { }
     // NIhE-no-SA-handling <- pre-clause NIhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NIhE_no_SA_handing : MetaNode { }
 
     // #         new paragraph; change of subject 
     // NIhO-clause <- sentence-sa* NIhO-pre NIhO-post
-    public class A_clause : MetaNode { }
+    public class NIhO_clause : MetaNode { }
     // NIhO-pre <- pre-clause NIhO spaces?
-    public class A_pre : MetaNode { }
+    public class NIhO_pre : MetaNode { }
     // NIhO-post <- su-clause* post-clause
-    public class A_post : MetaNode { }
+    public class NIhO_post : MetaNode { }
     // NIhO-no-SA-handling <- pre-clause NIhO su-clause* post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NIhO_no_SA_handing : MetaNode { }
 
     // #         attaches a subordinate clause to a sumti 
     // NOI-clause <- NOI-pre NOI-post
-    public class A_clause : MetaNode { }
+    public class NOI_clause : MetaNode { }
     // NOI-pre <- pre-clause NOI spaces?
-    public class A_pre : MetaNode { }
+    public class NOI_pre : MetaNode { }
     // NOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NOI_post : MetaNode { }
     // NOI-no-SA-handling <- pre-clause NOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NOI_no_SA_handing : MetaNode { }
 
     // #         abstraction  
     // NU-clause <- NU-pre NU-post
-    public class A_clause : MetaNode { }
+    public class NU_clause : MetaNode { }
     // NU-pre <- pre-clause NU spaces?
-    public class A_pre : MetaNode { }
+    public class NU_pre : MetaNode { }
     // NU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NU_post : MetaNode { }
     // NU-no-SA-handling <- pre-clause NU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NU_no_SA_handing : MetaNode { }
 
     // #         change operator to selbri; inverse of MOhE 
     // NUhA-clause <- NUhA-pre NUhA-post
-    public class A_clause : MetaNode { }
+    public class NUhA_clause : MetaNode { }
     // NUhA-pre <- pre-clause NUhA spaces?
-    public class A_pre : MetaNode { }
+    public class NUhA_pre : MetaNode { }
     // NUhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NUhA_post : MetaNode { }
     // NUhA-no-SA-handling <- pre-clause NUhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NUhA_no_SA_handing : MetaNode { }
 
     // #         marks the start of a termset 
     // NUhI-clause <- NUhI-pre NUhI-post
-    public class A_clause : MetaNode { }
+    public class NUhI_clause : MetaNode { }
     // NUhI-pre <- pre-clause NUhI spaces?
-    public class A_pre : MetaNode { }
+    public class NUhI_pre : MetaNode { }
     // NUhI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NUhI_post : MetaNode { }
     // NUhI-no-SA-handling <- pre-clause NUhI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NUhI_no_SA_handing : MetaNode { }
 
     // #         marks the middle and end of a termset 
     // NUhU-clause <- NUhU-pre NUhU-post
-    public class A_clause : MetaNode { }
+    public class NUhU_clause : MetaNode { }
     // NUhU-pre <- pre-clause NUhU spaces?
-    public class A_pre : MetaNode { }
+    public class NUhU_pre : MetaNode { }
     // NUhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class NUhU_post : MetaNode { }
     // NUhU-no-SA-handling <- pre-clause NUhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class NUhU_no_SA_handing : MetaNode { }
 
 
     // #         numbers and numeric punctuation 
     // PA-clause <- PA-pre PA-post
-    public class A_clause : MetaNode { }
+    public class PA_clause : MetaNode { }
     // PA-pre <- pre-clause PA spaces?
-    public class A_pre : MetaNode { }
+    public class PA_pre : MetaNode { }
     // PA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class PA_post : MetaNode { }
     // PA-no-SA-handling <- pre-clause PA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class PA_no_SA_handing : MetaNode { }
 
     // #         afterthought termset connective prefix 
     // PEhE-clause <- PEhE-pre PEhE-post
-    public class A_clause : MetaNode { }
+    public class PEhE_clause : MetaNode { }
     // PEhE-pre <- pre-clause PEhE spaces?
-    public class A_pre : MetaNode { }
+    public class PEhE_pre : MetaNode { }
     // PEhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class PEhE_post : MetaNode { }
     // PEhE-no-SA-handling <- pre-clause PEhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class PEhE_no_SA_handing : MetaNode { }
 
     // #         forethought (Polish) flag 
     // PEhO-clause <- PEhO-pre PEhO-post
-    public class A_clause : MetaNode { }
+    public class PEhO_clause : MetaNode { }
     // PEhO-pre <- pre-clause PEhO spaces?
-    public class A_pre : MetaNode { }
+    public class PEhO_pre : MetaNode { }
     // PEhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class PEhO_post : MetaNode { }
     // PEhO-no-SA-handling <- pre-clause PEhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class PEhO_no_SA_handing : MetaNode { }
 
     // #         directions in time 
     // PU-clause <- PU-pre PU-post
-    public class A_clause : MetaNode { }
+    public class PU_clause : MetaNode { }
     // PU-pre <- pre-clause PU spaces?
-    public class A_pre : MetaNode { }
+    public class PU_pre : MetaNode { }
     // PU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class PU_post : MetaNode { }
     // PU-no-SA-handling <- pre-clause PU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class PU_no_SA_handing : MetaNode { }
 
 
     // #         flag for modified interpretation of GOhI 
     // RAhO-clause <- RAhO-pre RAhO-post
-    public class A_clause : MetaNode { }
+    public class RAhO_clause : MetaNode { }
     // RAhO-pre <- pre-clause RAhO spaces?
-    public class A_pre : MetaNode { }
+    public class RAhO_pre : MetaNode { }
     // RAhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class RAhO_post : MetaNode { }
     // RAhO-no-SA-handling <- pre-clause RAhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class RAhO_no_SA_handing : MetaNode { }
 
     // #         converts number to extensional tense 
     // ROI-clause <- ROI-pre ROI-post
-    public class A_clause : MetaNode { }
+    public class ROI_clause : MetaNode { }
     // ROI-pre <- pre-clause ROI spaces?
-    public class A_pre : MetaNode { }
+    public class ROI_pre : MetaNode { }
     // ROI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ROI_post : MetaNode { }
     // ROI-no-SA-handling <- pre-clause ROI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class ROI_no_SA_handing : MetaNode { }
 
     // SA-clause <- SA-pre SA-post
-    public class A_clause : MetaNode { }
+    public class SA_clause : MetaNode { }
     // SA-pre <- pre-clause SA spaces?
-    public class A_pre : MetaNode { }
+    public class SA_pre : MetaNode { }
     // SA-post <- spaces?
-    public class A_post : MetaNode { }
+    public class SA_post : MetaNode { }
 
     // #         metalinguistic eraser to the beginning of
 
@@ -1518,314 +1522,318 @@ namespace LojbanTest
 
     // #         conversions 
     // SE-clause <- SE-pre SE-post
-    public class A_clause : MetaNode { }
+    public class SE_clause : MetaNode { }
     // SE-pre <- pre-clause SE spaces?
-    public class A_pre : MetaNode { }
+    public class SE_pre : MetaNode { }
     // SE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class SE_post : MetaNode { }
     // SE-no-SA-handling <- pre-clause SE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class SE_no_SA_handing : MetaNode { }
 
     // #         metalinguistic bridi insert marker 
     // SEI-clause <- SEI-pre SEI-post
-    public class A_clause : MetaNode { }
+    public class SEI_clause : MetaNode { }
     // SEI-pre <- pre-clause SEI spaces?
-    public class A_pre : MetaNode { }
+    public class SEI_pre : MetaNode { }
     // SEI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class SEI_post : MetaNode { }
     // SEI-no-SA-handling <- pre-clause SEI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class SEI_no_SA_handing : MetaNode { }
 
     // #         metalinguistic bridi end marker 
     // SEhU-clause <- SEhU-pre SEhU-post
-    public class A_clause : MetaNode { }
+    public class SEhU_clause : MetaNode { }
     // SEhU-pre <- pre-clause SEhU spaces?
-    public class A_pre : MetaNode { }
+    public class SEhU_pre : MetaNode { }
     // SEhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class SEhU_post : MetaNode { }
     // SEhU-no-SA-handling <- pre-clause SEhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class SEhU_no_SA_handing : MetaNode { }
 
     // #         metalinguistic single word eraser 
     // SI-clause <- spaces? SI spaces?
 
     // #         reciprocal sumti marker 
     // SOI-clause <- SOI-pre SOI-post
-    public class A_clause : MetaNode { }
+    public class SOI_clause : MetaNode { }
     // SOI-pre <- pre-clause SOI spaces?
-    public class A_pre : MetaNode { }
+    public class SOI_pre : MetaNode { }
     // SOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class SOI_post : MetaNode { }
     // SOI-no-SA-handling <- pre-clause SOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class SOI_no_SA_handing : MetaNode { }
 
     // #         metalinguistic eraser of the entire text 
     // SU-clause <- SU-pre SU-post
-    public class A_clause : MetaNode { }
+    public class SU_clause : MetaNode { }
     // SU-pre <- pre-clause SU spaces?
-    public class A_pre : MetaNode { }
+    public class SU_pre : MetaNode { }
     // SU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class SU_post : MetaNode { }
 
 
     // #         tense interval properties 
     // TAhE-clause <- TAhE-pre TAhE-post
-    public class A_clause : MetaNode { }
+    public class TAhE_clause : MetaNode { }
     // TAhE-pre <- pre-clause TAhE spaces?
-    public class A_pre : MetaNode { }
+    public class TAhE_pre : MetaNode { }
     // TAhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class TAhE_post : MetaNode { }
     // TAhE-no-SA-handling <- pre-clause TAhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class TAhE_no_SA_handing : MetaNode { }
 
     // #         closing gap for MEX constructs 
     // TEhU-clause <- TEhU-pre TEhU-post
-    public class A_clause : MetaNode { }
+    public class TEhU_clause : MetaNode { }
     // TEhU-pre <- pre-clause TEhU spaces?
-    public class A_pre : MetaNode { }
+    public class TEhU_pre : MetaNode { }
     // TEhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class TEhU_post : MetaNode { }
     // TEhU-no-SA-handling <- pre-clause TEhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class TEhU_no_SA_handing : MetaNode { }
 
     // #         start compound lerfu 
     // TEI-clause <- TEI-pre TEI-post
-    public class A_clause : MetaNode { }
+    public class TEI_clause : MetaNode { }
     // TEI-pre <- pre-clause TEI spaces?
-    public class A_pre : MetaNode { }
+    public class TEI_pre : MetaNode { }
     // TEI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class TEI_post : MetaNode { }
     // TEI-no-SA-handling <- pre-clause TEI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class TEI_no_SA_handing : MetaNode { }
 
     // #         left discursive parenthesis 
     // TO-clause <- TO-pre TO-post
-    public class A_clause : MetaNode { }
+    public class TO_clause : MetaNode { }
     // TO-pre <- pre-clause TO spaces?
-    public class A_pre : MetaNode { }
+    public class TO_pre : MetaNode { }
     // TO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class TO_post : MetaNode { }
     // TO-no-SA-handling <- pre-clause TO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class TO_no_SA_handing : MetaNode { }
 
     // #         right discursive parenthesis 
     // TOI-clause <- TOI-pre TOI-post
-    public class A_clause : MetaNode { }
+    public class TOI_clause : MetaNode { }
     // TOI-pre <- pre-clause TOI spaces?
-    public class A_pre : MetaNode { }
+    public class TOI_pre : MetaNode { }
     // TOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class TOI_post : MetaNode { }
     // TOI-no-SA-handling <- pre-clause TOI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class TOI_no_SA_handing : MetaNode { }
 
     // #         multiple utterance scope mark 
     // TUhE-clause <- TUhE-pre TUhE-post
-    public class A_clause : MetaNode { }
+    public class TUhE_clause : MetaNode { }
     // TUhE-pre <- pre-clause TUhE spaces?
-    public class A_pre : MetaNode { }
+    public class TUhE_pre : MetaNode { }
     // TUhE-post <- su-clause* post-clause
     // TUhE-no-SA-handling <- pre-clause TUhE su-clause* post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class TUhE_no_SA_handing : MetaNode { }
 
     // #         multiple utterance end scope mark 
     // TUhU-clause <- TUhU-pre TUhU-post
-    public class A_clause : MetaNode { }
+    public class TUhU_clause : MetaNode { }
     // TUhU-pre <- pre-clause TUhU spaces?
-    public class A_pre : MetaNode { }
+    public class TUhU_pre : MetaNode { }
     // TUhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class TUhU_post : MetaNode { }
     // TUhU-no-SA-handling <- pre-clause TUhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class TUhU_no_SA_handing : MetaNode { }
 
 
     // #         attitudinals, observationals, discursives 
     // UI-clause <- UI-pre UI-post
-    public class A_clause : MetaNode { }
+    public class UI_clause : MetaNode { }
     // UI-pre <- pre-clause UI spaces?
-    public class A_pre : MetaNode { }
+    public class UI_pre : MetaNode { }
     // UI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class UI_post : MetaNode { }
     // UI-no-SA-handling <- pre-clause UI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class UI_no_SA_handing : MetaNode { }
 
 
     // #         distance in space-time 
     // VA-clause <- VA-pre VA-post
-    public class A_clause : MetaNode { }
+    public class VA_clause : MetaNode { }
     // VA-pre <- pre-clause VA spaces?
-    public class A_pre : MetaNode { }
+    public class VA_pre : MetaNode { }
     // VA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VA_post : MetaNode { }
     // VA-no-SA-handling <- pre-clause VA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class VA_no_SA_handing : MetaNode { }
 
     // #         end simple bridi or bridi-tail 
     // VAU-clause <- VAU-pre VAU-post
-    public class A_clause : MetaNode { }
+    public class VAU_clause : MetaNode { }
     // VAU-pre <- pre-clause VAU spaces?
-    public class A_pre : MetaNode { }
+    public class VAU_pre : MetaNode { }
     // VAU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VAU_post : MetaNode { }
     // VAU-no-SA-handling <- pre-clause VAU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class VAU_no_SA_handing : MetaNode { }
 
     // #         left MEX bracket 
     // VEI-clause <- VEI-pre VEI-post
-    public class A_clause : MetaNode { }
+    public class VEI_clause : MetaNode { }
     // VEI-pre <- pre-clause VEI spaces?
-    public class A_pre : MetaNode { }
+    public class VEI_pre : MetaNode { }
     // VEI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VEI_post : MetaNode { }
     // VEI-no-SA-handling <- pre-clause VEI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class VEI_no_SA_handing : MetaNode { }
 
     // #         right MEX bracket 
     // VEhO-clause <- VEhO-pre VEhO-post
-    public class A_clause : MetaNode { }
+    public class VEhO_clause : MetaNode { }
     // VEhO-pre <- pre-clause VEhO spaces?
-    public class A_pre : MetaNode { }
+    public class VEhO_pre : MetaNode { }
     // VEhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VEhO_post : MetaNode { }
     // VEhO-no-SA-handling <- pre-clause VEhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class VEhO_no_SA_handing : MetaNode { }
 
     // #         MEX operator 
     // VUhU-clause <- VUhU-pre VUhU-post
-    public class A_clause : MetaNode { }
+    public class VUhU_clause : MetaNode { }
     // VUhU-pre <- pre-clause VUhU spaces?
-    public class A_pre : MetaNode { }
+    public class VUhU_pre : MetaNode { }
     // VUhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VUhU_post : MetaNode { }
     // VUhU-no-SA-handling <- pre-clause VUhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class VUhU_no_SA_handing : MetaNode { }
 
     // #         space-time interval size 
     // VEhA-clause <- VEhA-pre VEhA-post
-    public class A_clause : MetaNode { }
+    public class VEhA_clause : MetaNode { }
     // VEhA-pre <- pre-clause VEhA spaces?
-    public class A_pre : MetaNode { }
+    public class VEhA_pre : MetaNode { }
     // VEhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VEhA_post : MetaNode { }
     // VEhA-no-SA-handling <- pre-clause VEhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class VEhA_no_SA_handing : MetaNode { }
 
     // #         space-time dimensionality marker 
     // VIhA-clause <- VIhA-pre VIhA-post
-    public class A_clause : MetaNode { }
+    public class VIhA_clause : MetaNode { }
     // VIhA-pre <- pre-clause VIhA spaces?
-    public class A_pre : MetaNode { }
+    public class VIhA_pre : MetaNode { }
     // VIhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VIhA_post : MetaNode { }
     // VIhA-no-SA-handling <- pre-clause VIhA post-clause
+    public class VIhA_no_SA_handling : MetaNode { }
     // VUhO-clause <- VUhO-pre VUhO-post
-    public class A_clause : MetaNode { }
+    public class VUhO_clause : MetaNode { }
     // VUhO-pre <- pre-clause VUhO spaces?
+    public class VUhO_pre : MetaNode { }
     // VUhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class VUhO_post : MetaNode { }
     // VUhO-no-SA-handling <- pre-clause VUhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class VUhO_no_SA_handing : MetaNode { }
 
     // # glue between logically connected sumti and relative clauses 
 
 
     // #         subscripting operator 
     // XI-clause <- XI-pre XI-post
-    public class A_clause : MetaNode { }
+    public class XI_clause : MetaNode { }
     // XI-pre <- pre-clause XI spaces?
-    public class A_pre : MetaNode { }
+    public class XI_pre : MetaNode { }
     // XI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class XI_post : MetaNode { }
     // XI-no-SA-handling <- pre-clause XI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class XI_no_SA_handing : MetaNode { }
 
 
     // #         hesitation 
     // # Very very special case.  Handled in the morphology section.
     // # Y-clause <- spaces? Y spaces?
-    public class A_clause : MetaNode { }
+    public class Y_clause : MetaNode { }
 
 
     // #         event properties - inchoative, etc. 
     // ZAhO-clause <- ZAhO-pre ZAhO-post
-    public class A_clause : MetaNode { }
+    public class ZAhO_clause : MetaNode { }
     // ZAhO-pre <- pre-clause ZAhO spaces?
-    public class A_pre : MetaNode { }
+    public class ZAhO_pre : MetaNode { }
     // ZAhO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ZAhO_post : MetaNode { }
     // ZAhO-no-SA-handling <- pre-clause ZAhO post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class ZAhO_no_SA_handing : MetaNode { }
 
     // #         time interval size tense 
     // ZEhA-clause <- ZEhA-pre ZEhA-post
-    public class A_clause : MetaNode { }
+    public class ZEhA_clause : MetaNode { }
     // ZEhA-pre <- pre-clause ZEhA spaces?
-    public class A_pre : MetaNode { }
+    public class ZEhA_pre : MetaNode { }
     // ZEhA-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ZEhA_post : MetaNode { }
     // ZEhA-no-SA-handling <- pre-clause ZEhA post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class ZEhA_no_SA_handing : MetaNode { }
 
     // #         lujvo glue 
     // ZEI-clause <- ZEI-pre ZEI-post
-    public class A_clause : MetaNode { }
+    public class ZEI_clause : MetaNode { }
     // ZEI-clause-no-SA <- ZEI-pre-no-SA ZEI ZEI-post
+    public class ZEI_clause_no_SA : MetaNode { }
     // ZEI-pre <- pre-clause ZEI spaces?
-    public class A_pre : MetaNode { }
+    public class ZEI_pre : MetaNode { }
     // ZEI-pre-no-SA <- pre-clause
+    public class ZEI_pre_no_SA : MetaNode { }
     // ZEI-post <- spaces?
-    public class A_post : MetaNode { }
+    public class ZEI_post : MetaNode { }
     // ZEI-no-SA-handling <- pre-clause ZEI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class ZEI_no_SA_handing : MetaNode { }
 
     // #         time distance tense 
     // ZI-clause <- ZI-pre ZI-post
-    public class A_clause : MetaNode { }
+    public class ZI_clause : MetaNode { }
     // ZI-pre <- pre-clause ZI spaces?
-    public class A_pre : MetaNode { }
+    public class ZI_pre : MetaNode { }
     // ZI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ZI_post : MetaNode { }
     // ZI-no-SA-handling <- pre-clause ZI post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class ZI_no_SA_handing : MetaNode { }
 
     // #         conjoins relative clauses 
     // ZIhE-clause <- ZIhE-pre ZIhE-post
-    public class A_clause : MetaNode { }
+    public class ZIhE_clause : MetaNode { }
     // ZIhE-pre <- pre-clause ZIhE spaces?
-    public class A_pre : MetaNode { }
+    public class ZIhE_pre : MetaNode { }
     // ZIhE-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ZIhE_post : MetaNode { }
     // ZIhE-no-SA-handling <- pre-clause ZIhE post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class ZIhE_no_SA_handing : MetaNode { }
 
     // #         single word metalinguistic quote marker 
     // ZO-clause <- ZO-pre ZO-post
-    public class A_clause : MetaNode { }
+    public class ZO_clause : MetaNode { }
     // ZO-pre <- pre-clause ZO spaces? any-word spaces?
-    public class A_pre : MetaNode { }
+    public class ZO_pre : MetaNode { }
     // ZO-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ZO_post : MetaNode { }
     // ZO-no-SA-handling <- pre-clause ZO spaces? any-word spaces?
-    public class A_no_SA_handing : MetaNode { }
+    public class ZO_no_SA_handing : MetaNode { }
 
     // #         delimited quote marker 
     // ZOI-clause <- ZOI-pre ZOI-post
-    public class A_clause : MetaNode { }
+    public class ZOI_clause : MetaNode { }
     // ZOI-pre <- pre-clause ZOI spaces? zoi-open zoi-word* zoi-close spaces?
-    public class A_pre : MetaNode { }
+    public class ZOI_pre : MetaNode { }
     // ZOI-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ZOI_post : MetaNode { }
     // ZOI-no-SA-handling <- pre-clause ZOI spaces? zoi-open zoi-word* zoi-close spaces?
-    public class A_no_SA_handing : MetaNode { }
+    public class ZOI_no_SA_handing : MetaNode { }
 
     // #         prenex terminator (not elidable) 
     // ZOhU-clause <- ZOhU-pre ZOhU-post
-    public class A_clause : MetaNode { }
+    public class ZOhU_clause : MetaNode { }
     // ZOhU-pre <- pre-clause ZOhU spaces?
-    public class A_pre : MetaNode { }
+    public class ZOhU_pre : MetaNode { }
     // ZOhU-post <- post-clause
-    public class A_post : MetaNode { }
+    public class ZOhU_post : MetaNode { }
     // ZOhU-no-SA-handling <- pre-clause ZOhU post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class ZOhU_no_SA_handing : MetaNode { }
 
 
     // # --- MORPHOLOGY ---
@@ -2363,18 +2371,9 @@ namespace LojbanTest
     // ZOhU <- &cmavo ( z o h u ) &post-word
 
 
-    public class NAI_clause : MetaNode { }
     public class EOF : MetaNode { }
     public class Spaces : MetaNode { }
-    public class Su_clause : MetaNode { }
-    public class CMENE_clause : MetaNode { }
-    public class Si_clause : MetaNode { }
     public class SI_clause : MetaNode { }
-    public class FAhO_clause : MetaNode { }
-    public class Dot_star : MetaNode { }
-    public class I_clause : MetaNode { }
-    public class BO_clause : MetaNode { }
-    public class NIhO_clause : MetaNode { }
 
     public class SpaceChar1 : MetaNode
     {
