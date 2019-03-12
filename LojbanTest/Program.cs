@@ -1552,6 +1552,7 @@ namespace LojbanTest
 
     // #         metalinguistic single word eraser 
     // SI-clause <- spaces? SI spaces?
+    public class SI_clause : MetaNode { }
 
     // #         reciprocal sumti marker 
     // SOI-clause <- SOI-pre SOI-post
@@ -1839,8 +1840,11 @@ namespace LojbanTest
     // # --- MORPHOLOGY ---
 
     // CMENE <- cmene
+    public class CMENE : MetaNode { }
     // BRIVLA <- gismu / lujvo / fuhivla
+    public class BRIVLA : MetaNode { }
     // CMAVO <- A / BAI / BAhE / BE / BEI / BEhO / BIhE / BIhI / BO / BOI / BU / BY / CAhA / CAI / CEI / CEhE / CO / COI / CU / CUhE / DAhO / DOI / DOhU / FA / FAhA / FAhO / FEhE / FEhU / FIhO / FOI / FUhA / FUhE / FUhO / GA / GAhO / GEhU / GI / GIhA / GOI / GOhA / GUhA / I / JA / JAI / JOhI / JOI / KE / KEhE / KEI / KI / KOhA / KU / KUhE / KUhO / LA / LAU / LAhE / LE / LEhU / LI / LIhU / LOhO / LOhU / LU / LUhU / MAhO / MAI / ME / MEhU / MOhE / MOhI / MOI / NA / NAI / NAhE / NAhU / NIhE / NIhO / NOI / NU / NUhA / NUhI / NUhU / PA / PEhE / PEhO / PU / RAhO / ROI / SA / SE / SEI / SEhU / SI / SOI / SU / TAhE / TEhU / TEI / TO / TOI / TUhE / TUhU / UI / VA / VAU / VEI / VEhO / VUhU / VEhA / VIhA / VUhO / XI / ZAhO / ZEhA / ZEI / ZI / ZIhE / ZO / ZOI / ZOhU / cmavo
+    public class CMAVO : MetaNode { }
 
 
     // # This is a Parsing Expression Grammar for the morphology of Lojban.
@@ -2129,106 +2133,106 @@ namespace LojbanTest
     public class Unvoiced : MetaNode { }
 
     // l <- comma* [lL] !h !l
-    public class _y : MetaNode { }
+    public class _l : MetaNode { }
 
     // m <- comma* [mM] !h !m !z
-    public class _y : MetaNode { }
+    public class _m : MetaNode { }
 
     // n <- comma* [nN] !h !n !affricate
-    public class _y : MetaNode { }
+    public class _n : MetaNode { }
 
     // r <- comma* [rR] !h !r
-    public class _y : MetaNode { }
+    public class _r : MetaNode { }
 
     // b <- comma* [bB] !h !b !unvoiced
-    public class _y : MetaNode { }
+    public class _b : MetaNode { }
 
     // d <- comma* [dD] !h !d !unvoiced
-    public class _y : MetaNode { }
+    public class _d : MetaNode { }
 
     // g <- comma* [gG] !h !g !unvoiced
-    public class _y : MetaNode { }
+    public class _g : MetaNode { }
 
     // v <- comma* [vV] !h !v !unvoiced
-    public class _y : MetaNode { }
+    public class _v : MetaNode { }
 
     // j <- comma* [jJ] !h !j !z !unvoiced
-    public class _y : MetaNode { }
+    public class _j : MetaNode { }
 
     // z <- comma* [zZ] !h !z !j !unvoiced
-    public class _y : MetaNode { }
+    public class _z : MetaNode { }
 
     // s <- comma* [sS] !h !s !c !voiced
-    public class _y : MetaNode { }
+    public class _s : MetaNode { }
 
     // c <- comma* [cC] !h !c !s !x !voiced
-    public class _y : MetaNode { }
+    public class _c : MetaNode { }
 
     // x <- comma* [xX] !h !x !c !k !voiced
-    public class _y : MetaNode { }
+    public class _x : MetaNode { }
 
     // k <- comma* [kK] !h !k !x !voiced
-    public class _y : MetaNode { }
+    public class _k : MetaNode { }
 
     // f <- comma* [fF] !h !f !voiced
-    public class _y : MetaNode { }
+    public class _f : MetaNode { }
 
     // p <- comma* [pP] !h !p !voiced
-    public class _y : MetaNode { }
+    public class _p : MetaNode { }
 
     // t <- comma* [tT] !h !t !voiced
-    public class _y : MetaNode { }
+    public class _t : MetaNode { }
 
     // h <- comma* ['h] &nucleus
-    public class _y : MetaNode { }
+    public class _h : MetaNode { }
 
     // #-------------------------------------------------------------------
 
     // digit <- comma* [0123456789] !h !nucleus
-    public class _y : MetaNode { }
+    public class Digit : MetaNode { }
 
     // post-word <- pause / !nucleus lojban-word
-    public class _y : MetaNode { }
+    public class Post_word : MetaNode { }
 
     // pause <- comma* space-char / EOF
-    public class _y : MetaNode { }
+    public class Pause : MetaNode { }
 
     // EOF <- comma* !.
-    public class _y : MetaNode { }
+    public class EOF : MetaNode { }
 
     // comma <- [,]
-    public class _y : MetaNode { }
+    public class Comma: MetaNode { }
 
     // non-lojban-word <- !lojban-word non-space+
-    public class _y : MetaNode { }
+    public class Non_lojban_word : MetaNode { }
 
     // non-space <- !space-char .
-    public class _y : MetaNode { }
+    public class Non_space : MetaNode { }
 
     // #Unicode-style and escaped chars not compatible with cl-peg
     // # space-char <- [.\t\n\r?!\u0020]
 
     // space-char <- [.?! ] / space-char1 / space-char2 
-    public class _y : MetaNode { }
+    public class Space_char : MetaNode { }
     // space-char1 <- '	'
-    public class _y : MetaNode { }
+    public class Space_char1 : MetaNode { }
     // space-char2 <- '
     // '
-    public class _y : MetaNode { }
+    public class Space_char2 : MetaNode { }
 
     // #-------------------------------------------------------------------
 
     // spaces <- !Y initial-spaces
-    public class _y : MetaNode { }
+    public class Spaces : MetaNode { }
 
     // initial-spaces <- (comma* space-char / !ybu Y)+ EOF? / EOF
-    public class _y : MetaNode { }
+    public class Initial_spaces : MetaNode { }
 
     // ybu <- Y space-char* BU
-    public class _y : MetaNode { }
+    public class Ybu : MetaNode { }
 
     // lujvo <- !gismu !fuhivla brivla
-    public class _y : MetaNode { }
+    public class Lujvo : MetaNode { }
 
     // #-------------------------------------------------------------------
 
@@ -2236,373 +2240,368 @@ namespace LojbanTest
     public class A : MetaNode { }
 
     // BAI <- &cmavo ( d u h o / s i h u / z a u / k i h i / d u h i / c u h u / t u h i / t i h u / d i h o / j i h u / r i h a / n i h i / m u h i / k i h u / v a h u / k o i / c a h i / t a h i / p u h e / j a h i / k a i / b a i / f i h e / d e h i / c i h o / m a u / m u h u / r i h i / r a h i / k a h a / p a h u / p a h a / l e h a / k u h u / t a i / b a u / m a h i / c i h e / f a u / p o h i / c a u / m a h e / c i h u / r a h a / p u h a / l i h e / l a h u / b a h i / k a h i / s a u / f a h e / b e h i / t i h i / j a h e / g a h a / v a h o / j i h o / m e h a / d o h e / j i h e / p i h o / g a u / z u h e / m e h e / r a i ) &post-word
-    public class A : MetaNode { }
+    public class BAI : MetaNode { }
 
     // BAhE <- &cmavo ( b a h e / z a h e ) &post-word
-    public class A : MetaNode { }
+    public class BAhE : MetaNode { }
 
     // BE <- &cmavo ( b e ) &post-word
-    public class A : MetaNode { }
+    public class BE : MetaNode { }
 
     // BEI <- &cmavo ( b e i ) &post-word
-    public class A : MetaNode { }
+    public class BEI : MetaNode { }
 
     // BEhO <- &cmavo ( b e h o ) &post-word
-    public class A : MetaNode { }
+    public class BEhO : MetaNode { }
 
     // BIhE <- &cmavo ( b i h e ) &post-word
-    public class A : MetaNode { }
+    public class BIhE : MetaNode { }
 
     // BIhI <- &cmavo ( m i h i / b i h o / b i h i ) &post-word
-    public class A : MetaNode { }
+    public class BIhI : MetaNode { }
 
     // BO <- &cmavo ( b o ) &post-word
-    public class A : MetaNode { }
+    public class BO : MetaNode { }
 
     // BOI <- &cmavo ( b o i ) &post-word
-    public class A : MetaNode { }
+    public class BOI : MetaNode { }
 
     // BU <- &cmavo ( b u ) &post-word
-    public class A : MetaNode { }
+    public class BU : MetaNode { }
 
     // BY <- ybu / &cmavo ( j o h o / r u h o / g e h o / j e h o / l o h a / n a h a / s e h e / t o h a / g a h e / y h y / b y / c y / d y / f y / g y / j y / k y / l y / m y / n y / p y / r y / s y / t y / v y / x y / z y ) &post-word
-    public class A : MetaNode { }
+    public class BY : MetaNode { }
 
     // CAhA <- &cmavo ( c a h a / p u h i / n u h o / k a h e ) &post-word
-    public class A : MetaNode { }
+    public class CAhA : MetaNode { }
 
     // CAI <- &cmavo ( p e i / c a i / c u h i / s a i / r u h e ) &post-word
-    public class A : MetaNode { }
+    public class CAI : MetaNode { }
 
     // CEI <- &cmavo ( c e i ) &post-word
-    public class A : MetaNode { }
+    public class CEI : MetaNode { }
 
     // CEhE <- &cmavo ( c e h e ) &post-word
-    public class A : MetaNode { }
+    public class CEhE : MetaNode { }
 
     // CO <- &cmavo ( c o ) &post-word
-    public class A : MetaNode { }
+    public class CO : MetaNode { }
 
     // COI <- &cmavo ( j u h i / c o i / f i h i / t a h a / m u h o / f e h o / c o h o / p e h u / k e h o / n u h e / r e h i / b e h e / j e h e / m i h e / k i h e / v i h o ) &post-word
-    public class A : MetaNode { }
+    public class COI : MetaNode { }
 
     // CU <- &cmavo ( c u ) &post-word
-    public class A : MetaNode { }
+    public class CU : MetaNode { }
 
     // CUhE <- &cmavo ( c u h e / n a u ) &post-word
-    public class A : MetaNode { }
+    public class CUhE : MetaNode { }
 
     // DAhO <- &cmavo ( d a h o ) &post-word
-    public class A : MetaNode { }
+    public class DAhO : MetaNode { }
 
     // DOI <- &cmavo ( d o i ) &post-word
-    public class A : MetaNode { }
+    public class DOI : MetaNode { }
 
     // DOhU <- &cmavo ( d o h u ) &post-word
-    public class A : MetaNode { }
+    public class DOhU : MetaNode { }
 
     // FA <- &cmavo ( f a i / f a / f e / f o / f u / f i h a / f i ) &post-word
-    public class A : MetaNode { }
+    public class FA : MetaNode { }
 
     // FAhA <- &cmavo ( d u h a / b e h a / n e h u / v u h a / g a h u / t i h a / n i h a / c a h u / z u h a / r i h u / r u h u / r e h o / t e h e / b u h u / n e h a / p a h o / n e h i / t o h o / z o h i / z e h o / z o h a / f a h a ) &post-word
-    public class A : MetaNode { }
+    public class FAhA : MetaNode { }
 
     // FAhO <- &cmavo ( f a h o ) &post-word
-    public class A : MetaNode { }
+    public class FAhO : MetaNode { }
 
     // FEhE <- &cmavo ( f e h e ) &post-word
-    public class A : MetaNode { }
+    public class FEhE : MetaNode { }
 
     // FEhU <- &cmavo ( f e h u ) &post-word
-    public class A : MetaNode { }
+    public class FEhU : MetaNode { }
 
     // FIhO <- &cmavo ( f i h o ) &post-word
-    public class A : MetaNode { }
+    public class FIhO : MetaNode { }
 
     // FOI <- &cmavo ( f o i ) &post-word
-    public class A : MetaNode { }
+    public class FOI : MetaNode { }
 
     // FUhA <- &cmavo ( f u h a ) &post-word
-    public class A : MetaNode { }
+    public class FUhA : MetaNode { }
 
     // FUhE <- &cmavo ( f u h e ) &post-word
-    public class A : MetaNode { }
+    public class FUhE : MetaNode { }
 
     // FUhO <- &cmavo ( f u h o ) &post-word
-    public class A : MetaNode { }
+    public class FUhO : MetaNode { }
 
     // GA <- &cmavo ( g e h i / g e / g o / g a / g u ) &post-word
-    public class A : MetaNode { }
+    public class GA : MetaNode { }
 
     // GAhO <- &cmavo ( k e h i / g a h o ) &post-word
-    public class A : MetaNode { }
+    public class GAhO : MetaNode { }
 
     // GEhU <- &cmavo ( g e h u ) &post-word
-    public class A : MetaNode { }
+    public class GEhU : MetaNode { }
 
     // GI <- &cmavo ( g i ) &post-word
-    public class A : MetaNode { }
+    public class GI : MetaNode { }
 
     // GIhA <- &cmavo ( g i h e / g i h i / g i h o / g i h a / g i h u ) &post-word
-    public class A : MetaNode { }
+    public class GIhA : MetaNode { }
 
     // GOI <- &cmavo ( n o h u / n e / g o i / p o h u / p e / p o h e / p o ) &post-word
-    public class A : MetaNode { }
+    public class GOI : MetaNode { }
 
     // GOhA <- &cmavo ( m o / n e i / g o h u / g o h o / g o h i / n o h a / g o h e / g o h a / d u / b u h a / b u h e / b u h i / c o h e ) &post-word
-    public class A : MetaNode { }
+    public class GOhA : MetaNode { }
 
     // GUhA <- &cmavo ( g u h e / g u h i / g u h o / g u h a / g u h u ) &post-word
-    public class A : MetaNode { }
+    public class GUhA : MetaNode { }
 
     // I <- &cmavo ( i ) &post-word
-    public class A : MetaNode { }
+    public class I : MetaNode { }
 
     // JA <- &cmavo ( j e h i / j e / j o / j a / j u ) &post-word
-    public class A : MetaNode { }
+    public class JA : MetaNode { }
 
     // JAI <- &cmavo ( j a i ) &post-word
-    public class A : MetaNode { }
+    public class JAI : MetaNode { }
 
     // JOhI <- &cmavo ( j o h i ) &post-word
-    public class A : MetaNode { }
+    public class JOhI : MetaNode { }
 
     // JOI <- &cmavo ( f a h u / p i h u / j o i / c e h o / c e / j o h u / k u h a / j o h e / j u h e ) &post-word
-    public class A : MetaNode { }
+    public class JOI : MetaNode { }
 
     // KE <- &cmavo ( k e ) &post-word
-    public class A : MetaNode { }
+    public class KE : MetaNode { }
 
     // KEhE <- &cmavo ( k e h e ) &post-word
-    public class A : MetaNode { }
+    public class KEhE : MetaNode { }
 
     // KEI <- &cmavo ( k e i ) &post-word
-    public class A : MetaNode { }
+    public class KEI : MetaNode { }
 
     // KI <- &cmavo ( k i ) &post-word
-    public class A : MetaNode { }
+    public class KI : MetaNode { }
 
     // KOhA <- &cmavo ( d a h u / d a h e / d i h u / d i h e / d e h u / d e h e / d e i / d o h i / m i h o / m a h a / m i h a / d o h o / k o h a / f o h u / k o h e / k o h i / k o h o / k o h u / f o h a / f o h e / f o h i / f o h o / v o h a / v o h e / v o h i / v o h o / v o h u / r u / r i / r a / t a / t u / t i / z i h o / k e h a / m a / z u h i / z o h e / c e h u / d a / d e / d i / k o / m i / d o ) &post-word
-    public class A : MetaNode { }
+    public class KOhA : MetaNode { }
 
     // KU <- &cmavo ( k u ) &post-word
-    public class A : MetaNode { }
+    public class KU : MetaNode { }
 
     // KUhE <- &cmavo ( k u h e ) &post-word
-    public class A : MetaNode { }
+    public class KUhE : MetaNode { }
 
     // KUhO <- &cmavo ( k u h o ) &post-word
-    public class A : MetaNode { }
+    public class KUhO : MetaNode { }
 
     // LA <- &cmavo ( l a i / l a h i / l a ) &post-word
-    public class A : MetaNode { }
+    public class LA : MetaNode { }
 
     // LAU <- &cmavo ( c e h a / l a u / z a i / t a u ) &post-word
-    public class A : MetaNode { }
+    public class LAU : MetaNode { }
 
     // LAhE <- &cmavo ( t u h a / l u h a / l u h o / l a h e / v u h i / l u h i / l u h e ) &post-word
-    public class A : MetaNode { }
+    public class LAhE : MetaNode { }
 
     // LE <- &cmavo ( l e i / l o i / l e h i / l o h i / l e h e / l o h e / l o / l e ) &post-word
-    public class A : MetaNode { }
+    public class LE : MetaNode { }
 
     // LEhU <- &cmavo ( l e h u ) &post-word
-    public class A : MetaNode { }
+    public class LEhU : MetaNode { }
 
     // LI <- &cmavo ( m e h o / l i ) &post-word
-    public class A : MetaNode { }
+    public class LI : MetaNode { }
 
     // LIhU <- &cmavo ( l i h u ) &post-word
-    public class A : MetaNode { }
+    public class LIhU : MetaNode { }
 
     // LOhO <- &cmavo ( l o h o ) &post-word
-    public class A : MetaNode { }
+    public class LOhO : MetaNode { }
 
     // LOhU <- &cmavo ( l o h u ) &post-word
-    public class A : MetaNode { }
+    public class LOhU : MetaNode { }
 
     // LU <- &cmavo ( l u ) &post-word
-    public class A : MetaNode { }
+    public class LU : MetaNode { }
 
     // LUhU <- &cmavo ( l u h u ) &post-word
-    public class A : MetaNode { }
+    public class LUhU : MetaNode { }
 
     // MAhO <- &cmavo ( m a h o ) &post-word
-    public class A : MetaNode { }
+    public class MAhO : MetaNode { }
 
     // MAI <- &cmavo ( m o h o / m a i ) &post-word
-    public class A : MetaNode { }
+    public class MAI : MetaNode { }
 
     // ME <- &cmavo ( m e ) &post-word
-    public class A : MetaNode { }
+    public class ME : MetaNode { }
 
     // MEhU <- &cmavo ( m e h u ) &post-word
-    public class A : MetaNode { }
+    public class MEhU : MetaNode { }
 
     // MOhE <- &cmavo ( m o h e ) &post-word
-    public class A : MetaNode { }
+    public class MOhE : MetaNode { }
 
     // MOhI <- &cmavo ( m o h i ) &post-word
-    public class A : MetaNode { }
+    public class MOhI : MetaNode { }
 
     // MOI <- &cmavo ( m e i / m o i / s i h e / c u h o / v a h e ) &post-word
-    public class A : MetaNode { }
+    public class MOI : MetaNode { }
 
     // NA <- &cmavo ( j a h a / n a ) &post-word
-    public class A : MetaNode { }
+    public class NA : MetaNode { }
 
     // NAI <- &cmavo ( n a i ) &post-word
-    public class A : MetaNode { }
+    public class NAI : MetaNode { }
 
     // NAhE <- &cmavo ( t o h e / j e h a / n a h e / n o h e ) &post-word
-    public class A : MetaNode { }
+    public class NAhE : MetaNode { }
 
     // NAhU <- &cmavo ( n a h u ) &post-word
-    public class A : MetaNode { }
+    public class NAhU : MetaNode { }
 
     // NIhE <- &cmavo ( n i h e ) &post-word
-    public class A : MetaNode { }
+    public class NIhE : MetaNode { }
 
     // NIhO <- &cmavo ( n i h o / n o h i ) &post-word
-    public class A : MetaNode { }
+    public class NIhO : MetaNode { }
 
     // NOI <- &cmavo ( v o i / n o i / p o i ) &post-word
-    public class A : MetaNode { }
+    public class NOI : MetaNode { }
 
     // NU <- &cmavo ( n i / d u h u / s i h o / n u / l i h i / k a / j e i / s u h u / z u h o / m u h e / p u h u / z a h i ) &post-word
-    public class A : MetaNode { }
+    public class NU : MetaNode { }
 
     // NUhA <- &cmavo ( n u h a ) &post-word
-    public class A : MetaNode { }
+    public class NUhA : MetaNode { }
 
     // NUhI <- &cmavo ( n u h i ) &post-word
-    public class A : MetaNode { }
+    public class NUhI : MetaNode { }
 
     // NUhU <- &cmavo ( n u h u ) &post-word 
-    public class A : MetaNode { }
+    public class NUhU : MetaNode { }
 
     // PA <- &cmavo ( d a u / f e i / g a i / j a u / r e i / v a i / p i h e / p i / f i h u / z a h u / m e h i / n i h u / k i h o / c e h i / m a h u / r a h e / d a h a / s o h a / j i h i / s u h o / s u h e / r o / r a u / s o h u / s o h i / s o h e / s o h o / m o h a / d u h e / t e h o / k a h o / c i h i / t u h o / x o / p a i / n o h o / n o / p a / r e / c i / v o / m u / x a / z e / b i / s o / digit ) &post-word
-    public class A : MetaNode { }
+    public class PA : MetaNode { }
 
     // PEhE <- &cmavo ( p e h e ) &post-word
-    public class A : MetaNode { }
+    public class PEhE : MetaNode { }
 
     // PEhO <- &cmavo ( p e h o ) &post-word
-    public class A : MetaNode { }
+    public class PEhO : MetaNode { }
 
     // PU <- &cmavo ( b a / p u / c a ) &post-word
-    public class A : MetaNode { }
+    public class PU : MetaNode { }
 
     // RAhO <- &cmavo ( r a h o ) &post-word
-    public class A : MetaNode { }
+    public class RAhO : MetaNode { }
 
     // ROI <- &cmavo ( r e h u / r o i ) &post-word
-    public class A : MetaNode { }
+    public class ROI : MetaNode { }
 
     // SA <- &cmavo ( s a ) &post-word
-    public class A : MetaNode { }
+    public class SA : MetaNode { }
 
     // SE <- &cmavo ( s e / t e / v e / x e ) &post-word
-    public class A : MetaNode { }
+    public class SE : MetaNode { }
 
     // SEI <- &cmavo ( s e i / t i h o ) &post-word
-    public class A : MetaNode { }
+    public class SEI : MetaNode { }
 
     // SEhU <- &cmavo ( s e h u ) &post-word
-    public class A : MetaNode { }
+    public class SEhU : MetaNode { }
 
     // SI <- &cmavo ( s i ) &post-word
-    public class A : MetaNode { }
+    public class SI : MetaNode { }
 
     // SOI <- &cmavo ( s o i ) &post-word
-    public class A : MetaNode { }
+    public class SOI : MetaNode { }
 
     // SU <- &cmavo ( s u ) &post-word
-    public class A : MetaNode { }
+    public class SU : MetaNode { }
 
 
     // TAhE <- &cmavo ( r u h i / t a h e / d i h i / n a h o ) &post-word
-    public class A : MetaNode { }
+    public class TAhE : MetaNode { }
 
     // TEhU <- &cmavo ( t e h u ) &post-word
-    public class A : MetaNode { }
+    public class TEhU : MetaNode { }
 
     // TEI <- &cmavo ( t e i ) &post-word
-    public class A : MetaNode { }
+    public class TEI : MetaNode { }
 
     // TO <- &cmavo ( t o h i / t o ) &post-word
-    public class A : MetaNode { }
+    public class TO : MetaNode { }
 
     // TOI <- &cmavo ( t o i ) &post-word
-    public class A : MetaNode { }
+    public class TOI : MetaNode { }
 
     // TUhE <- &cmavo ( t u h e ) &post-word
-    public class A : MetaNode { }
+    public class TUhE : MetaNode { }
 
     // TUhU <- &cmavo ( t u h u ) &post-word
-    public class A : MetaNode { }
+    public class TUhU : MetaNode { }
 
     // UI <- &cmavo ( i h a / i e / a h e / u h i / i h o / i h e / a h a / i a / o h i / o h e / e h e / o i / u o / e h i / u h o / a u / u a / a h i / i h u / i i / u h a / u i / a h o / a i / a h u / i u / e i / o h o / e h a / u u / o h a / o h u / u h u / e h o / i o / e h u / u e / i h i / u h e / b a h a / j a h o / c a h e / s u h a / t i h e / k a h u / s e h o / z a h a / p e h i / r u h a / j u h a / t a h o / r a h u / l i h a / b a h u / m u h a / d o h a / t o h u / v a h i / p a h e / z u h u / s a h e / l a h a / k e h u / s a h u / d a h i / j e h u / s a h a / k a u / t a h u / n a h i / j o h a / b i h u / l i h o / p a u / m i h u / k u h i / j i h a / s i h a / p o h o / p e h a / r o h i / r o h e / r o h o / r o h u / r o h a / r e h e / l e h o / j u h o / f u h i / d a i / g a h i / z o h o / b e h u / r i h e / s e h i / s e h a / v u h e / k i h a / x u / g e h e / b u h o ) &post-word
-    public class A : MetaNode { }
+    public class UI : MetaNode { }
 
     // VA <- &cmavo ( v i / v a / v u ) &post-word
-    public class A : MetaNode { }
+    public class VA : MetaNode { }
 
     // VAU <- &cmavo ( v a u ) &post-word
-    public class A : MetaNode { }
+    public class VAU : MetaNode { }
 
     // VEI <- &cmavo ( v e i ) &post-word
-    public class A : MetaNode { }
+    public class VEI : MetaNode { }
 
     // VEhO <- &cmavo ( v e h o ) &post-word
-    public class A : MetaNode { }
+    public class VEhO : MetaNode { }
 
     // VUhU <- &cmavo ( g e h a / f u h u / p i h i / f e h i / v u h u / s u h i / j u h u / g e i / p a h i / f a h i / t e h a / c u h a / v a h a / n e h o / d e h o / f e h a / s a h o / r e h a / r i h o / s a h i / p i h a / s i h i ) &post-word
-    public class A : MetaNode { }
+    public class VUhU : MetaNode { }
 
     // VEhA <- &cmavo ( v e h u / v e h a / v e h i / v e h e ) &post-word
-    public class A : MetaNode { }
+    public class VEhA : MetaNode { }
 
     // VIhA <- &cmavo ( v i h i / v i h a / v i h u / v i h e ) &post-word
-    public class A : MetaNode { }
+    public class VIhA : MetaNode { }
 
     // VUhO <- &cmavo ( v u h o ) &post-word
-    public class A : MetaNode { }
+    public class VUhO : MetaNode { }
 
     // XI <- &cmavo ( x i ) &post-word
-    public class A : MetaNode { }
+    public class XI : MetaNode { }
 
     // Y <- &cmavo ( y+ ) &post-word
-    public class A : MetaNode { }
+    public class Y : MetaNode { }
 
     // ZAhO <- &cmavo ( c o h i / p u h o / c o h u / m o h u / c a h o / c o h a / d e h a / b a h o / d i h a / z a h o ) &post-word
-    public class A : MetaNode { }
+    public class ZAhO : MetaNode { }
 
     // ZEhA <- &cmavo ( z e h u / z e h a / z e h i / z e h e ) &post-word
-    public class A : MetaNode { }
+    public class ZEhA : MetaNode { }
 
     // ZEI <- &cmavo ( z e i ) &post-word
-    public class A : MetaNode { }
+    public class ZEI : MetaNode { }
 
     // ZI <- &cmavo ( z u / z a / z i ) &post-word
-    public class A : MetaNode { }
+    public class ZI : MetaNode { }
 
     // ZIhE <- &cmavo ( z i h e ) &post-word
-    public class A : MetaNode { }
+    public class ZIhE : MetaNode { }
 
     // ZO <- &cmavo ( z o ) &post-word
-    public class A : MetaNode { }
+    public class ZO : MetaNode { }
 
     // ZOI <- &cmavo ( z o i / l a h o ) &post-word
-    public class A : MetaNode { }
+    public class ZOI : MetaNode { }
 
     // ZOhU <- &cmavo ( z o h u ) &post-word
-    public class A : MetaNode { }
-
-
-    public class EOF : MetaNode { }
-    public class Spaces : MetaNode { }
-    public class SI_clause : MetaNode { }
+    public class ZOhU : MetaNode { }
 
     public class SpaceChar1 : MetaNode
     {
