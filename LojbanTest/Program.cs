@@ -598,7 +598,7 @@ namespace LojbanTest
     // BRIVLA-post <- post-clause
     public class BRIVLA_post : MetaNode { }
     // BRIVLA-no-SA-handling <- pre-clause BRIVLA post-clause / zei-clause-no-SA
-    public class BRIVLA_no_SA_handing : MetaNode { }
+    public class BRIVLA_no_SA_handling : MetaNode { }
 
     // CMENE-clause <- CMENE-pre CMENE-post
     public class CMENE_clause : MetaNode { }
@@ -607,7 +607,7 @@ namespace LojbanTest
     // CMENE-post <- post-clause
     public class CMENE_post : MetaNode { }
     // CMENE-no-SA-handling <- pre-clause CMENE post-clause
-    public class CMENE_no_SA_handing : MetaNode { }
+    public class CMENE_no_SA_handling : MetaNode { }
 
     // CMAVO-clause <- CMAVO-pre CMAVO-post
     public class CMAVO_clause : MetaNode { }
@@ -616,7 +616,7 @@ namespace LojbanTest
     // CMAVO-post <- post-clause
     public class CMAVO_post : MetaNode { }
     // CMAVO-no-SA-handling <- pre-clause CMAVO post-clause
-    public class CMAVO_no_SA_handing : MetaNode { }
+    public class CMAVO_no_SA_handling : MetaNode { }
 
     // #         eks; basic afterthought logical connectives 
     // A-clause <- A-pre A-post
@@ -626,7 +626,7 @@ namespace LojbanTest
     // A-post <- post-clause
     public class A_post : MetaNode { }
     // A-no-SA-handling <- pre-clause A post-clause
-    public class A_no_SA_handing : MetaNode { }
+    public class A_no_SA_handling : MetaNode { }
 
 
     // #         modal operators 
@@ -637,7 +637,7 @@ namespace LojbanTest
     // BAI-post <- post-clause
     public class BAI_post : MetaNode { }
     // BAI-no-SA-handling <- pre-clause BAI post-clause
-    public class BAI_no_SA_handing : MetaNode { }
+    public class BAI_no_SA_handling : MetaNode { }
 
     // #         next word intensifier 
     // BAhE-clause <- (BAhE-pre BAhE-post)+
@@ -647,7 +647,7 @@ namespace LojbanTest
     // BAhE-post <- si-clause? !ZEI-clause !BU-clause
     public class BAhE_post : MetaNode { }
     // BAhE-no-SA-handling <- BAhE spaces? BAhE-post
-    public class BAhE_no_SA_handing : MetaNode { }
+    public class BAhE_no_SA_handling : MetaNode { }
 
     // #         sumti link to attach sumti to a selbri 
     // BE-clause <- BE-pre BE-post
@@ -657,7 +657,7 @@ namespace LojbanTest
     // BE-post <- post-clause
     public class BE_post : MetaNode { }
     // BE-no-SA-handling <- pre-clause BE post-clause
-    public class BE_no_SA_handing : MetaNode { }
+    public class BE_no_SA_handling : MetaNode { }
 
     // #         multiple sumti separator between BE, BEI 
     // BEI-clause <- BEI-pre BEI-post
@@ -667,7 +667,7 @@ namespace LojbanTest
     // BEI-post <- post-clause
     public class BEI_post : MetaNode { }
     // BEI-no-SA-handling <- pre-clause BEI post-clause
-    public class BEI_no_SA_handing : MetaNode { }
+    public class BEI_no_SA_handling : MetaNode { }
 
     // #         terminates BEBEI specified descriptors 
     // BEhO-clause <- BEhO-pre BEhO-post
@@ -677,7 +677,7 @@ namespace LojbanTest
     // BEhO-post <- post-clause
     public class BEhO_post : MetaNode { }
     // BEhO-no-SA-handling <- pre-clause BEhO post-clause
-    public class BEhO_no_SA_handing : MetaNode { }
+    public class BEhO_no_SA_handling : MetaNode { }
 
     // #         prefix for high-priority MEX operator 
     // BIhE-clause <- BIhE-pre BIhE-post
@@ -687,7 +687,7 @@ namespace LojbanTest
     // BIhE-post <- post-clause
     public class BIhE_post : MetaNode { }
     // BIhE-no-SA-handling <- pre-clause BIhE post-clause
-    public class BIhE_no_SA_handing : MetaNode { }
+    public class BIhE_no_SA_handling : MetaNode { }
 
     // #         interval component of JOI 
     // BIhI-clause <- BIhI-pre BIhI-post
@@ -697,7 +697,7 @@ namespace LojbanTest
     // BIhI-post <- post-clause
     public class BIhI_post : MetaNode { }
     // BIhI-no-SA-handling <- pre-clause BIhI post-clause
-    public class BIhI_no_SA_handing : MetaNode { }
+    public class BIhI_no_SA_handling : MetaNode { }
 
     // #         joins two units with shortest scope 
     // BO-clause <- BO-pre BO-post
@@ -707,7 +707,7 @@ namespace LojbanTest
     // BO-post <- post-clause
     public class BO_post : MetaNode { }
     // BO-no-SA-handling <- pre-clause BO post-clause
-    public class BO_no_SA_handing : MetaNode { }
+    public class BO_no_SA_handling : MetaNode { }
 
     // #         number or lerfu-string terminator 
     // BOI-clause <- BOI-pre BOI-post
@@ -717,7 +717,7 @@ namespace LojbanTest
     // BOI-post <- post-clause
     public class BOI_post : MetaNode { }
     // BOI-no-SA-handling <- pre-clause BOI post-clause
-    public class BOI_no_SA_handing : MetaNode { }
+    public class BOI_no_SA_handling : MetaNode { }
 
     // #         turns any word into a BY lerfu word 
     // BU-clause <- BU-pre BU-post
@@ -731,7 +731,7 @@ namespace LojbanTest
     // BU-post <- spaces?
     public class BU_post : MetaNode { }
     // BU-no-SA-handling <- pre-clause BU spaces?
-    public class BU_no_SA_handing : MetaNode { }
+    public class BU_no_SA_handling : MetaNode { }
 
     // #         individual lerfu words 
     // BY-clause <- BY-pre BY-post / bu-clause
@@ -741,7 +741,7 @@ namespace LojbanTest
     // BY-post <- post-clause
     public class BY_post : MetaNode { }
     // BY-no-SA-handling <- pre-clause BY post-clause / bu-clause-no-SA
-    public class BY_no_SA_handing : MetaNode { }
+    public class BY_no_SA_handling : MetaNode { }
 
 
     // #         specifies actualitypotentiality of tense 
@@ -752,7 +752,7 @@ namespace LojbanTest
     // CAhA-post <- post-clause
     public class CAhA_post : MetaNode { }
     // CAhA-no-SA-handling <- pre-clause CAhA post-clause
-    public class CAhA_no_SA_handing : MetaNode { }
+    public class CAhA_no_SA_handling : MetaNode { }
 
     // #         afterthought intensity marker 
     // CAI-clause <- CAI-pre CAI-post
@@ -762,7 +762,7 @@ namespace LojbanTest
     // CAI-post <- post-clause
     public class CAI_post : MetaNode { }
     // CAI-no-SA-handling <- pre-clause CAI post-clause
-    public class CAI_no_SA_handing : MetaNode { }
+    public class CAI_no_SA_handling : MetaNode { }
 
     // #         pro-bridi assignment operator 
     // CEI-clause <- CEI-pre CEI-post
@@ -772,7 +772,7 @@ namespace LojbanTest
     // CEI-post <- post-clause
     public class CEI_post : MetaNode { }
     // CEI-no-SA-handling <- pre-clause CEI post-clause
-    public class CEI_no_SA_handing : MetaNode { }
+    public class CEI_no_SA_handling : MetaNode { }
 
     // #         afterthought term list connective 
     // CEhE-clause <- CEhE-pre CEhE-post
@@ -782,7 +782,7 @@ namespace LojbanTest
     // CEhE-post <- post-clause
     public class CEhE_post : MetaNode { }
     // CEhE-no-SA-handling <- pre-clause CEhE post-clause
-    public class CEhE_no_SA_handing : MetaNode { }
+    public class CEhE_no_SA_handling : MetaNode { }
 
     // #         names; require consonant end, then pause no
 
@@ -798,7 +798,7 @@ namespace LojbanTest
     // CO-post <- post-clause
     public class CO_post : MetaNode { }
     // CO-no-SA-handling <- pre-clause CO post-clause
-    public class CO_no_SA_handing : MetaNode { }
+    public class CO_no_SA_handling : MetaNode { }
     // COI-clause <- COI-pre COI-post
     public class COI_clause : MetaNode { }
     // COI-pre <- pre-clause COI spaces?
@@ -806,7 +806,7 @@ namespace LojbanTest
     // COI-post <- post-clause
     public class COI_post : MetaNode { }
     // COI-no-SA-handling <- pre-clause COI post-clause
-    public class COI_no_SA_handing : MetaNode { }
+    public class COI_no_SA_handling : MetaNode { }
 
     // #         vocative marker permitted inside names; must
 
@@ -820,7 +820,7 @@ namespace LojbanTest
     // CU-post <- post-clause
     public class CU_post : MetaNode { }
     // CU-no-SA-handling <- pre-clause CU post-clause
-    public class CU_no_SA_handing : MetaNode { }
+    public class CU_no_SA_handling : MetaNode { }
 
     // #         tensemodal question 
     // CUhE-clause <- CUhE-pre CUhE-post
@@ -830,7 +830,7 @@ namespace LojbanTest
     // CUhE-post <- post-clause
     public class CUhE_post : MetaNode { }
     // CUhE-no-SA-handling <- pre-clause CUhE post-clause
-    public class CUhE_no_SA_handing : MetaNode { }
+    public class CUhE_no_SA_handling : MetaNode { }
 
 
     // #         cancel anaphoracataphora assignments 
@@ -841,7 +841,7 @@ namespace LojbanTest
     // DAhO-post <- post-clause
     public class DAhO_post : MetaNode { }
     // DAhO-no-SA-handling <- pre-clause DAhO post-clause
-    public class DAhO_no_SA_handing : MetaNode { }
+    public class DAhO_no_SA_handling : MetaNode { }
 
     // #         vocative marker 
     // DOI-clause <- DOI-pre DOI-post
@@ -851,7 +851,7 @@ namespace LojbanTest
     // DOI-post <- post-clause
     public class DOI_post : MetaNode { }
     // DOI-no-SA-handling <- pre-clause DOI post-clause
-    public class DOI_no_SA_handing : MetaNode { }
+    public class DOI_no_SA_handling : MetaNode { }
 
     // #         terminator for DOI-marked vocatives 
     // DOhU-clause <- DOhU-pre DOhU-post
@@ -861,7 +861,7 @@ namespace LojbanTest
     // DOhU-post <- post-clause
     public class DOhU_post : MetaNode { }
     // DOhU-no-SA-handling <- pre-clause DOhU post-clause
-    public class DOhU_no_SA_handing : MetaNode { }
+    public class DOhU_no_SA_handling : MetaNode { }
 
 
     // #         modifier head generic case tag 
@@ -872,7 +872,7 @@ namespace LojbanTest
     // FA-post <- post-clause
     public class FA_post : MetaNode { }
     // FA-no-SA-handling <- pre-clause FA post-clause
-    public class FA_no_SA_handing : MetaNode { }
+    public class FA_no_SA_handling : MetaNode { }
 
     // #         superdirections in space 
     // FAhA-clause <- FAhA-pre FAhA-post
@@ -882,7 +882,7 @@ namespace LojbanTest
     // FAhA-post <- post-clause
     public class FAhA_post : MetaNode { }
     // FAhA-no-SA-handling <- pre-clause FAhA post-clause
-    public class FAhA_no_SA_handing : MetaNode { }
+    public class FAhA_no_SA_handling : MetaNode { }
 
 
     // #         normally elided 'done pause' to indicate end
@@ -899,7 +899,7 @@ namespace LojbanTest
     // FEhE-post <- post-clause
     public class FEhE_post : MetaNode { }
     // FEhE-no-SA-handling <- pre-clause FEhE post-clause
-    public class FEhE_no_SA_handing : MetaNode { }
+    public class FEhE_no_SA_handling : MetaNode { }
 
     // #         ends bridi to modal conversion 
     // FEhU-clause <- FEhU-pre FEhU-post
@@ -909,7 +909,7 @@ namespace LojbanTest
     // FEhU-post <- post-clause
     public class FEhU_post : MetaNode { }
     // FEhU-no-SA-handling <- pre-clause FEhU post-clause
-    public class FEhU_no_SA_handing : MetaNode { }
+    public class FEhU_no_SA_handling : MetaNode { }
 
     // #         marks bridi to modal conversion 
     // FIhO-clause <- FIhO-pre FIhO-post
@@ -919,7 +919,7 @@ namespace LojbanTest
     // FIhO-post <- post-clause
     public class FIhO_post : MetaNode { }
     // FIhO-no-SA-handling <- pre-clause FIhO post-clause
-    public class FIhO_no_SA_handing : MetaNode { }
+    public class FIhO_no_SA_handling : MetaNode { }
 
     // #         end compound lerfu 
     // FOI-clause <- FOI-pre FOI-post
@@ -929,7 +929,7 @@ namespace LojbanTest
     // FOI-post <- post-clause
     public class FOI_post : MetaNode { }
     // FOI-no-SA-handling <- pre-clause FOI post-clause
-    public class FOI_no_SA_handing : MetaNode { }
+    public class FOI_no_SA_handling : MetaNode { }
 
     // #         reverse Polish flag 
     // FUhA-clause <- FUhA-pre FUhA-post
@@ -939,7 +939,7 @@ namespace LojbanTest
     // FUhA-post <- post-clause
     public class FuhA_post : MetaNode { }
     // FUhA-no-SA-handling <- pre-clause FUhA post-clause
-    public class FuhA_no_SA_handing : MetaNode { }
+    public class FuhA_no_SA_handling : MetaNode { }
 
     // #         open long scope for indicator 
     // FUhE-clause <- FUhE-pre FUhE-post
@@ -949,7 +949,7 @@ namespace LojbanTest
     // FUhE-post <- !BU-clause spaces? !ZEI-clause !BU-clause
     public class FUhE_post : MetaNode { }
     // FUhE-no-SA-handling <- pre-clause FUhE post-clause
-    public class FUhE_no_SA_handing : MetaNode { }
+    public class FUhE_no_SA_handling : MetaNode { }
 
     // #         close long scope for indicator 
     // FUhO-clause <- FUhO-pre FUhO-post
@@ -959,7 +959,7 @@ namespace LojbanTest
     // FUhO-post <- post-clause
     public class FUhO_post : MetaNode { }
     // FUhO-no-SA-handling <- pre-clause FUhO post-clause
-    public class FUhO_no_SA_handing : MetaNode { }
+    public class FUhO_no_SA_handling : MetaNode { }
 
 
     // #         geks; forethought logical connectives 
@@ -970,7 +970,7 @@ namespace LojbanTest
     // GA-post <- post-clause
     public class GA_post : MetaNode { }
     // GA-no-SA-handling <- pre-clause GA post-clause
-    public class GA_no_SA_handing : MetaNode { }
+    public class GA_no_SA_handling : MetaNode { }
 
     // #         openclosed interval markers for BIhI 
     // GAhO-clause <- GAhO-pre GAhO-post
@@ -980,7 +980,7 @@ namespace LojbanTest
     // GAhO-post <- post-clause
     public class GAhO_post : MetaNode { }
     // GAhO-no-SA-handling <- pre-clause GAhO post-clause
-    public class GAhO_no_SA_handing : MetaNode { }
+    public class GAhO_no_SA_handling : MetaNode { }
 
     // #         marker ending GOI relative clauses 
     // GEhU-clause <- GEhU-pre GEhU-post
@@ -990,7 +990,7 @@ namespace LojbanTest
     // GEhU-post <- post-clause
     public class GEhU_post : MetaNode { }
     // GEhU-no-SA-handling <- pre-clause GEhU post-clause
-    public class GEhU_no_SA_handing : MetaNode { }
+    public class GEhU_no_SA_handling : MetaNode { }
 
     // #         forethought medial marker 
     // GI-clause <- GI-pre GI-post
@@ -1000,7 +1000,7 @@ namespace LojbanTest
     // GI-post <- post-clause
     public class GI_post : MetaNode { }
     // GI-no-SA-handling <- pre-clause GI post-clause
-    public class GI_no_SA_handing : MetaNode { }
+    public class GI_no_SA_handling : MetaNode { }
 
     // #         logical connectives for bridi-tails 
     // GIhA-clause <- GIhA-pre GIhA-post
@@ -1010,7 +1010,7 @@ namespace LojbanTest
     // GIhA-post <- post-clause
     public class GIhA_post : MetaNode { }
     // GIhA-no-SA-handling <- pre-clause GIhA post-clause
-    public class GIhA_no_SA_handing : MetaNode { }
+    public class GIhA_no_SA_handling : MetaNode { }
 
     // #         attaches a sumti modifier to a sumti 
     // GOI-clause <- GOI-pre GOI-post
@@ -1020,7 +1020,7 @@ namespace LojbanTest
     // GOI-post <- post-clause
     public class GOI_post : MetaNode { }
     // GOI-no-SA-handling <- pre-clause GOI post-clause
-    public class GOI_no_SA_handing : MetaNode { }
+    public class GOI_no_SA_handling : MetaNode { }
 
     // #         pro-bridi 
     // GOhA-clause <- GOhA-pre GOhA-post
@@ -1030,7 +1030,7 @@ namespace LojbanTest
     // GOhA-post <- post-clause
     public class GOhA_post : MetaNode { }
     // GOhA-no-SA-handling <- pre-clause GOhA post-clause
-    public class GOhA_no_SA_handing : MetaNode { }
+    public class GOhA_no_SA_handling : MetaNode { }
 
     // #         GEK for tanru units, corresponds to JEKs 
     // GUhA-clause <- GUhA-pre GUhA-post
@@ -1051,7 +1051,7 @@ namespace LojbanTest
     // I-post <- post-clause
     public class I_post : MetaNode { }
     // I-no-SA-handling <- pre-clause I post-clause
-    public class I_no_SA_handing : MetaNode { }
+    public class I_no_SA_handling : MetaNode { }
 
 
     // #         jeks; logical connectives within tanru 
@@ -1062,7 +1062,7 @@ namespace LojbanTest
     // JA-post <- post-clause
     public class JA_post : MetaNode { }
     // JA-no-SA-handling <- pre-clause JA post-clause
-    public class JA_no_SA_handing : MetaNode { }
+    public class JA_no_SA_handling : MetaNode { }
 
     // #         modal conversion flag 
     // JAI-clause <- JAI-pre JAI-post
@@ -1072,7 +1072,7 @@ namespace LojbanTest
     // JAI-post <- post-clause
     public class JAI_post : MetaNode { }
     // JAI-no-SA-handling <- pre-clause JAI post-clause
-    public class JAI_no_SA_handing : MetaNode { }
+    public class JAI_no_SA_handling : MetaNode { }
 
     // #         flags an array operand 
     // JOhI-clause <- JOhI-pre JOhI-post
@@ -1082,7 +1082,7 @@ namespace LojbanTest
     // JOhI-post <- post-clause
     public class JOhI_post : MetaNode { }
     // JOhI-no-SA-handling <- pre-clause JOhI post-clause
-    public class JOhI_no_SA_handing : MetaNode { }
+    public class JOhI_no_SA_handling : MetaNode { }
 
     // #         non-logical connectives 
     // JOI-clause <- JOI-pre JOI-post
@@ -1092,7 +1092,7 @@ namespace LojbanTest
     // JOI-post <- post-clause
     public class JOI_post : MetaNode { }
     // JOI-no-SA-handling <- pre-clause JOI post-clause
-    public class JOI_no_SA_handing : MetaNode { }
+    public class JOI_no_SA_handling : MetaNode { }
 
 
     // #         left long scope marker 
@@ -1103,7 +1103,7 @@ namespace LojbanTest
     // KE-post <- post-clause
     public class KE_post : MetaNode { }
     // KE-no-SA-handling <- pre-clause KE post-clause
-    public class KE_no_SA_handing : MetaNode { }
+    public class KE_no_SA_handling : MetaNode { }
 
     // #         right terminator for KE groups 
     // KEhE-clause <- KEhE-pre KEhE-post
@@ -1113,7 +1113,7 @@ namespace LojbanTest
     // KEhE-post <- post-clause
     public class KEhE_post : MetaNode { }
     // KEhE-no-SA-handling <- pre-clause KEhE post-clause
-    public class KEhE_no_SA_handing : MetaNode { }
+    public class KEhE_no_SA_handling : MetaNode { }
 
     // #         right terminator, NU abstractions 
     // KEI-clause <- KEI-pre KEI-post
@@ -1123,7 +1123,7 @@ namespace LojbanTest
     // KEI-post <- post-clause
     public class KEI_post : MetaNode { }
     // KEI-no-SA-handling <- pre-clause KEI post-clause
-    public class KEI_no_SA_handing : MetaNode { }
+    public class KEI_no_SA_handling : MetaNode { }
 
     // #         multiple utterance scope for tenses 
     // KI-clause <- KI-pre KI-post
@@ -1133,7 +1133,7 @@ namespace LojbanTest
     // KI-post <- post-clause
     public class KI_post : MetaNode { }
     // KI-no-SA-handling <- pre-clause KI post-clause
-    public class KI_no_SA_handing : MetaNode { }
+    public class KI_no_SA_handling : MetaNode { }
 
     // #         sumti anaphora 
     // KOhA-clause <- KOhA-pre KOhA-post
@@ -1143,7 +1143,7 @@ namespace LojbanTest
     // KOhA-post <- post-clause
     public class KOhA_post : MetaNode { }
     // KOhA-no-SA-handling <- pre-clause KOhA spaces?
-    public class KOhA_no_SA_handing : MetaNode { }
+    public class KOhA_no_SA_handling : MetaNode { }
 
     // #         right terminator for descriptions, etc. 
     // KU-clause <- KU-pre KU-post
@@ -1153,7 +1153,7 @@ namespace LojbanTest
     // KU-post <- post-clause
     public class KU_post : MetaNode { }
     // KU-no-SA-handling <- pre-clause KU post-clause
-    public class KU_no_SA_handing : MetaNode { }
+    public class KU_no_SA_handling : MetaNode { }
 
     // #         MEX forethought delimiter 
     // KUhE-clause <- KUhE-pre KUhE-post
@@ -1163,7 +1163,7 @@ namespace LojbanTest
     // KUhE-post <- post-clause
     public class KUhE_post : MetaNode { }
     // KUhE-no-SA-handling <- pre-clause KUhE post-clause
-    public class KUhE_no_SA_handing : MetaNode { }
+    public class KUhE_no_SA_handling : MetaNode { }
 
     // #         right terminator, NOI relative clauses 
     // KUhO-clause <- KUhO-pre KUhO-post
@@ -1173,7 +1173,7 @@ namespace LojbanTest
     // KUhO-post <- post-clause
     public class KUhO_post : MetaNode { }
     // KUhO-no-SA-handling <- pre-clause KUhO post-clause
-    public class KUhO_no_SA_handing : MetaNode { }
+    public class KUhO_no_SA_handling : MetaNode { }
 
 
     // #         name descriptors 
@@ -1184,7 +1184,7 @@ namespace LojbanTest
     // LA-post <- post-clause
     public class LA_post : MetaNode { }
     // LA-no-SA-handling <- pre-clause LA post-clause
-    public class LA_no_SA_handing : MetaNode { }
+    public class LA_no_SA_handling : MetaNode { }
 
     // #         lerfu prefixes 
     // LAU-clause <- LAU-pre LAU-post
@@ -1194,7 +1194,7 @@ namespace LojbanTest
     // LAU-post <- post-clause
     public class LAU_post : MetaNode { }
     // LAU-no-SA-handling <- pre-clause LAU post-clause
-    public class LAU_no_SA_handing : MetaNode { }
+    public class LAU_no_SA_handling : MetaNode { }
 
     // #         sumti qualifiers 
     // LAhE-clause <- LAhE-pre LAhE-post
@@ -1204,7 +1204,7 @@ namespace LojbanTest
     // LAhE-post <- post-clause
     public class LAhE_post : MetaNode { }
     // LAhE-no-SA-handling <- pre-clause LAhE post-clause
-    public class LAhE_no_SA_handing : MetaNode { }
+    public class LAhE_no_SA_handling : MetaNode { }
 
     // #         sumti descriptors 
     // LE-clause <- LE-pre LE-post
@@ -1214,7 +1214,7 @@ namespace LojbanTest
     // LE-post <- post-clause
     public class LE_post : MetaNode { }
     // LE-no-SA-handling <- pre-clause LE post-clause
-    public class LE_no_SA_handing : MetaNode { }
+    public class LE_no_SA_handling : MetaNode { }
 
 
     // #         possibly ungrammatical text right quote 
@@ -1239,7 +1239,7 @@ namespace LojbanTest
     // LI-post <- post-clause
     public class LI_post : MetaNode { }
     // LI-no-SA-handling <- pre-clause LI post-clause
-    public class LI_no_SA_handing : MetaNode { }
+    public class LI_no_SA_handling : MetaNode { }
 
     // #         grammatical text right quote 
     // LIhU-clause <- LIhU-pre LIhU-post
@@ -1249,7 +1249,7 @@ namespace LojbanTest
     // LIhU-post <- post-clause
     public class LIhU_post : MetaNode { }
     // LIhU-no-SA-handling <- pre-clause LIhU post-clause
-    public class LIhU_no_SA_handing : MetaNode { }
+    public class LIhU_no_SA_handling : MetaNode { }
 
     // #         elidable terminator for LI 
     // LOhO-clause <- LOhO-pre LOhO-post
@@ -1259,7 +1259,7 @@ namespace LojbanTest
     // LOhO-post <- post-clause
     public class LOhO_post : MetaNode { }
     // LOhO-no-SA-handling <- pre-clause LOhO post-clause
-    public class LOhO_no_SA_handing : MetaNode { }
+    public class LOhO_no_SA_handling : MetaNode { }
 
     // #         possibly ungrammatical text left quote 
     // LOhU-clause <- LOhU-pre LOhU-post
@@ -1269,7 +1269,7 @@ namespace LojbanTest
     // LOhU-post <- post-clause
     public class LOhU_post : MetaNode { }
     // LOhU-no-SA-handling <- pre-clause LOhU spaces? (!LEhU any-word)* LEhU-clause spaces?
-    public class LOhU_no_SA_handing : MetaNode { }
+    public class LOhU_no_SA_handling : MetaNode { }
 
     // #         grammatical text left quote 
     // LU-clause <- LU-pre LU-post
@@ -1279,7 +1279,7 @@ namespace LojbanTest
     // LU-post <- post-clause
     public class LU_post : MetaNode { }
     // LU-no-SA-handling <- pre-clause LU post-clause
-    public class LU_no_SA_handing : MetaNode { }
+    public class LU_no_SA_handling : MetaNode { }
 
     // #         LAhE close delimiter 
     // LUhU-clause <- LUhU-pre LUhU-post
@@ -1289,7 +1289,7 @@ namespace LojbanTest
     // LUhU-post <- post-clause
     public class LUhU_post : MetaNode { }
     // LUhU-no-SA-handling <- pre-clause LUhU post-clause
-    public class LUhU_no_SA_handing : MetaNode { }
+    public class LUhU_no_SA_handling : MetaNode { }
 
 
     // #         change MEX expressions to MEX operators 
@@ -1300,7 +1300,7 @@ namespace LojbanTest
     // MAhO-post <- post-clause
     public class MAhO_post : MetaNode { }
     // MAhO-no-SA-handling <- pre-clause MAhO post-clause
-    public class MAhO_no_SA_handing : MetaNode { }
+    public class MAhO_no_SA_handling : MetaNode { }
 
     // #         change numbers to utterance ordinals 
     // MAI-clause <- MAI-pre MAI-post
@@ -1310,7 +1310,7 @@ namespace LojbanTest
     // MAI-post <- post-clause
     public class MAI_post : MetaNode { }
     // MAI-no-SA-handling <- pre-clause MAI post-clause
-    public class MAI_no_SA_handing : MetaNode { }
+    public class MAI_no_SA_handling : MetaNode { }
 
     // #         converts a sumti into a tanru_unit 
     // ME-clause <- ME-pre ME-post
@@ -1320,7 +1320,7 @@ namespace LojbanTest
     // ME-post <- post-clause
     public class MA_post : MetaNode { }
     // ME-no-SA-handling <- pre-clause ME post-clause
-    public class MA_no_SA_handing : MetaNode { }
+    public class MA_no_SA_handling : MetaNode { }
 
     // #         terminator for ME 
     // MEhU-clause <- MEhU-pre MEhU-post
@@ -1330,7 +1330,7 @@ namespace LojbanTest
     // MEhU-post <- post-clause
     public class MEhU_post : MetaNode { }
     // MEhU-no-SA-handling <- pre-clause MEhU post-clause
-    public class MEhU_no_SA_handing : MetaNode { }
+    public class MEhU_no_SA_handling : MetaNode { }
 
     // #         change sumti to operand, inverse of LI 
     // MOhE-clause <- MOhE-pre MOhE-post
@@ -1340,7 +1340,7 @@ namespace LojbanTest
     // MOhE-post <- post-clause
     public class MOhE_post : MetaNode { }
     // MOhE-no-SA-handling <- pre-clause MOhE post-clause
-    public class MOhE_no_SA_handing : MetaNode { }
+    public class MOhE_no_SA_handling : MetaNode { }
 
     // #         motion tense marker 
     // MOhI-clause <- MOhI-pre MOhI-post
@@ -1350,7 +1350,7 @@ namespace LojbanTest
     // MOhI-post <- post-clause
     public class MOhI_post : MetaNode { }
     // MOhI-no-SA-handling <- pre-clause MOhI post-clause
-    public class MOhI_no_SA_handing : MetaNode { }
+    public class MOhI_no_SA_handling : MetaNode { }
 
     // #         change number to selbri 
     // MOI-clause <- MOI-pre MOI-post
@@ -1360,7 +1360,7 @@ namespace LojbanTest
     // MOI-post <- post-clause
     public class MOI_post : MetaNode { }
     // MOI-no-SA-handling <- pre-clause MOI post-clause
-    public class MOI_no_SA_handing : MetaNode { }
+    public class MOI_no_SA_handling : MetaNode { }
 
 
     // #         bridi negation  
@@ -1371,7 +1371,7 @@ namespace LojbanTest
     // NA-post <- post-clause
     public class NA_post : MetaNode { }
     // NA-no-SA-handling <- pre-clause NA post-clause
-    public class NA_no_SA_handing : MetaNode { }
+    public class NA_no_SA_handling : MetaNode { }
 
     // #         attached to words to negate them 
     // NAI-clause <- NAI-pre NAI-post
@@ -1381,7 +1381,7 @@ namespace LojbanTest
     // NAI-post <- post-clause
     public class NAI_post : MetaNode { }
     // NAI-no-SA-handling <- pre-clause NAI post-clause
-    public class NAI_no_SA_handing : MetaNode { }
+    public class NAI_no_SA_handling : MetaNode { }
 
     // #         scalar negation  
     // NAhE-clause <- NAhE-pre NAhE-post
@@ -1391,7 +1391,7 @@ namespace LojbanTest
     // NAhE-post <- post-clause
     public class NAhE_post : MetaNode { }
     // NAhE-no-SA-handling <- pre-clause NAhE post-clause
-    public class NAhE_no_SA_handing : MetaNode { }
+    public class NAhE_no_SA_handling : MetaNode { }
 
     // #         change a selbri into an operator 
     // NAhU-clause <- NAhU-pre NAhU-post
@@ -1401,7 +1401,7 @@ namespace LojbanTest
     // NAhU-post <- post-clause
     public class NAhU_post : MetaNode { }
     // NAhU-no-SA-handling <- pre-clause NAhU post-clause
-    public class NAhU_no_SA_handing : MetaNode { }
+    public class NAhU_no_SA_handling : MetaNode { }
 
     // #         change selbri to operand; inverse of MOI 
     // NIhE-clause <- NIhE-pre NIhE-post
@@ -1411,7 +1411,7 @@ namespace LojbanTest
     // NIhE-post <- post-clause
     public class NIhE_post : MetaNode { }
     // NIhE-no-SA-handling <- pre-clause NIhE post-clause
-    public class NIhE_no_SA_handing : MetaNode { }
+    public class NIhE_no_SA_handling : MetaNode { }
 
     // #         new paragraph; change of subject 
     // NIhO-clause <- sentence-sa* NIhO-pre NIhO-post
@@ -1421,7 +1421,7 @@ namespace LojbanTest
     // NIhO-post <- su-clause* post-clause
     public class NIhO_post : MetaNode { }
     // NIhO-no-SA-handling <- pre-clause NIhO su-clause* post-clause
-    public class NIhO_no_SA_handing : MetaNode { }
+    public class NIhO_no_SA_handling : MetaNode { }
 
     // #         attaches a subordinate clause to a sumti 
     // NOI-clause <- NOI-pre NOI-post
@@ -1431,7 +1431,7 @@ namespace LojbanTest
     // NOI-post <- post-clause
     public class NOI_post : MetaNode { }
     // NOI-no-SA-handling <- pre-clause NOI post-clause
-    public class NOI_no_SA_handing : MetaNode { }
+    public class NOI_no_SA_handling : MetaNode { }
 
     // #         abstraction  
     // NU-clause <- NU-pre NU-post
@@ -1441,7 +1441,7 @@ namespace LojbanTest
     // NU-post <- post-clause
     public class NU_post : MetaNode { }
     // NU-no-SA-handling <- pre-clause NU post-clause
-    public class NU_no_SA_handing : MetaNode { }
+    public class NU_no_SA_handling : MetaNode { }
 
     // #         change operator to selbri; inverse of MOhE 
     // NUhA-clause <- NUhA-pre NUhA-post
@@ -1451,7 +1451,7 @@ namespace LojbanTest
     // NUhA-post <- post-clause
     public class NUhA_post : MetaNode { }
     // NUhA-no-SA-handling <- pre-clause NUhA post-clause
-    public class NUhA_no_SA_handing : MetaNode { }
+    public class NUhA_no_SA_handling : MetaNode { }
 
     // #         marks the start of a termset 
     // NUhI-clause <- NUhI-pre NUhI-post
@@ -1461,7 +1461,7 @@ namespace LojbanTest
     // NUhI-post <- post-clause
     public class NUhI_post : MetaNode { }
     // NUhI-no-SA-handling <- pre-clause NUhI post-clause
-    public class NUhI_no_SA_handing : MetaNode { }
+    public class NUhI_no_SA_handling : MetaNode { }
 
     // #         marks the middle and end of a termset 
     // NUhU-clause <- NUhU-pre NUhU-post
@@ -1471,7 +1471,7 @@ namespace LojbanTest
     // NUhU-post <- post-clause
     public class NUhU_post : MetaNode { }
     // NUhU-no-SA-handling <- pre-clause NUhU post-clause
-    public class NUhU_no_SA_handing : MetaNode { }
+    public class NUhU_no_SA_handling : MetaNode { }
 
 
     // #         numbers and numeric punctuation 
@@ -1482,7 +1482,7 @@ namespace LojbanTest
     // PA-post <- post-clause
     public class PA_post : MetaNode { }
     // PA-no-SA-handling <- pre-clause PA post-clause
-    public class PA_no_SA_handing : MetaNode { }
+    public class PA_no_SA_handling : MetaNode { }
 
     // #         afterthought termset connective prefix 
     // PEhE-clause <- PEhE-pre PEhE-post
@@ -1492,7 +1492,7 @@ namespace LojbanTest
     // PEhE-post <- post-clause
     public class PEhE_post : MetaNode { }
     // PEhE-no-SA-handling <- pre-clause PEhE post-clause
-    public class PEhE_no_SA_handing : MetaNode { }
+    public class PEhE_no_SA_handling : MetaNode { }
 
     // #         forethought (Polish) flag 
     // PEhO-clause <- PEhO-pre PEhO-post
@@ -1502,7 +1502,7 @@ namespace LojbanTest
     // PEhO-post <- post-clause
     public class PEhO_post : MetaNode { }
     // PEhO-no-SA-handling <- pre-clause PEhO post-clause
-    public class PEhO_no_SA_handing : MetaNode { }
+    public class PEhO_no_SA_handling : MetaNode { }
 
     // #         directions in time 
     // PU-clause <- PU-pre PU-post
@@ -1512,7 +1512,7 @@ namespace LojbanTest
     // PU-post <- post-clause
     public class PU_post : MetaNode { }
     // PU-no-SA-handling <- pre-clause PU post-clause
-    public class PU_no_SA_handing : MetaNode { }
+    public class PU_no_SA_handling : MetaNode { }
 
 
     // #         flag for modified interpretation of GOhI 
@@ -1523,7 +1523,7 @@ namespace LojbanTest
     // RAhO-post <- post-clause
     public class RAhO_post : MetaNode { }
     // RAhO-no-SA-handling <- pre-clause RAhO post-clause
-    public class RAhO_no_SA_handing : MetaNode { }
+    public class RAhO_no_SA_handling : MetaNode { }
 
     // #         converts number to extensional tense 
     // ROI-clause <- ROI-pre ROI-post
@@ -1533,7 +1533,7 @@ namespace LojbanTest
     // ROI-post <- post-clause
     public class ROI_post : MetaNode { }
     // ROI-no-SA-handling <- pre-clause ROI post-clause
-    public class ROI_no_SA_handing : MetaNode { }
+    public class ROI_no_SA_handling : MetaNode { }
 
     // SA-clause <- SA-pre SA-post
     public class SA_clause : MetaNode { }
@@ -1554,7 +1554,7 @@ namespace LojbanTest
     // SE-post <- post-clause
     public class SE_post : MetaNode { }
     // SE-no-SA-handling <- pre-clause SE post-clause
-    public class SE_no_SA_handing : MetaNode { }
+    public class SE_no_SA_handling : MetaNode { }
 
     // #         metalinguistic bridi insert marker 
     // SEI-clause <- SEI-pre SEI-post
@@ -1564,7 +1564,7 @@ namespace LojbanTest
     // SEI-post <- post-clause
     public class SEI_post : MetaNode { }
     // SEI-no-SA-handling <- pre-clause SEI post-clause
-    public class SEI_no_SA_handing : MetaNode { }
+    public class SEI_no_SA_handling : MetaNode { }
 
     // #         metalinguistic bridi end marker 
     // SEhU-clause <- SEhU-pre SEhU-post
@@ -1574,7 +1574,7 @@ namespace LojbanTest
     // SEhU-post <- post-clause
     public class SEhU_post : MetaNode { }
     // SEhU-no-SA-handling <- pre-clause SEhU post-clause
-    public class SEhU_no_SA_handing : MetaNode { }
+    public class SEhU_no_SA_handling : MetaNode { }
 
     // #         metalinguistic single word eraser 
     // SI-clause <- spaces? SI spaces?
@@ -1588,7 +1588,7 @@ namespace LojbanTest
     // SOI-post <- post-clause
     public class SOI_post : MetaNode { }
     // SOI-no-SA-handling <- pre-clause SOI post-clause
-    public class SOI_no_SA_handing : MetaNode { }
+    public class SOI_no_SA_handling : MetaNode { }
 
     // #         metalinguistic eraser of the entire text 
     // SU-clause <- SU-pre SU-post
@@ -1607,7 +1607,7 @@ namespace LojbanTest
     // TAhE-post <- post-clause
     public class TAhE_post : MetaNode { }
     // TAhE-no-SA-handling <- pre-clause TAhE post-clause
-    public class TAhE_no_SA_handing : MetaNode { }
+    public class TAhE_no_SA_handling : MetaNode { }
 
     // #         closing gap for MEX constructs 
     // TEhU-clause <- TEhU-pre TEhU-post
@@ -1617,7 +1617,7 @@ namespace LojbanTest
     // TEhU-post <- post-clause
     public class TEhU_post : MetaNode { }
     // TEhU-no-SA-handling <- pre-clause TEhU post-clause
-    public class TEhU_no_SA_handing : MetaNode { }
+    public class TEhU_no_SA_handling : MetaNode { }
 
     // #         start compound lerfu 
     // TEI-clause <- TEI-pre TEI-post
@@ -1627,7 +1627,7 @@ namespace LojbanTest
     // TEI-post <- post-clause
     public class TEI_post : MetaNode { }
     // TEI-no-SA-handling <- pre-clause TEI post-clause
-    public class TEI_no_SA_handing : MetaNode { }
+    public class TEI_no_SA_handling : MetaNode { }
 
     // #         left discursive parenthesis 
     // TO-clause <- TO-pre TO-post
@@ -1637,7 +1637,7 @@ namespace LojbanTest
     // TO-post <- post-clause
     public class TO_post : MetaNode { }
     // TO-no-SA-handling <- pre-clause TO post-clause
-    public class TO_no_SA_handing : MetaNode { }
+    public class TO_no_SA_handling : MetaNode { }
 
     // #         right discursive parenthesis 
     // TOI-clause <- TOI-pre TOI-post
@@ -1647,7 +1647,7 @@ namespace LojbanTest
     // TOI-post <- post-clause
     public class TOI_post : MetaNode { }
     // TOI-no-SA-handling <- pre-clause TOI post-clause
-    public class TOI_no_SA_handing : MetaNode { }
+    public class TOI_no_SA_handling : MetaNode { }
 
     // #         multiple utterance scope mark 
     // TUhE-clause <- TUhE-pre TUhE-post
@@ -1656,7 +1656,7 @@ namespace LojbanTest
     public class TUhE_pre : MetaNode { }
     // TUhE-post <- su-clause* post-clause
     // TUhE-no-SA-handling <- pre-clause TUhE su-clause* post-clause
-    public class TUhE_no_SA_handing : MetaNode { }
+    public class TUhE_no_SA_handling : MetaNode { }
 
     // #         multiple utterance end scope mark 
     // TUhU-clause <- TUhU-pre TUhU-post
@@ -1666,7 +1666,7 @@ namespace LojbanTest
     // TUhU-post <- post-clause
     public class TUhU_post : MetaNode { }
     // TUhU-no-SA-handling <- pre-clause TUhU post-clause
-    public class TUhU_no_SA_handing : MetaNode { }
+    public class TUhU_no_SA_handling : MetaNode { }
 
 
     // #         attitudinals, observationals, discursives 
@@ -1677,7 +1677,7 @@ namespace LojbanTest
     // UI-post <- post-clause
     public class UI_post : MetaNode { }
     // UI-no-SA-handling <- pre-clause UI post-clause
-    public class UI_no_SA_handing : MetaNode { }
+    public class UI_no_SA_handling : MetaNode { }
 
 
     // #         distance in space-time 
@@ -1688,7 +1688,7 @@ namespace LojbanTest
     // VA-post <- post-clause
     public class VA_post : MetaNode { }
     // VA-no-SA-handling <- pre-clause VA post-clause
-    public class VA_no_SA_handing : MetaNode { }
+    public class VA_no_SA_handling : MetaNode { }
 
     // #         end simple bridi or bridi-tail 
     // VAU-clause <- VAU-pre VAU-post
@@ -1698,7 +1698,7 @@ namespace LojbanTest
     // VAU-post <- post-clause
     public class VAU_post : MetaNode { }
     // VAU-no-SA-handling <- pre-clause VAU post-clause
-    public class VAU_no_SA_handing : MetaNode { }
+    public class VAU_no_SA_handling : MetaNode { }
 
     // #         left MEX bracket 
     // VEI-clause <- VEI-pre VEI-post
@@ -1708,7 +1708,7 @@ namespace LojbanTest
     // VEI-post <- post-clause
     public class VEI_post : MetaNode { }
     // VEI-no-SA-handling <- pre-clause VEI post-clause
-    public class VEI_no_SA_handing : MetaNode { }
+    public class VEI_no_SA_handling : MetaNode { }
 
     // #         right MEX bracket 
     // VEhO-clause <- VEhO-pre VEhO-post
@@ -1718,7 +1718,7 @@ namespace LojbanTest
     // VEhO-post <- post-clause
     public class VEhO_post : MetaNode { }
     // VEhO-no-SA-handling <- pre-clause VEhO post-clause
-    public class VEhO_no_SA_handing : MetaNode { }
+    public class VEhO_no_SA_handling : MetaNode { }
 
     // #         MEX operator 
     // VUhU-clause <- VUhU-pre VUhU-post
@@ -1728,7 +1728,7 @@ namespace LojbanTest
     // VUhU-post <- post-clause
     public class VUhU_post : MetaNode { }
     // VUhU-no-SA-handling <- pre-clause VUhU post-clause
-    public class VUhU_no_SA_handing : MetaNode { }
+    public class VUhU_no_SA_handling : MetaNode { }
 
     // #         space-time interval size 
     // VEhA-clause <- VEhA-pre VEhA-post
@@ -1738,7 +1738,7 @@ namespace LojbanTest
     // VEhA-post <- post-clause
     public class VEhA_post : MetaNode { }
     // VEhA-no-SA-handling <- pre-clause VEhA post-clause
-    public class VEhA_no_SA_handing : MetaNode { }
+    public class VEhA_no_SA_handling : MetaNode { }
 
     // #         space-time dimensionality marker 
     // VIhA-clause <- VIhA-pre VIhA-post
@@ -1756,7 +1756,7 @@ namespace LojbanTest
     // VUhO-post <- post-clause
     public class VUhO_post : MetaNode { }
     // VUhO-no-SA-handling <- pre-clause VUhO post-clause
-    public class VUhO_no_SA_handing : MetaNode { }
+    public class VUhO_no_SA_handling : MetaNode { }
 
     // # glue between logically connected sumti and relative clauses 
 
@@ -1769,7 +1769,7 @@ namespace LojbanTest
     // XI-post <- post-clause
     public class XI_post : MetaNode { }
     // XI-no-SA-handling <- pre-clause XI post-clause
-    public class XI_no_SA_handing : MetaNode { }
+    public class XI_no_SA_handling : MetaNode { }
 
 
     // #         hesitation 
@@ -1786,7 +1786,7 @@ namespace LojbanTest
     // ZAhO-post <- post-clause
     public class ZAhO_post : MetaNode { }
     // ZAhO-no-SA-handling <- pre-clause ZAhO post-clause
-    public class ZAhO_no_SA_handing : MetaNode { }
+    public class ZAhO_no_SA_handling : MetaNode { }
 
     // #         time interval size tense 
     // ZEhA-clause <- ZEhA-pre ZEhA-post
@@ -1796,7 +1796,7 @@ namespace LojbanTest
     // ZEhA-post <- post-clause
     public class ZEhA_post : MetaNode { }
     // ZEhA-no-SA-handling <- pre-clause ZEhA post-clause
-    public class ZEhA_no_SA_handing : MetaNode { }
+    public class ZEhA_no_SA_handling : MetaNode { }
 
     // #         lujvo glue 
     // ZEI-clause <- ZEI-pre ZEI-post
@@ -1810,7 +1810,7 @@ namespace LojbanTest
     // ZEI-post <- spaces?
     public class ZEI_post : MetaNode { }
     // ZEI-no-SA-handling <- pre-clause ZEI post-clause
-    public class ZEI_no_SA_handing : MetaNode { }
+    public class ZEI_no_SA_handling : MetaNode { }
 
     // #         time distance tense 
     // ZI-clause <- ZI-pre ZI-post
@@ -1820,7 +1820,7 @@ namespace LojbanTest
     // ZI-post <- post-clause
     public class ZI_post : MetaNode { }
     // ZI-no-SA-handling <- pre-clause ZI post-clause
-    public class ZI_no_SA_handing : MetaNode { }
+    public class ZI_no_SA_handling : MetaNode { }
 
     // #         conjoins relative clauses 
     // ZIhE-clause <- ZIhE-pre ZIhE-post
@@ -1830,7 +1830,7 @@ namespace LojbanTest
     // ZIhE-post <- post-clause
     public class ZIhE_post : MetaNode { }
     // ZIhE-no-SA-handling <- pre-clause ZIhE post-clause
-    public class ZIhE_no_SA_handing : MetaNode { }
+    public class ZIhE_no_SA_handling : MetaNode { }
 
     // #         single word metalinguistic quote marker 
     // ZO-clause <- ZO-pre ZO-post
@@ -1840,7 +1840,7 @@ namespace LojbanTest
     // ZO-post <- post-clause
     public class ZO_post : MetaNode { }
     // ZO-no-SA-handling <- pre-clause ZO spaces? any-word spaces?
-    public class ZO_no_SA_handing : MetaNode { }
+    public class ZO_no_SA_handling : MetaNode { }
 
     // #         delimited quote marker 
     // ZOI-clause <- ZOI-pre ZOI-post
@@ -1850,7 +1850,7 @@ namespace LojbanTest
     // ZOI-post <- post-clause
     public class ZOI_post : MetaNode { }
     // ZOI-no-SA-handling <- pre-clause ZOI spaces? zoi-open zoi-word* zoi-close spaces?
-    public class ZOI_no_SA_handing : MetaNode { }
+    public class ZOI_no_SA_handling : MetaNode { }
 
     // #         prenex terminator (not elidable) 
     // ZOhU-clause <- ZOhU-pre ZOhU-post
@@ -1860,7 +1860,7 @@ namespace LojbanTest
     // ZOhU-post <- post-clause
     public class ZOhU_post : MetaNode { }
     // ZOhU-no-SA-handling <- pre-clause ZOhU post-clause
-    public class ZOhU_no_SA_handing : MetaNode { }
+    public class ZOhU_no_SA_handling : MetaNode { }
 
 
     // # --- MORPHOLOGY ---
@@ -3164,7 +3164,7 @@ namespace LojbanTest
         // BRIVLA-post <- post-clause
         public static readonly Parser<BRIVLA_post> Term;
         // BRIVLA-no-SA-handling <- pre-clause BRIVLA post-clause / zei-clause-no-SA
-        public static readonly Parser<BRIVLA_no_SA_handing> Term;
+        public static readonly Parser<BRIVLA_no_SA_handling> Term;
 
         // CMENE-clause <- CMENE-pre CMENE-post
         public static readonly Parser<CMENE_clause> Term;
@@ -3173,7 +3173,7 @@ namespace LojbanTest
         // CMENE-post <- post-clause
         public static readonly Parser<CMENE_post> Term;
         // CMENE-no-SA-handling <- pre-clause CMENE post-clause
-        public static readonly Parser<CMENE_no_SA_handing> Term;
+        public static readonly Parser<CMENE_no_SA_handling> Term;
 
         // CMAVO-clause <- CMAVO-pre CMAVO-post
         public static readonly Parser<CMAVO_clause> Term;
@@ -3182,7 +3182,7 @@ namespace LojbanTest
         // CMAVO-post <- post-clause
         public static readonly Parser<CMAVO_post> Term;
         // CMAVO-no-SA-handling <- pre-clause CMAVO post-clause
-        public static readonly Parser<CMAVO_no_SA_handing> Term;
+        public static readonly Parser<CMAVO_no_SA_handling> Term;
 
         //;          eks; basic afterthought logical connectives 
         // A-clause <- A-pre A-post
@@ -3192,7 +3192,7 @@ namespace LojbanTest
         // A-post <- post-clause
         public static readonly Parser<A_post> Term;
         // A-no-SA-handling <- pre-clause A post-clause
-        public static readonly Parser<A_no_SA_handing> Term;
+        public static readonly Parser<A_no_SA_handling> Term;
 
 
         //;          modal operators 
@@ -3203,7 +3203,7 @@ namespace LojbanTest
         // BAI-post <- post-clause
         public static readonly Parser<BAI_post> Term;
         // BAI-no-SA-handling <- pre-clause BAI post-clause
-        public static readonly Parser<BAI_no_SA_handing> Term;
+        public static readonly Parser<BAI_no_SA_handling> Term;
 
         //;          next word intensifier 
         // BAhE-clause <- (BAhE-pre BAhE-post)+
@@ -3213,7 +3213,7 @@ namespace LojbanTest
         // BAhE-post <- si-clause? !ZEI-clause !BU-clause
         public static readonly Parser<BAhE_post> Term;
         // BAhE-no-SA-handling <- BAhE spaces? BAhE-post
-        public static readonly Parser<BAhE_no_SA_handing> Term;
+        public static readonly Parser<BAhE_no_SA_handling> Term;
 
         //;          sumti link to attach sumti to a selbri 
         // BE-clause <- BE-pre BE-post
@@ -3223,7 +3223,7 @@ namespace LojbanTest
         // BE-post <- post-clause
         public static readonly Parser<BE_post> Term;
         // BE-no-SA-handling <- pre-clause BE post-clause
-        public static readonly Parser<BE_no_SA_handing> Term;
+        public static readonly Parser<BE_no_SA_handling> Term;
 
         //;          multiple sumti separator between BE, BEI 
         // BEI-clause <- BEI-pre BEI-post
@@ -3233,7 +3233,7 @@ namespace LojbanTest
         // BEI-post <- post-clause
         public static readonly Parser<BEI_post> Term;
         // BEI-no-SA-handling <- pre-clause BEI post-clause
-        public static readonly Parser<BEI_no_SA_handing> Term;
+        public static readonly Parser<BEI_no_SA_handling> Term;
 
         //;          terminates BEBEI specified descriptors 
         // BEhO-clause <- BEhO-pre BEhO-post
@@ -3243,7 +3243,7 @@ namespace LojbanTest
         // BEhO-post <- post-clause
         public static readonly Parser<BEhO_post> Term;
         // BEhO-no-SA-handling <- pre-clause BEhO post-clause
-        public static readonly Parser<BEhO_no_SA_handing> Term;
+        public static readonly Parser<BEhO_no_SA_handling> Term;
 
         //;          prefix for high-priority MEX operator 
         // BIhE-clause <- BIhE-pre BIhE-post
@@ -3253,7 +3253,7 @@ namespace LojbanTest
         // BIhE-post <- post-clause
         public static readonly Parser<BIhE_post> Term;
         // BIhE-no-SA-handling <- pre-clause BIhE post-clause
-        public static readonly Parser<BIhE_no_SA_handing> Term;
+        public static readonly Parser<BIhE_no_SA_handling> Term;
 
         //;          interval component of JOI 
         // BIhI-clause <- BIhI-pre BIhI-post
@@ -3263,7 +3263,7 @@ namespace LojbanTest
         // BIhI-post <- post-clause
         public static readonly Parser<BIhI_post> Term;
         // BIhI-no-SA-handling <- pre-clause BIhI post-clause
-        public static readonly Parser<BIhI_no_SA_handing> Term;
+        public static readonly Parser<BIhI_no_SA_handling> Term;
 
         //;          joins two units with shortest scope 
         // BO-clause <- BO-pre BO-post
@@ -3273,7 +3273,7 @@ namespace LojbanTest
         // BO-post <- post-clause
         public static readonly Parser<BO_post> Term;
         // BO-no-SA-handling <- pre-clause BO post-clause
-        public static readonly Parser<BO_no_SA_handing> Term;
+        public static readonly Parser<BO_no_SA_handling> Term;
 
         //;          number or lerfu-string terminator 
         // BOI-clause <- BOI-pre BOI-post
@@ -3283,7 +3283,7 @@ namespace LojbanTest
         // BOI-post <- post-clause
         public static readonly Parser<BOI_post> Term;
         // BOI-no-SA-handling <- pre-clause BOI post-clause
-        public static readonly Parser<BOI_no_SA_handing> Term;
+        public static readonly Parser<BOI_no_SA_handling> Term;
 
         //;          turns any word into a BY lerfu word 
         // BU-clause <- BU-pre BU-post
@@ -3297,7 +3297,7 @@ namespace LojbanTest
         // BU-post <- spaces?
         public static readonly Parser<BU_post> Term;
         // BU-no-SA-handling <- pre-clause BU spaces?
-        public static readonly Parser<BU_no_SA_handing> Term;
+        public static readonly Parser<BU_no_SA_handling> Term;
 
         //;          individual lerfu words 
         // BY-clause <- BY-pre BY-post / bu-clause
@@ -3307,7 +3307,7 @@ namespace LojbanTest
         // BY-post <- post-clause
         public static readonly Parser<BY_post> Term;
         // BY-no-SA-handling <- pre-clause BY post-clause / bu-clause-no-SA
-        public static readonly Parser<BY_no_SA_handing> Term;
+        public static readonly Parser<BY_no_SA_handling> Term;
 
 
         //;          specifies actualitypotentiality of tense 
@@ -3318,7 +3318,7 @@ namespace LojbanTest
         // CAhA-post <- post-clause
         public static readonly Parser<CAhA_post> Term;
         // CAhA-no-SA-handling <- pre-clause CAhA post-clause
-        public static readonly Parser<CAhA_no_SA_handing> Term;
+        public static readonly Parser<CAhA_no_SA_handling> Term;
 
         //;          afterthought intensity marker 
         // CAI-clause <- CAI-pre CAI-post
@@ -3328,7 +3328,7 @@ namespace LojbanTest
         // CAI-post <- post-clause
         public static readonly Parser<CAI_post> Term;
         // CAI-no-SA-handling <- pre-clause CAI post-clause
-        public static readonly Parser<CAI_no_SA_handing> Term;
+        public static readonly Parser<CAI_no_SA_handling> Term;
 
         //;          pro-bridi assignment operator 
         // CEI-clause <- CEI-pre CEI-post
@@ -3338,7 +3338,7 @@ namespace LojbanTest
         // CEI-post <- post-clause
         public static readonly Parser<CEI_post> Term;
         // CEI-no-SA-handling <- pre-clause CEI post-clause
-        public static readonly Parser<CEI_no_SA_handing> Term;
+        public static readonly Parser<CEI_no_SA_handling> Term;
 
         //;          afterthought term list connective 
         // CEhE-clause <- CEhE-pre CEhE-post
@@ -3348,7 +3348,7 @@ namespace LojbanTest
         // CEhE-post <- post-clause
         public static readonly Parser<CEhE_post> Term;
         // CEhE-no-SA-handling <- pre-clause CEhE post-clause
-        public static readonly Parser<CEhE_no_SA_handing> Term;
+        public static readonly Parser<CEhE_no_SA_handling> Term;
 
         //;          names; require consonant end, then pause no
 
@@ -3364,7 +3364,7 @@ namespace LojbanTest
         // CO-post <- post-clause
         public static readonly Parser<CO_post> Term;
         // CO-no-SA-handling <- pre-clause CO post-clause
-        public static readonly Parser<CO_no_SA_handing> Term;
+        public static readonly Parser<CO_no_SA_handling> Term;
         // COI-clause <- COI-pre COI-post
         public static readonly Parser<COI_clause> Term;
         // COI-pre <- pre-clause COI spaces?
@@ -3372,7 +3372,7 @@ namespace LojbanTest
         // COI-post <- post-clause
         public static readonly Parser<COI_post> Term;
         // COI-no-SA-handling <- pre-clause COI post-clause
-        public static readonly Parser<COI_no_SA_handing> Term;
+        public static readonly Parser<COI_no_SA_handling> Term;
 
         //;          vocative marker permitted inside names; must
 
@@ -3386,7 +3386,7 @@ namespace LojbanTest
         // CU-post <- post-clause
         public static readonly Parser<CU_post> Term;
         // CU-no-SA-handling <- pre-clause CU post-clause
-        public static readonly Parser<CU_no_SA_handing> Term;
+        public static readonly Parser<CU_no_SA_handling> Term;
 
         //;          tensemodal question 
         // CUhE-clause <- CUhE-pre CUhE-post
@@ -3396,7 +3396,7 @@ namespace LojbanTest
         // CUhE-post <- post-clause
         public static readonly Parser<CUhE_post> Term;
         // CUhE-no-SA-handling <- pre-clause CUhE post-clause
-        public static readonly Parser<CUhE_no_SA_handing> Term;
+        public static readonly Parser<CUhE_no_SA_handling> Term;
 
 
         //;          cancel anaphoracataphora assignments 
@@ -3407,7 +3407,7 @@ namespace LojbanTest
         // DAhO-post <- post-clause
         public static readonly Parser<DAhO_post> Term;
         // DAhO-no-SA-handling <- pre-clause DAhO post-clause
-        public static readonly Parser<DAhO_no_SA_handing> Term;
+        public static readonly Parser<DAhO_no_SA_handling> Term;
 
         //;          vocative marker 
         // DOI-clause <- DOI-pre DOI-post
@@ -3417,7 +3417,7 @@ namespace LojbanTest
         // DOI-post <- post-clause
         public static readonly Parser<DOI_post> Term;
         // DOI-no-SA-handling <- pre-clause DOI post-clause
-        public static readonly Parser<DOI_no_SA_handing> Term;
+        public static readonly Parser<DOI_no_SA_handling> Term;
 
         //;          terminator for DOI-marked vocatives 
         // DOhU-clause <- DOhU-pre DOhU-post
@@ -3427,7 +3427,7 @@ namespace LojbanTest
         // DOhU-post <- post-clause
         public static readonly Parser<DOhU_post> Term;
         // DOhU-no-SA-handling <- pre-clause DOhU post-clause
-        public static readonly Parser<DOhU_no_SA_handing> Term;
+        public static readonly Parser<DOhU_no_SA_handling> Term;
 
 
         //;          modifier head generic case tag 
@@ -3438,7 +3438,7 @@ namespace LojbanTest
         // FA-post <- post-clause
         public static readonly Parser<FA_post> Term;
         // FA-no-SA-handling <- pre-clause FA post-clause
-        public static readonly Parser<FA_no_SA_handing> Term;
+        public static readonly Parser<FA_no_SA_handling> Term;
 
         //;          superdirections in space 
         // FAhA-clause <- FAhA-pre FAhA-post
@@ -3448,7 +3448,7 @@ namespace LojbanTest
         // FAhA-post <- post-clause
         public static readonly Parser<FAhA_post> Term;
         // FAhA-no-SA-handling <- pre-clause FAhA post-clause
-        public static readonly Parser<FAhA_no_SA_handing> Term;
+        public static readonly Parser<FAhA_no_SA_handling> Term;
 
 
         //;          normally elided 'done pause' to indicate end
@@ -3465,7 +3465,7 @@ namespace LojbanTest
         // FEhE-post <- post-clause
         public static readonly Parser<FEhE_post> Term;
         // FEhE-no-SA-handling <- pre-clause FEhE post-clause
-        public static readonly Parser<FEhE_no_SA_handing> Term;
+        public static readonly Parser<FEhE_no_SA_handling> Term;
 
         //;          ends bridi to modal conversion 
         // FEhU-clause <- FEhU-pre FEhU-post
@@ -3475,7 +3475,7 @@ namespace LojbanTest
         // FEhU-post <- post-clause
         public static readonly Parser<FEhU_post> Term;
         // FEhU-no-SA-handling <- pre-clause FEhU post-clause
-        public static readonly Parser<FEhU_no_SA_handing> Term;
+        public static readonly Parser<FEhU_no_SA_handling> Term;
 
         //;          marks bridi to modal conversion 
         // FIhO-clause <- FIhO-pre FIhO-post
@@ -3485,7 +3485,7 @@ namespace LojbanTest
         // FIhO-post <- post-clause
         public static readonly Parser<FIhO_post> Term;
         // FIhO-no-SA-handling <- pre-clause FIhO post-clause
-        public static readonly Parser<FIhO_no_SA_handing> Term;
+        public static readonly Parser<FIhO_no_SA_handling> Term;
 
         //;          end compound lerfu 
         // FOI-clause <- FOI-pre FOI-post
@@ -3495,7 +3495,7 @@ namespace LojbanTest
         // FOI-post <- post-clause
         public static readonly Parser<FOI_post> Term;
         // FOI-no-SA-handling <- pre-clause FOI post-clause
-        public static readonly Parser<FOI_no_SA_handing> Term;
+        public static readonly Parser<FOI_no_SA_handling> Term;
 
         //;          reverse Polish flag 
         // FUhA-clause <- FUhA-pre FUhA-post
@@ -3505,7 +3505,7 @@ namespace LojbanTest
         // FUhA-post <- post-clause
         public static readonly Parser<FuhA_post> Term;
         // FUhA-no-SA-handling <- pre-clause FUhA post-clause
-        public static readonly Parser<FuhA_no_SA_handing> Term;
+        public static readonly Parser<FuhA_no_SA_handling> Term;
 
         //;          open long scope for indicator 
         // FUhE-clause <- FUhE-pre FUhE-post
@@ -3515,7 +3515,7 @@ namespace LojbanTest
         // FUhE-post <- !BU-clause spaces? !ZEI-clause !BU-clause
         public static readonly Parser<FUhE_post> Term;
         // FUhE-no-SA-handling <- pre-clause FUhE post-clause
-        public static readonly Parser<FUhE_no_SA_handing> Term;
+        public static readonly Parser<FUhE_no_SA_handling> Term;
 
         //;          close long scope for indicator 
         // FUhO-clause <- FUhO-pre FUhO-post
@@ -3525,7 +3525,7 @@ namespace LojbanTest
         // FUhO-post <- post-clause
         public static readonly Parser<FUhO_post> Term;
         // FUhO-no-SA-handling <- pre-clause FUhO post-clause
-        public static readonly Parser<FUhO_no_SA_handing> Term;
+        public static readonly Parser<FUhO_no_SA_handling> Term;
 
 
         //;          geks; forethought logical connectives 
@@ -3536,7 +3536,7 @@ namespace LojbanTest
         // GA-post <- post-clause
         public static readonly Parser<GA_post> Term;
         // GA-no-SA-handling <- pre-clause GA post-clause
-        public static readonly Parser<GA_no_SA_handing> Term;
+        public static readonly Parser<GA_no_SA_handling> Term;
 
         //;          openclosed interval markers for BIhI 
         // GAhO-clause <- GAhO-pre GAhO-post
@@ -3546,7 +3546,7 @@ namespace LojbanTest
         // GAhO-post <- post-clause
         public static readonly Parser<GAhO_post> Term;
         // GAhO-no-SA-handling <- pre-clause GAhO post-clause
-        public static readonly Parser<GAhO_no_SA_handing> Term;
+        public static readonly Parser<GAhO_no_SA_handling> Term;
 
         //;          marker ending GOI relative clauses 
         // GEhU-clause <- GEhU-pre GEhU-post
@@ -3556,7 +3556,7 @@ namespace LojbanTest
         // GEhU-post <- post-clause
         public static readonly Parser<GEhU_post> Term;
         // GEhU-no-SA-handling <- pre-clause GEhU post-clause
-        public static readonly Parser<GEhU_no_SA_handing> Term;
+        public static readonly Parser<GEhU_no_SA_handling> Term;
 
         //;          forethought medial marker 
         // GI-clause <- GI-pre GI-post
@@ -3566,7 +3566,7 @@ namespace LojbanTest
         // GI-post <- post-clause
         public static readonly Parser<GI_post> Term;
         // GI-no-SA-handling <- pre-clause GI post-clause
-        public static readonly Parser<GI_no_SA_handing> Term;
+        public static readonly Parser<GI_no_SA_handling> Term;
 
         //;          logical connectives for bridi-tails 
         // GIhA-clause <- GIhA-pre GIhA-post
@@ -3576,7 +3576,7 @@ namespace LojbanTest
         // GIhA-post <- post-clause
         public static readonly Parser<GIhA_post> Term;
         // GIhA-no-SA-handling <- pre-clause GIhA post-clause
-        public static readonly Parser<GIhA_no_SA_handing> Term;
+        public static readonly Parser<GIhA_no_SA_handling> Term;
 
         //;          attaches a sumti modifier to a sumti 
         // GOI-clause <- GOI-pre GOI-post
@@ -3586,7 +3586,7 @@ namespace LojbanTest
         // GOI-post <- post-clause
         public static readonly Parser<GOI_post> Term;
         // GOI-no-SA-handling <- pre-clause GOI post-clause
-        public static readonly Parser<GOI_no_SA_handing> Term;
+        public static readonly Parser<GOI_no_SA_handling> Term;
 
         //;          pro-bridi 
         // GOhA-clause <- GOhA-pre GOhA-post
@@ -3596,7 +3596,7 @@ namespace LojbanTest
         // GOhA-post <- post-clause
         public static readonly Parser<GOhA_post> Term;
         // GOhA-no-SA-handling <- pre-clause GOhA post-clause
-        public static readonly Parser<GOhA_no_SA_handing> Term;
+        public static readonly Parser<GOhA_no_SA_handling> Term;
 
         //;          GEK for tanru units, corresponds to JEKs 
         // GUhA-clause <- GUhA-pre GUhA-post
