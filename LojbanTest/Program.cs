@@ -4764,18 +4764,36 @@ namespace LojbanTest
         public virtual Parser<_x> x;
 
         // k <- comma* [kK] !h !k !x !voiced
-        public virtual Parser<_k> k;
-
+        public virtual Parser<string> k => from comma in Comma.Optional()
+                                           from main in Parse.Chars("kK")
+                                           from not_h in Parse.Not(Parse.Char('h'))
+                                           from not_k in Parse.Not(Parse.Char('k'))
+                                           from not_x in Parse.Not(Parse.Char('x'))
+                                           from voiced in Parse.Not(Voiced)
+                                           select comma.GetOrDefault().ToString() + main;
+        
         // f <- comma* [fF] !h !f !voiced
-        public virtual Parser<_f> f;
+        public virtual Parser<string> f => from comma in Comma.Optional()
+                                           from main in Parse.Chars("fF")
+                                           from not_h in Parse.Not(Parse.Char('h'))
+                                           from not_t in Parse.Not(Parse.Char('f'))
+                                           from voiced in Parse.Not(Voiced)
+                                           select comma.GetOrDefault().ToString() + main;
 
         // p <- comma* [pP] !h !p !voiced
-        public virtual Parser<_p> p;
+        public virtual Parser<string> p => from comma in Comma.Optional()
+                                           from main in Parse.Chars("pP")
+                                           from not_h in Parse.Not(Parse.Char('h'))
+                                           from not_t in Parse.Not(Parse.Char('p'))
+                                           from voiced in Parse.Not(Voiced)
+                                           select comma.GetOrDefault().ToString() + main;
 
         // t <- comma* [tT] !h !t !voiced
         public virtual Parser<string> t => from comma in Comma.Optional()
                                            from main in Parse.Chars("tT")
-                                           from nucleus in Nucleus
+                                           from not_h in Parse.Not(Parse.Char('h'))
+                                           from not_t in Parse.Not(Parse.Char('t'))
+                                           from voiced in Parse.Not(Voiced)
                                            select comma.GetOrDefault().ToString() + main;
 
         // h <- comma* ['h] &nucleus
@@ -4793,10 +4811,10 @@ namespace LojbanTest
                                              select main;
 
         // post-word <- pause / !nucleus lojban-word
-        public virtual Parser<Post_word> Post_word => Pause
-                                                      .Or(from nucleus in Parse.Not(Lojban_word)
-                                                          from lojban_word in Lojban_word
-                                                          select lojban_word);
+        public virtual Parser<string> Post_word => Pause
+                                                   .Or(from nucleus in Parse.Not(Nucleus)
+                                                       from lojban_word in Lojban_word
+                                                       select lojban_word);
 
         // pause <- comma* space-char / EOF
         public virtual Parser<string> Pause => (from comma in Comma.Many().Text().Token()
@@ -4826,7 +4844,7 @@ namespace LojbanTest
         //;  space-char <- [.\t\n\r?!\u0020]
 
         // space-char <- [.?! ] / space-char1 / space-char2 
-        public virtual Parser<char> Space_char => Parse.Chars(new char[] { '.', '!', '?', ' ', }).Or(Space_char1.Or(Space_char2));
+        public virtual Parser<char> Space_char => Parse.Chars(".!? ").Or(Space_char1.Or(Space_char2));
         // space-char1 <- '	'
         public virtual Parser<char> Space_char1 => Parse.Char('\t');
         // space-char2 <- '
