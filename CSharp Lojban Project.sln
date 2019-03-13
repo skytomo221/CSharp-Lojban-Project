@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojban", "Lojban\Lojban.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojbanTest", "LojbanTest\LojbanTest.csproj", "{11C739D7-9A0F-4AF4-AF82-03D484F39A25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpracheTest", "SpracheTest\SpracheTest.csproj", "{B72872A0-816B-48FD-A8AA-D5D3141F4EA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{11C739D7-9A0F-4AF4-AF82-03D484F39A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11C739D7-9A0F-4AF4-AF82-03D484F39A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11C739D7-9A0F-4AF4-AF82-03D484F39A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B72872A0-816B-48FD-A8AA-D5D3141F4EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72872A0-816B-48FD-A8AA-D5D3141F4EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72872A0-816B-48FD-A8AA-D5D3141F4EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72872A0-816B-48FD-A8AA-D5D3141F4EA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

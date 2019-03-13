@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace LojbanTest
 {
@@ -1979,7 +1978,7 @@ namespace LojbanTest
 
     // brivla-rafsi <- &(syllable consonantal-syllable* syllable) brivla-head h y h?
     public class Brivla_rafsi : MetaNode { }
-    
+
     // stressed-fuhivla-rafsi <- fuhivla-head stressed-syllable &consonant onset y
     public class Stressed_fuhivla_rafsi : MetaNode { }
 
@@ -2228,7 +2227,7 @@ namespace LojbanTest
     public class EOF : MetaNode { }
 
     // comma <- [,]
-    public class Comma: MetaNode { }
+    public class Comma : MetaNode { }
 
     // non-lojban-word <- !lojban-word non-space+
     public class Non_lojban_word : MetaNode { }
@@ -2630,7 +2629,7 @@ namespace LojbanTest
     // ZOhU <- &cmavo ( z o h u ) &post-word
     public class ZOhU : MetaNode { }
 
-    public static class Lojban
+    public class LojbanParser
     {
         //;  This is a Parsing Expression Grammar for Lojban.
         //;  See http://www.pdos.lcs.mit.edu/~baford/packrat/
@@ -3999,7 +3998,7 @@ namespace LojbanTest
         public static readonly Parser<NOI_post> NOI_post;
         // NOI-no-SA-handling <- pre-clause NOI post-clause
         public static readonly Parser<NOI_no_SA_handling> NOI_no_SA_handling;
-        
+
         //;          abstraction  
         // NU-clause <- NU-pre NU-post
         public static readonly Parser<NU_clause> NU_clause;
@@ -4482,10 +4481,10 @@ namespace LojbanTest
         public static readonly Parser<Words> Words;
 
         // word <- lojban-word / non-lojban-word
-        public static readonly Parser<Word> Word;
+        public virtual Parser<string> Word => Lojban_word.Or(Non_lojban_word);
 
         // lojban-word <- cmene / cmavo / brivla
-        public static readonly Parser<Lojban_word> Lojban_word;
+        public virtual Parser<string> Lojban_word => Cmene.Or(Cmavo.Or(Brivla));
 
         //; -------------------------------------------------------------------
 
@@ -4726,92 +4725,113 @@ namespace LojbanTest
         public static readonly Parser<Unvoiced> Unvoiced;
 
         // l <- comma* [lL] !h !l
-        public static readonly Parser<_l> l;
+        public virtual Parser<string> l;
 
         // m <- comma* [mM] !h !m !z
-        public static readonly Parser<_m> m;
+        public virtual Parser<string> m;
 
         // n <- comma* [nN] !h !n !affricate
-        public static readonly Parser<_n> n;
+        public virtual Parser<string> n;
 
         // r <- comma* [rR] !h !r
-        public static readonly Parser<_r> r;
+        public virtual Parser<string> r;
 
         // b <- comma* [bB] !h !b !unvoiced
-        public static readonly Parser<_b> b;
+        public virtual Parser<string> b;
 
         // d <- comma* [dD] !h !d !unvoiced
-        public static readonly Parser<_d> d;
+        public virtual Parser<_d> d;
 
         // g <- comma* [gG] !h !g !unvoiced
-        public static readonly Parser<_g> g;
+        public virtual Parser<_g> g;
 
         // v <- comma* [vV] !h !v !unvoiced
-        public static readonly Parser<_v> v;
+        public virtual Parser<_v> v;
 
         // j <- comma* [jJ] !h !j !z !unvoiced
-        public static readonly Parser<_j> j;
+        public virtual Parser<_j> j;
 
         // z <- comma* [zZ] !h !z !j !unvoiced
-        public static readonly Parser<_z> z;
+        public virtual Parser<_z> z;
 
         // s <- comma* [sS] !h !s !c !voiced
-        public static readonly Parser<_s> s;
+        public virtual Parser<_s> s;
 
         // c <- comma* [cC] !h !c !s !x !voiced
-        public static readonly Parser<_c> c;
+        public virtual Parser<_c> c;
 
         // x <- comma* [xX] !h !x !c !k !voiced
-        public static readonly Parser<_x> x;
+        public virtual Parser<_x> x;
 
         // k <- comma* [kK] !h !k !x !voiced
-        public static readonly Parser<_k> k;
+        public virtual Parser<_k> k;
 
         // f <- comma* [fF] !h !f !voiced
-        public static readonly Parser<_f> f;
+        public virtual Parser<_f> f;
 
         // p <- comma* [pP] !h !p !voiced
-        public static readonly Parser<_p> p;
+        public virtual Parser<_p> p;
 
         // t <- comma* [tT] !h !t !voiced
-        public static readonly Parser<_t> t;
+        public virtual Parser<string> t => from comma in Comma.Optional()
+                                           from main in Parse.Chars("tT")
+                                           from nucleus in Nucleus
+                                           select comma.GetOrDefault().ToString() + main;
 
         // h <- comma* ['h] &nucleus
-        public static readonly Parser<_h> h;
+        public virtual Parser<string> h => from comma in Comma.Optional()
+                                           from main in Parse.Chars("'h")
+                                           from nucleus in Nucleus
+                                           select comma.GetOrDefault().ToString() + main;
 
         //; -------------------------------------------------------------------
 
         // digit <- comma* [0123456789] !h !nucleus
-        public static readonly Parser<Digit> Digit;
+        public virtual Parser<char> Digit => from comma in Comma.Optional()
+                                             from main in Parse.Digit
+                                             from cat in Parse.Not(Parse.AnyChar)
+                                             select main;
 
         // post-word <- pause / !nucleus lojban-word
-        public static readonly Parser<Post_word> Post_word;
+        public virtual Parser<Post_word> Post_word => Pause
+                                                      .Or(from nucleus in Parse.Not(Lojban_word)
+                                                          from lojban_word in Lojban_word
+                                                          select lojban_word);
 
         // pause <- comma* space-char / EOF
-        public static readonly Parser<Pause> Pause;
+        public virtual Parser<string> Pause => (from comma in Comma.Many().Text().Token()
+                                                from space_char in Space_char
+                                                select comma + space_char.ToString())
+                                                .Or(EOF);
 
-        // EOF <- comma* !.
-        public static readonly Parser<EOF> EOF;
+        // EOF <- comma* !.                                                 
+        public virtual Parser<string> EOF => from comma in Comma.Optional()
+                                             from cat in Parse.Not(Parse.AnyChar)
+                                             select comma.ToString();
 
         // comma <- [,]
-        public static readonly Parser<Comma> Comma;
+        public virtual Parser<char> Comma => Parse.Char(',');
 
         // non-lojban-word <- !lojban-word non-space+
-        public static readonly Parser<Non_lojban_word> Non_lojban_word;
+        public virtual Parser<string> Non_lojban_word => from lojban_word in Parse.Not(Lojban_word)
+                                                         from non_space in Non_space.AtLeastOnce().Text().Token()
+                                                         select non_space;
 
         // non-space <- !space-char .
-        public static readonly Parser<Non_space> Non_space;
+        public virtual Parser<char> Non_space => from space_char in Parse.Not(Space_char)
+                                                 from main in Parse.AnyChar
+                                                 select main;
 
         //; Unicode-style and escaped chars not compatible with cl-peg
         //;  space-char <- [.\t\n\r?!\u0020]
 
         // space-char <- [.?! ] / space-char1 / space-char2 
-        public static readonly Parser<Space_char> Space_char;
+        public virtual Parser<char> Space_char => Parse.Chars(new char[] { '.', '!', '?', ' ', }).Or(Space_char1.Or(Space_char2));
         // space-char1 <- '	'
-        public static readonly Parser<Space_char1> Space_char1;
+        public virtual Parser<char> Space_char1 => Parse.Char('\t');
         // space-char2 <- '
         // '
-        public static readonly Parser<Space_char2> Space_char2;
+        public virtual Parser<char> Space_char2 => Parse.Char('\n');
 
         //; -------------------------------------------------------------------
 
@@ -5200,21 +5220,13 @@ namespace LojbanTest
         //public static readonly Parser<char> EOF = from main in Parse.Char(',')
         //                                          from negative_look_behind in Parse.Not(Parse.AnyChar)
         //                                          select main;
-        //public static readonly Parser<char> SpaceChar1 = Parse.Char('\t');
-        //public static readonly Parser<char> SpaceChar2 = Parse.Char('\n');
-        //public static readonly Parser<char> SpaceChar = Parse.Chars(new char[] { '.', '!', '?', ' ', }).Or(SpaceChar1.Or(SpaceChar2));
     }
 
-    public static class ConfigParser
+    public class TestParser
     {
-
-        public static readonly Parser<string> Key = Parse.Letter.AtLeastOnce().Text();
-        public static readonly Parser<int> Value = Parse.Decimal.Select(n => Convert.ToInt32(n));
-        public static readonly Parser<Property> Property = from key in Key.Token()
-                                                           from asign in Parse.Char('=').Token()
-                                                           from value in Value.Token()
-                                                           select new Property(key, value);
-        public static readonly Parser<IEnumerable<Property>> Properties = Property.Many().End();
+        public virtual Parser<char> Space_char => Parse.Chars(new char[] { '.', '!', '?', ' ', }).Or(Space_char1.Or(Space_char2));
+        public virtual Parser<char> Space_char1 => Parse.Char('\t');
+        public virtual Parser<char> Space_char2 => Parse.Char('\n');
     }
 
     class Program
@@ -5222,29 +5234,11 @@ namespace LojbanTest
 
         static void Main(string[] args)
         {
-            Parser<IEnumerable<char>> test = Parse.AnyChar.Many();
-            //var src = "speed = 300\ntest = 200";
-            //var p = ConfigParser.Properties.Parse(src);
-            //foreach (var item in p)
-            //{
-            //    Console.WriteLine(item.Key + "=" + item.Value);
-            //}
-
-            var input = "^cat";
-
-            // Sparache
-            Parser<string> parser = from look_ahead in Parse.String("^")
-                                    from main in Parse.AnyChar.Many().Text()
-                                    select main;
-            string result = parser.Parse(input);
-
-            Console.WriteLine("Sprache: " + result + " (" + result + ")");
-
-            // 正規表現
-            var match = Regex.Match(input, @"(?<!\^).*");
-            result = match.Value;
-            Console.WriteLine("Regex: " + result + " (" + result + ")");
-
+            var test2 = Parse.Char('\t');
+            var r = test2.Parse("\t");
+            var testParser = new TestParser();
+            var test = testParser.Space_char.Parse("\t");
+            Console.WriteLine("\"" + test.ToString() + "\"");
         }
     }
 }
