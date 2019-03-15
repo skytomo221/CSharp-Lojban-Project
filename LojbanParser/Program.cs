@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,8 +51,9 @@ namespace LojbanParser
     {
         static void Main(string[] args)
         {
-            var test = new Camxes();
-            test.Parse("coi");
+            var parser = new LojbanGrammer();
+            Console.Write(JsonConvert.SerializeObject(parser.Parse("la .alis. co'a tatpi lo nu zutse lo rirxe korbi re'o lo mensi gi'e zukte fi no da"), Formatting.Indented));
         }
     }
 }
+
