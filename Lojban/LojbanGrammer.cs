@@ -1,4 +1,4 @@
-﻿namespace Lojban
+namespace Lojban
 {
     public static class LojbanGrammer
     {
