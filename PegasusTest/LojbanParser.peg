@@ -1,0 +1,18 @@
+﻿@namespace PegasusTest
+@classname LojbanParser
+@using System.Linq;
+
+start = text;
+
+text <Node> =  a: vowel* { new Node("all", a) };
+
+comma <Node> = expr : "," { new Node("comma", expr) };
+
+vowel <Node> = expr: (a / e / i / o / u) { new Node("vowel", expr) };
+
+a <Node> = expr: (comma* [aA]) { new Node("a", expr) };
+e <Node> = expr: (comma* [eE]) { new Node("e", expr) };
+i <Node> = expr: (comma* [iI]) { new Node("i", expr) };
+o <Node> = expr: (comma* [oO]) { new Node("o", expr) };
+u <Node> = expr: (comma* [uU]) { new Node("u", expr) };
+y <Node> = expr: (comma* [yY]) { new Node("y", expr) };
