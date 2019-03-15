@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antlr4Test", "Antlr4Test\An
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PegasusTest", "PegasusTest\PegasusTest.csproj", "{838B713F-111F-4B38-86D6-9034767B39F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PegasusConverter", "PegParser\PegasusConverter.csproj", "{B18E3090-953F-4769-AF5E-D29A2B549DD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{838B713F-111F-4B38-86D6-9034767B39F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{838B713F-111F-4B38-86D6-9034767B39F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{838B713F-111F-4B38-86D6-9034767B39F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B18E3090-953F-4769-AF5E-D29A2B549DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18E3090-953F-4769-AF5E-D29A2B549DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18E3090-953F-4769-AF5E-D29A2B549DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18E3090-953F-4769-AF5E-D29A2B549DD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
