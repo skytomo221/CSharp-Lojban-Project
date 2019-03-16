@@ -19,11 +19,12 @@ CSharp Lojban Projectは、C#でLojbanを処理するために作られたライ
 
 ## Library
 
-[Pegasus](https://www.nuget.org/packages/Pegasus/4.1.0-alpha0031) [(Source repository)](https://github.com/otac0n/Pegasus)  
-Pegasusは、MSBuildとVisual Studioと統合する.NET用のPEGパーサジェネレータです。  
+[Pegasus](http://otac0n.com/Pegasus/)
+[(Source repository)](https://github.com/otac0n/Pegasus)  
+Pegasusは、MSBuildおよびVisual Studioと統合する、.NET用のPEG（Parsing Expression Grammar）パーサージェネレータです。  
 ロジバンの文法はPEGで書かれているため、そのパーサを生成するときに使用されます。
 
-[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)
+[Newtonsoft.Json](https://www.newtonsoft.com/json)
 [(Source repository)](https://github.com/JamesNK/Newtonsoft.Json)  
 Json.NETは、.NET用の人気の高い高性能JSONフレームワークです。  
 主に、ロジバンの解析結果をJSONに変換するときに使用されます。
