@@ -11,29 +11,33 @@ namespace WindowsFormsAppTest
         {
             InitializeComponent();
 
-            webBrowser1.ObjectForScripting = new TestClass();
+            //webBrowser1.ObjectForScripting = new object();
             MainForm_Load();
         }
 
         public void MainForm_Load()
         {
-            var indexPath = @"D:/skytomo/Documents/Language/Lojban/CSharp Lojban Project/WindowsFormsAppTest/sample.html";
+            var indexPath = Environment.CurrentDirectory + @"/../../sample.html";
             var encoding = Encoding.UTF8;
             webBrowser1.Navigate(indexPath);
+            webBrowser1.ObjectForScripting = new ObjectForScripting();
         }
 
+
         [ComVisible(true)]
-        public class TestClass
+        public class ObjectForScripting
         {
-            public void TestFunc(string s)
+            string LogText { get; set; } = string.Empty;
+            public ObjectForScripting() { }
+            public void Log(string s)
             {
-                MessageBox.Show(s, "戻り値", MessageBoxButtons.OK);
+                LogText += s;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            webBrowser1.Document.InvokeScript("sample", new string[] { "あいうえお", "さしすせそ" });
+            webBrowser1.Document.InvokeScript("test", new string[] { "mi coi", "Raw output" });
         }
     }
 }
