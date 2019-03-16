@@ -5,17 +5,12 @@ Unfortunately, it is still in development.
 
 ## Other Language
 
-**HELP!**
-Do you speak Lojban?
-Can you help translate to Lojban?
-We are glad to welcome it.
-
-If you can not read banjubu'o, please refer to the following document:
-[banjubu'o🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/README.md)
-[bangenugu🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.en.md)
-[banjupunu🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ja.md)
-[bangrxangu🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ko.md)
-[banzuxe'o🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
+If you can not read English, please refer to the following document:
+[Lojban🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/README.md)
+[English🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.en.md)
+[Japanese🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ja.md)
+[Korean🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ko.md)
+[Chinese🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
 
 The original text of this document is Japanese, and in the case of a contradiction, Japanese takes precedence.
 If there is a mistranslation, please issue an issue.
