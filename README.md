@@ -3,7 +3,7 @@
 CSharp Lojban Project is library for handling Lojban with C#  
 Unfortunately, it is still in development.
 
-## Other Language
+## lo bangu ku drata lo banjubu'o ku
 
 **HELP!**
 Do you speak Lojban?
@@ -22,7 +22,7 @@ If there is a mistranslation, please issue an issue.
 
 However, the license is prioritized in English.
 
-## Library
+## ckusro
 
 [Pegasus](http://otac0n.com/Pegasus/)
 [(Source repository)](https://github.com/otac0n/Pegasus)  
@@ -39,7 +39,7 @@ It is a peg file created by [John Gietzen](https://gist.github.com/otac0) who is
 Currently this is adopted.  
 However, when compared with another Lojban parser, the result is different, so it needs to be corrected.
 
-## License
+## curmi pilno
 
 This source is subject to the MIT license.
 Please see [this](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/LICENSE) for more information.
