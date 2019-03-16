@@ -13,7 +13,7 @@ CSharp Lojban Projectは、C#でLojbanを処理するために作られたライ
 [中国語🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
 
 この文書の原文は日本語であり、矛盾が生じた場合は日本語が優先されます。  
-また誤訳が存在する場合は、issueを立ててください。
+また誤訳が存在する場合は、issuesを立ててください。
 
 ただし、ライセンスは英語が優先されます。
 
