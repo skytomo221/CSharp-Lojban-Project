@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Noesis.Javascript;
 
 namespace LojbanParser
 {
@@ -45,12 +45,41 @@ namespace LojbanParser
         }
     }
 
+    class SystemConsole
+    {
+        public SystemConsole()
+        {
+        }
+        public void Print(string s)
+        {
+            Console.WriteLine(s);
+        }
+
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            var parser = new LojbanGrammer();
-            Console.Write(JsonConvert.SerializeObject(parser.Parse("la .alis. co'a tatpi lo nu zutse lo rirxe korbi re'o lo mensi gi'e zukte fi no da"), Formatting.Indented));
+            //var parser = new LojbanGrammer();
+            //Console.Write(JsonConvert.SerializeObject(parser.Parse("la .alis. co'a tatpi lo nu zutse lo rirxe korbi re'o lo mensi gi'e zukte fi no da"), Formatting.Indented));
+            Console.WriteLine("Hello World!");
+
+            // Initialize the context
+            using (JavascriptContext context = new JavascriptContext())
+            {
+
+                // Setting the externals parameters of the context
+                context.SetParameter("console", new SystemConsole());
+                context.SetParameter("message", "Hello World !");
+                context.SetParameter("number", 1);
+
+                // Running the script
+                context.Run("var i; for (i = 0; i < 5; i++) console.Print(message + ' (' + i + ')'); number += i;");
+
+                // Getting a parameter
+                Console.WriteLine("number: " + context.GetParameter("number"));
+            }
         }
     }
 }
