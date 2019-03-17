@@ -6,11 +6,11 @@ CSharp Lojban Project是一个用于在C＃中处理Lojban的库。
 ## Other Language
 
 如果您不懂中文，请查看以下文件。  
-[逻辑语🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/README.md)
-[英语🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.en.md)
-[日语🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ja.md)
-[朝鲜语🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ko.md)
-[中文🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
+[逻辑语🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/README.md)
+[英语🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.en.md)
+[日语🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ja.md)
+[朝鲜语🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ko.md)
+[中文🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.zh.md)
 
 本文档的原始文本是日文，在矛盾的情况下，日文优先。  
 如果有误译，请发出问题。
@@ -37,4 +37,4 @@ Json.NET是一种流行的.NET高性能JSON框架。
 ## License
 
 许可证是MIT许可证。  
-来自[here](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/LICENSE)的详细信息。
+来自[here](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/LICENSE)的详细信息。
