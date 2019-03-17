@@ -6,11 +6,11 @@ Unfortunately, it is still in development.
 ## Other Language
 
 If you can not read English, please refer to the following document:
-[Lojban🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/README.md)
-[English🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.en.md)
-[Japanese🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ja.md)
-[Korean🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ko.md)
-[Chinese🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
+[Lojban🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/README.md)
+[English🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.en.md)
+[Japanese🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ja.md)
+[Korean🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ko.md)
+[Chinese🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.zh.md)
 
 The original text of this document is Japanese, and in the case of a contradiction, Japanese takes precedence.
 If there is a mistranslation, please issue an issue.
@@ -37,4 +37,4 @@ However, when compared with another Lojban parser, the result is different, so i
 ## License
 
 This source is subject to the MIT license.
-Please see [this](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/LICENSE) for more information.
+Please see [this](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/LICENSE) for more information.

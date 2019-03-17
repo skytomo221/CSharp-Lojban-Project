@@ -11,11 +11,11 @@ Can you help translate to Lojban?
 We are glad to welcome it.
 
 If you can not read banjubu'o, please refer to the following document:
-[banjubu'o🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/README.md)
-[bangenugu🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.en.md)
-[banjupunu🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ja.md)
-[bangrxangu🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ko.md)
-[banzuxe'o🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
+[banjubu'o🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/README.md)
+[bangenugu🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.en.md)
+[banjupunu🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ja.md)
+[bangrxangu🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ko.md)
+[banzuxe'o🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.zh.md)
 
 The original text of this document is Japanese, and in the case of a contradiction, Japanese takes precedence.
 If there is a mistranslation, please issue an issue.
@@ -42,4 +42,4 @@ However, when compared with another Lojban parser, the result is different, so i
 ## curmi pilno
 
 This source is subject to the MIT license.
-Please see [this](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/LICENSE) for more information.
+Please see [this](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/LICENSE) for more information.

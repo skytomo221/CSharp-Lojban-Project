@@ -5,11 +5,11 @@ CSharp Lojban Projectは、C#でLojbanを処理するために作られたライ
 ## Other Language
 
 もし日本語が読めないときは次の文書を見てください。  
-[ロジバン🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/README.md)
-[英語🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.en.md)
-[日本語🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ja.md)
-[韓国語🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ko.md)
-[中国語🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
+[ロジバン🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/README.md)
+[英語🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.en.md)
+[日本語🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ja.md)
+[韓国語🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ko.md)
+[中国語🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.zh.md)
 
 この文書の原文は日本語であり、矛盾が生じた場合は日本語が優先されます。  
 また誤訳が存在する場合は、issuesを立ててください。
@@ -32,7 +32,7 @@ Json.NETは、.NET用の人気の高い高性能JSONフレームワークです�
 ## License
 
 ライセンスはMITライセンスです。
-詳細は[こちら](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/LICENSE)から。
+詳細は[こちら](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/LICENSE)から。
 
 ## Version
 
