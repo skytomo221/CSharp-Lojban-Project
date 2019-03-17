@@ -14,6 +14,8 @@ namespace ConsoleApp1
         {
             var result = ParserForm.Parse("Hello World");
             Console.WriteLine(result ?? "(null)");
+            result = ParserForm.Parse("Hello World!");
+            Console.WriteLine(result ?? "(null)");
             //Console.ReadKey();
         }
     }
