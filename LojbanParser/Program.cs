@@ -1,56 +1,100 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
+using System.Security.Permissions;
+using System.Windows.Forms;
 
 namespace LojbanParser
 {
-    public class Node
-    {
-        public string Label { get; set; }
-        public object Child { get; set; }
 
-        public Node(string label, IList<Node> child) { Label = label; Child = child; }
-        public Node(string label, Node child) { Label = label; Child = child.Child; }
-        public Node(string label, string child) { Label = label; Child = child; }
-        public override string ToString()
-        {
-            if (Child is string)
-            {
-                var child = Child as string;
-                return "{\n\t\"" + Label + "\"\n\t\"" + child + "\"\n}";
-            }
-            else if (Child is IList<Node>)
-            {
-                var child = Child as IList<Node>;
-                return "{\n\t\"" + Label + "\"\n\t" + string.Join("\n", child.Select(x => x.ToString())).Replace("\n", "\n\t") + "\n}";
-            }
-            return base.ToString();
+    public class LojbanParser
+    {
+        public string Text { get; set; } = "coi";
+        public string Mode { get; set; } = "Raw output";
+        public object Result { get; private set; }
+        public string ParserFile { get; set; } = "camxes";
+        public LojbanParserForm LojbanParserForm { get; }
+        public string DocumentText => @"
+<html>
+<head>
+    <meta charset=""utf-8"" />
+    <meta http-equiv=""X-UA-Compatible"" content=""IE=11"" />
+    <title>title</title>
+</head>
+<body>
+    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/" + ParserFile + @".js""></script>
+    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/camxes_postproc.js""></script>
+    <script>
+        function cs_func(text, mode) {
+            var result = camxes.parse(text);
+            var result_str = camxes_postprocessing(result, mode);
+            external.Result = result_str;
+            return result_str;
         }
-        public static IList<Node> Union(params object[] node)
+    </script>
+    <h1>Hello!</h1>
+</body>
+</html>
+";
+        public WebBrowser WebBrowser { get; } = new WebBrowser();
+        public LojbanParser() { }
+        public LojbanParser(string text) { Text = text; }
+        public string Parse()
         {
-            var list = new List<Node>();
-            foreach (var item in node)
+            var LojbanParserForm = new LojbanParserForm
             {
-                if (item is Node)
-                {
-                    list.Add(item as Node);
-                }
-                else if (item is IList<Node>)
-                {
-                    list = list.Union(item as IList<Node>).ToList();
-                }
-            }
-            return list;
+                Visible = false,
+                Text = Text,
+                Mode = Mode,
+                FormBorderStyle = FormBorderStyle.None,
+                Region = new Region(new GraphicsPath()),
+                DocumentText = DocumentText
+            };
+            LojbanParserForm.ShowDialog();
+            return LojbanParserForm.Result?.ToString();
+        }
+        public object Parse(string text)
+        {
+            Text = text;
+            return Parse();
+        }
+    }
+
+    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+    [ComVisibleAttribute(true)]
+    public class LojbanParserForm : Form
+    {
+        private WebBrowser WebBrowser = new WebBrowser();
+        public new string Text { get; set; }
+        public string Mode { get; set; }
+        public object Result { get; set; }
+        public string DocumentText { get; set; }
+        public LojbanParserForm()
+        {
+            WebBrowser.Dock = DockStyle.Fill;
+            Controls.Add(WebBrowser);
+            Load += (s, e) =>
+            {
+                WebBrowser.ObjectForScripting = this;
+                WebBrowser.Navigate("about:blank");
+                WebBrowser.Document.OpenNew(true);
+                WebBrowser.DocumentText = DocumentText;
+                Application.DoEvents();
+                WebBrowser.Document.InvokeScript("cs_func", new[] { Text, Mode });
+                DialogResult = DialogResult.OK;
+            };
         }
     }
 
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
-            var parser = new LojbanGrammer();
-            Console.Write(JsonConvert.SerializeObject(parser.Parse("la .alis. co'a tatpi lo nu zutse lo rirxe korbi re'o lo mensi gi'e zukte fi no da"), Formatting.Indented));
+            var parser = new LojbanParser();
+            var result = parser.Parse("mi coi");
+            Console.WriteLine(result ?? "(null)");
         }
     }
 }
