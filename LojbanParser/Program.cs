@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace LojbanParser
@@ -68,9 +71,71 @@ namespace LojbanParser
         [STAThread]
         static void Main(string[] args)
         {
-            var parser = new LojbanParser();
-            var result = parser.Parse("mi coi");
-            Console.WriteLine(result ?? "●●●\t残念ながら、\t●●●");
+            //var parser = new LojbanParser();
+            //var result = parser.Parse("mi coi");
+            //Console.WriteLine(result ?? "●●●\t残念ながら、\t●●●");
+            var result = ParserForm.Parse("coi");
+            Console.WriteLine(result ?? "(null)");
+            Console.ReadKey();
+        }
+    }
+
+    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+    [ComVisibleAttribute(true)]
+    public class ParserForm : Form
+    {
+        public static string Parse(string message)
+        {
+            var region = new Region(new GraphicsPath());
+            var form = new ParserForm
+            {
+                Visible = false,
+                Text = message,
+                FormBorderStyle = FormBorderStyle.None,
+                Region = region
+            };
+            form.ShowDialog();
+            return form.Result?.ToString();
+        }
+
+        private WebBrowser webBrowser1 = new WebBrowser();
+        public new string Text { get; set; }
+        public object Result { get; set; }
+
+        public ParserForm()
+        {
+            webBrowser1.Dock = DockStyle.Fill;
+            Controls.Add(webBrowser1);
+            Load += (s, e) =>
+            {
+                webBrowser1.ObjectForScripting = this;
+                webBrowser1.Navigate("about:blank");
+                webBrowser1.Document.OpenNew(true);
+                webBrowser1.DocumentText = @"
+<html>
+<head>
+    <meta charset=""utf-8"" />
+    <meta http-equiv=""X-UA-Compatible"" content=""IE=11"" />
+    <title>title</title>
+</head>
+<body>
+    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/camxes.js""></script>
+    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/camxes_postproc.js""></script>
+    <script>
+        function cs_func(text, mode) {
+            var result = camxes.parse(text);
+            var result_str = camxes_postprocessing(result, mode);
+            external.Result = result_str;
+        }
+    </script>
+    <h1>Hello!</h1>
+</body>
+</html>
+";
+                Application.DoEvents();
+                webBrowser1.Document.InvokeScript("cs_func", new[] { Text, "Raw output" });
+                DialogResult = DialogResult.OK;
+            };
         }
     }
 }

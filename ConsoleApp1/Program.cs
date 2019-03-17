@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace ConsoleApp1
@@ -9,24 +12,44 @@ namespace ConsoleApp1
         [STAThread]
         static void Main(string[] args)
         {
-            var parser = new MyClass();
-            var result = parser.Parse();
+            var result = ParserForm.Parse("Hello World");
             Console.WriteLine(result ?? "(null)");
+            //Console.ReadKey();
         }
     }
 
-    public class MyClass
+    [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+    [ComVisibleAttribute(true)]
+    public class ParserForm : Form
     {
-        public string Text { get; set; }
-        public object Result { get; private set; }
-        public WebBrowser WebBrowser { get; } = new WebBrowser();
-        public ParseResult ParseResultObject { get; set; } = new ParseResult();
-        public string Parse()
+        public static string Parse(string message)
         {
-            WebBrowser.DocumentCompleted += delegate { Console.WriteLine("Are you OK?"); };
-            WebBrowser.Navigate("about:blank");
-            WebBrowser.Document.OpenNew(true);
-            WebBrowser.Document.Write(@"
+            var region = new Region(new GraphicsPath());
+            var form = new ParserForm
+            {
+                Visible = false,
+                message = message,
+                FormBorderStyle = FormBorderStyle.None,
+                Region = region
+            };
+            form.ShowDialog();
+            return form.Result?.ToString();
+        }
+
+        private WebBrowser webBrowser1 = new WebBrowser();
+        private string message;
+        public object Result { get; set; }
+
+        public ParserForm()
+        {
+            webBrowser1.Dock = DockStyle.Fill;
+            Controls.Add(webBrowser1);
+            Load += (s, e) =>
+            {
+                webBrowser1.ObjectForScripting = this;
+                webBrowser1.Navigate("about:blank");
+                webBrowser1.Document.OpenNew(true);
+                webBrowser1.Document.Write(@"
 <html>
 <head>
     <meta charset=""utf-8"" />
@@ -36,22 +59,17 @@ namespace ConsoleApp1
 <body>
     <script>
         function cs_func(text) {
-            external.Result = text;
+            window.external.Result = text;
         }
     </script>
     <h1>Hello!</h1>
 </body>
 </html>
 ");
-            WebBrowser.ObjectForScripting = ParseResultObject;
-            WebBrowser.Document.InvokeScript("cs_func", new string[] { "Hello, world!" });
-            return ParseResultObject.Result;
-        }
-
-        [ComVisible(true)]
-        public class ParseResult
-        {
-            public string Result { get; set; }
+                Application.DoEvents();
+                webBrowser1.Document.InvokeScript("cs_func", new[] { message });
+                DialogResult = DialogResult.OK;
+            };
         }
     }
 }
