@@ -1,7 +1,6 @@
 # CSharp Lojban Project
 
 CSharp Lojban Projectは、C#でLojbanを処理するために作られたライブラリです。  
-残念ながら、まだ開発中です。
 
 ## Other Language
 
@@ -19,22 +18,28 @@ CSharp Lojban Projectは、C#でLojbanを処理するために作られたライ
 
 ## Library
 
-[Pegasus](http://otac0n.com/Pegasus/)
-[(Source repository)](https://github.com/otac0n/Pegasus)  
-Pegasusは、MSBuildおよびVisual Studioと統合する、.NET用のPEG（Parsing Expression Grammar）パーサージェネレータです。  
-ロジバンの文法はPEGで書かれているため、そのパーサを生成するときに使用されます。
-
 [Newtonsoft.Json](https://www.newtonsoft.com/json)
 [(Source repository)](https://github.com/JamesNK/Newtonsoft.Json)  
 Json.NETは、.NET用の人気の高い高性能JSONフレームワークです。  
 主に、ロジバンの解析結果をJSONに変換するときに使用されます。
 
-[LojbanGrammer.peg](https://gist.github.com/otac0n/63d8fae45c551c4e8d41c83c53afc17e#file-lojbangrammar-peg)  
-Pegasusの製作者である、[John Gietzen](https://gist.github.com/otac0n)さんが作成したpegファイルです。  
-現在はこれを使用しています。  
-ただし、別のロジバンのパーサと比較すると、違う結果が出てしまうので、修正が必要になります。
+[ilmentufa](http://www.lojban.github.io/ilmentufa)
+[(Source repository)](https://github.com/lojban/ilmentufa)  
+
+[camxes.js](http://www.masatohagiwara.net/camxes.js/)
+[(Source repository)](https://github.com/mhagiwara/camxe.js)  
 
 ## License
 
 ライセンスはMITライセンスです。
 詳細は[こちら](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/LICENSE)から。
+
+## Version
+
+### Version 0.0
+
+- Pegasusを用いたパーサ
+
+### Version 1.0
+
+- WebBrowserを用いたパーサ
