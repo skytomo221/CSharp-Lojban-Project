@@ -1,85 +1,97 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Noesis.Javascript;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace LojbanParser
 {
-    public class Node
+
+    public class LojbanParser
     {
-        public string Label { get; set; }
-        public object Child { get; set; }
+        public string Text { get; set; }
+        public object Result { get; private set; }
+        public string DocumentText => @"
+<html>
+<head>
+    <meta charset=""utf-8"" />
+    <meta http-equiv=""X-UA-Compatible"" content=""IE=11"" />
+    <title>title</title>
+</head>
+<body>
+"//    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/camxes.js""></script>
+//    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/camxes_postproc.js""></script>
++@"    <script>
+        function cs_func(text, mode) {
+//            var result = camxes.parse(text);
+//            var result_str = camxes_postprocessing(result, mode);
+//            external.Result = result_str;
+              window.external.Result = ""Hello, world!"";
+//            return result_str;
+        }
+    </script>
+    <h1>Hello!</h1>
+</body>
+</html>
+";
+        public WebBrowser WebBrowser { get; } = new WebBrowser();
+        public LojbanParser() { Initialize(); }
+        public LojbanParser(string text) { Initialize(); Text = text; }
+        public void Initialize() { WebBrowser.DocumentCompleted += WebBrowser_DocumentCompleted; }
+        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            Console.WriteLine("done.");
+        }
+        public string Parse()
+        {
+            var parse = new ParseResult();
+            WebBrowser.DocumentText = @"
+<html>
+<head>
+    <meta charset=""utf-8"" />
+    <meta http-equiv=""X-UA-Compatible"" content=""IE=11"" />
+    <title>title</title>
+</head>
+<body>
+    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/camxes.js""></script>
+    <script type=""text/javascript"" src=""" + Environment.CurrentDirectory.Replace("\\", "/") + @"/ilmentufa/camxes_postproc.js""></script>
+    <script>
+        function cs_func(text, mode) {
+//            var result = camxes.parse(text);
+//            var result_str = camxes_postprocessing(result, mode);
+//            external.Result = result_str;
+            external.Result = ""Hello, world!"";
+//            return result_str;
+        }
+    </script>
+    <h1>Hello!</h1>
+</body>
+</html>
+";
+            WebBrowser.ObjectForScripting = parse;
+            WebBrowser.Document.InvokeScript("cs_func", new string[] { Text, "Raw output" });
+            Console.WriteLine();
+            return parse.Result;
+        }
+        public object Parse(string text)
+        {
+            Text = text;
+            return Parse();
+        }
 
-        public Node(string label, IList<Node> child) { Label = label; Child = child; }
-        public Node(string label, Node child) { Label = label; Child = child.Child; }
-        public Node(string label, string child) { Label = label; Child = child; }
-        public override string ToString()
+        [ComVisible(true)]
+        public class ParseResult
         {
-            if (Child is string)
-            {
-                var child = Child as string;
-                return "{\n\t\"" + Label + "\"\n\t\"" + child + "\"\n}";
-            }
-            else if (Child is IList<Node>)
-            {
-                var child = Child as IList<Node>;
-                return "{\n\t\"" + Label + "\"\n\t" + string.Join("\n", child.Select(x => x.ToString())).Replace("\n", "\n\t") + "\n}";
-            }
-            return base.ToString();
+            public string Result { get; set; }
         }
-        public static IList<Node> Union(params object[] node)
-        {
-            var list = new List<Node>();
-            foreach (var item in node)
-            {
-                if (item is Node)
-                {
-                    list.Add(item as Node);
-                }
-                else if (item is IList<Node>)
-                {
-                    list = list.Union(item as IList<Node>).ToList();
-                }
-            }
-            return list;
-        }
-    }
-
-    class SystemConsole
-    {
-        public SystemConsole()
-        {
-        }
-        public void Print(string s)
-        {
-            Console.WriteLine(s);
-        }
-
     }
 
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
-            //var parser = new LojbanGrammer();
-            //Console.Write(JsonConvert.SerializeObject(parser.Parse("la .alis. co'a tatpi lo nu zutse lo rirxe korbi re'o lo mensi gi'e zukte fi no da"), Formatting.Indented));
-            Console.WriteLine("Hello World!");
-
-            // Initialize the context
-            using (JavascriptContext context = new JavascriptContext())
-            {
-
-                // Setting the externals parameters of the context
-                context.SetParameter("console", new SystemConsole());
-                context.SetParameter("message", "Hello World !");
-                context.SetParameter("number", 1);
-
-                // Running the script
-                context.Run("var i; for (i = 0; i < 5; i++) console.Print(message + ' (' + i + ')'); number += i;");
-
-                // Getting a parameter
-                Console.WriteLine("number: " + context.GetParameter("number"));
-            }
+            var parser = new LojbanParser();
+            var result = parser.Parse(".i coi");
+            Console.WriteLine(result ?? "●●●\t残念ながら、\t●●●");
         }
     }
 }
