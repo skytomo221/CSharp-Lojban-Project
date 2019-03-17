@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>lojban</id>
+    <version>1.0.0</version>
+    <title>CSharp Lojban Project</title>
+    <authors>skytomo</authors>
+    <owners>skytomo</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/skytomo221/CSharp-Lojban-Project</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library for handling Lojban with C#</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright © 2019 skytomo</copyright>
+    <tags>C# Lojban Parser</tags>
+  </metadata>
+</package>
