@@ -20,7 +20,7 @@ namespace LojbanTest
             result = parser.Parse(text);
             Console.WriteLine(result);
 
-            var jbovlaste = new Dictionary("banjupunu.xml");
+            var jbovlaste = new Jbovlaste("banjupunu.xml");
             var result2 = (from valsi in jbovlaste
                           orderby valsi.Selmaho
                           select valsi.Selmaho).Distinct();

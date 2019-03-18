@@ -41,10 +41,10 @@ namespace Lojban.Jbovlaste
         public List<string> GlossWord { get; set; }
     }
 
-    public class Dictionary : List<Valsi>
+    public class Jbovlaste : List<Valsi>
     {
-        public Dictionary() { }
-        public Dictionary(string filename)
+        public Jbovlaste() { }
+        public Jbovlaste(string filename)
         {
             Load(filename);
         }
