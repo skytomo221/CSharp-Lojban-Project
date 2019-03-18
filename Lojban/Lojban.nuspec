@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>lojban</id>
-    <version>1.0.0</version>
+    <id>Lojban</id>
+    <version>1.0.1</version>
     <title>CSharp Lojban Project</title>
     <authors>skytomo</authors>
     <owners>skytomo</owners>
