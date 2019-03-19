@@ -54,6 +54,7 @@
     <Compile Include="LojbanParserForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ParseMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

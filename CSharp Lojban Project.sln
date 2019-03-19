@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojbanTest", "LojbanTest\Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojbanCalculator", "LojbanCalculator\LojbanCalculator.csproj", "{60425715-EFA5-4547-AAEB-CB6EABA01601}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojbanUnitTest", "LojbanUnitTest\LojbanUnitTest.csproj", "{4E59EF45-487D-4266-B236-8CC3542377C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{60425715-EFA5-4547-AAEB-CB6EABA01601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60425715-EFA5-4547-AAEB-CB6EABA01601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60425715-EFA5-4547-AAEB-CB6EABA01601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E59EF45-487D-4266-B236-8CC3542377C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E59EF45-487D-4266-B236-8CC3542377C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E59EF45-487D-4266-B236-8CC3542377C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E59EF45-487D-4266-B236-8CC3542377C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
