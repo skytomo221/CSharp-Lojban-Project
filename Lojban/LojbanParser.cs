@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -9,7 +8,7 @@ namespace Lojban
     public class LojbanParser
     {
         public string Text { get; set; } = "coi";
-        public string Mode { get; set; } = "Raw output";
+        public ParseMode Mode { get; set; } = ParseMode.Indented;
         public object Result { get; private set; }
         public string ParserFile { get; set; } = "camxes";
         public LojbanParserForm LojbanParserForm { get; }
@@ -28,7 +27,6 @@ namespace Lojban
             var result = camxes.parse(text);
             var result_str = camxes_postprocessing(result, mode);
             external.Result = result_str;
-            return result_str;
         }
     </script>
     <h1>Hello!</h1>
@@ -40,11 +38,10 @@ namespace Lojban
         public LojbanParser(string text) { Text = text; }
         public string Parse()
         {
-            var LojbanParserForm = new LojbanParserForm
+            var LojbanParserForm = new LojbanParserForm(Mode)
             {
                 Visible = false,
                 Text = Text,
-                Mode = Mode,
                 FormBorderStyle = FormBorderStyle.None,
                 Region = new Region(new GraphicsPath()),
                 DocumentText = DocumentText

@@ -1,5 +1,7 @@
 ﻿using Lojban;
+using Lojban.Jbovlaste;
 using System;
+using System.Linq;
 
 namespace LojbanTest
 {
@@ -17,6 +19,15 @@ namespace LojbanTest
             parser.ParserFile = "camxes-beta";
             result = parser.Parse(text);
             Console.WriteLine(result);
+
+            var jbovlaste = new Jbovlaste("banjupunu.xml");
+            var result2 = (from valsi in jbovlaste
+                          orderby valsi.Selmaho
+                          select valsi.Selmaho).Distinct();
+            foreach (var selmaho in result2)
+            {
+                System.Console.WriteLine(selmaho);
+            }
         }
     }
 }

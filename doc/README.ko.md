@@ -6,11 +6,11 @@ CSharp Lojban Project C #에서 Lojban을 처리하기 위해 만들어진 라�
 ## Other Language
 
 만약 한국어를 읽을 수없는 경우에는 다음의 문서를보세요.  
-[로지반🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/README.md)
-[영어🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.en.md)
-[한국🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ko.md)
-[일본어🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.ja.md)
-[중국🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/doc/README.zh.md)
+[로지반🌐](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/README.md)
+[영어🇬🇧](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.en.md)
+[한국🇰🇷](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ko.md)
+[일본어🇯🇵](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.ja.md)
+[중국🇨🇳](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/doc/README.zh.md)
 
 이 문서의 원문은 일본어이며 모순이 발생한 경우는 일본어가 우선됩니다.  
 또한 오역이 존재하는 경우 issues을 세우십시오.
@@ -37,4 +37,4 @@ Pegasus의 제작자 인 [John Gietzen](https://gist.github.com/otac0n) 씨가 �
 ## License
 
 라이센스는 MIT 라이센스입니다.  
-자세한 내용은 [여기](https://github.com/skytomo221/CSharp-Lojban-Project/blob/develop/LICENSE)에서。
+자세한 내용은 [여기](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/LICENSE)에서。
