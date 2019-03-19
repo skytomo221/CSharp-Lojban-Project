@@ -1,7 +1,7 @@
 # la .cicarp.lojban.projekt.
 
 ![MIT License](https://img.shields.io/github/license/skytomo221/CSharp-Lojban-Project.svg)
-![nuget v1.0.1](https://img.shields.io/nuget/v/Lojban.svg)
+![nuget v1.1.1](https://img.shields.io/nuget/v/Lojban.svg)
 
 CSharp Lojban Project is library for handling Lojban with C#  
 Unfortunately, it is still in development.
