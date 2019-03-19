@@ -74,8 +74,3 @@ Camxes.js is a Lojban parser written in JavaScript. It is based on the camxes PE
 
 - Became possible to read the XML output from Jbovlaste
 - Fix perspective mode
-=======
-## curmi pilno
-
-This source is subject to the MIT license.
-Please see [this](https://github.com/skytomo221/CSharp-Lojban-Project/blob/master/LICENSE) for more information.
