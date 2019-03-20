@@ -2,6 +2,7 @@
 
 ![MIT License](https://img.shields.io/github/license/skytomo221/CSharp-Lojban-Project.svg)
 ![nuget v1.1.1](https://img.shields.io/nuget/v/Lojban.svg)
+![download](https://img.shields.io/nuget/dt/Lojban.svg)
 
 CSharp Lojban Projectは、C#でLojbanを処理するために作られたライブラリです。  
 
