@@ -16,6 +16,7 @@ Please check to `x` the corresponding item.
 
 - [ ] Breaking change
 - [ ] Bug fix
+- [ ] Documentation
 - [ ] New feature
 - [ ] Translation
 
@@ -33,7 +34,7 @@ Please include the side effects of this PR.
 
 Please include related issues.
 
-## Reviwer
+## Reviewer
 
 - Where you want the reviewer to look
 
