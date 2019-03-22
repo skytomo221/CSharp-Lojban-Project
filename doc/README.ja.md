@@ -42,11 +42,11 @@ Json.NETは、.NET用の人気の高い高性能JSONフレームワークです�
 
 [ilmentufa](http://www.lojban.github.io/ilmentufa)
 [(Source repository)](https://github.com/lojban/ilmentufa)  
-Ilmentufaは萩原雅人さんによって作られた、ロジバン語の正式な文法と構文解析のパーサー、ならびに関連ツールとインターフェースのコレクションです。
+Ilmentufaは萩原正人さんによって作られた、ロジバン語の正式な文法と構文解析のパーサー、ならびに関連ツールとインターフェースのコレクションです。
 
 [camxes.js](http://www.masatohagiwara.net/camxes.js/)
 [(Source repository)](https://github.com/mhagiwara/camxe.js)  
-Camxes.jsは萩原雅人さんによって作られた、JavaScriptで書かれたロジバンのパーサーです。camxes PEGを基に作られています。
+Camxes.jsは萩原正人さんによって作られた、JavaScriptで書かれたロジバンのパーサーです。camxes PEGを基に作られています。
 
 ## License
 
